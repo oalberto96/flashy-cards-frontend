@@ -1,0 +1,11 @@
+.button-container {
+  margin-top: 3em;
+  padding: 1em 1em 1em 1em;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
+}
+
+.create-collection-button {
+  color: white;
+  background-color: #00a6ff;
+}

@@ -5,6 +5,7 @@
  */
 
 import React from "react";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import "./styles.css";
 import FontAwesome from "react-fontawesome";
@@ -25,15 +26,15 @@ const CollectionList = ({ lists }) => {
                 <p>{list.description}</p>
               </div>
               <span>
-                <a className="icon-actions" href={`/list/${list.listId}`}>
+                <Link className="icon-actions" to={`/list/${list.listId}`}>
                   <FontAwesome className="fa-play" name="fa-play" />
-                </a>
-                <a className="icon-actions" href={`/list/${list.listId}/edit`}>
+                </Link>
+                <Link className="icon-actions" to={`/list/${list.listId}/edit`}>
                   <FontAwesome className="fa-pencil" name="fa-pencil" />
-                </a>
-                <a className="icon-actions" href="">
+                </Link>
+                <Link className="icon-actions" to="">
                   <FontAwesome className="fa-bar-chart" name="fa-bar-chart" />
-                </a>
+                </Link>
               </span>
             </li>
           );
