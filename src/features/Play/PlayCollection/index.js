@@ -9,7 +9,7 @@ import PropTypes from "prop-types";
 import Card from "../Card";
 import "./styles.css";
 
-const PlayCollection = ({ collectionId }) => {
+const PlayCollection = ({ lessonId }) => {
   return (
     <div className="play-collection-container">
       <div className="container height-100-relative">
@@ -26,7 +26,7 @@ const PlayCollection = ({ collectionId }) => {
 };
 
 PlayCollection.propTypes = {
-  collectionId: PropTypes.string.isRequired
+  lessonId: PropTypes.string.isRequired
 };
 
 export default PlayCollection;

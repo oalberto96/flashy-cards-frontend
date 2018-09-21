@@ -10,10 +10,7 @@ const Router = () => {
       <div>
         <Route path="/" component={App} />
         <Route path="/dashboard" component={Dashboard} />
-        <Route
-          path="/collections/:collectionId"
-          component={PlayCollectionContainer}
-        />
+        <Route path="/lessons/:lessonId" component={PlayCollectionContainer} />
       </div>
     </BrowserRouter>
   );

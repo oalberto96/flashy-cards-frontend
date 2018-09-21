@@ -5,18 +5,18 @@
  */
 
 import React from "react";
-import CollectionListContainer from "./CollectionListContainer";
-import CreateCollectionButton from "./CreateCollectionButton";
+import LessonListContainer from "./LessonListContainer";
+import CreateLessonButton from "./CreateLessonButton";
 
 const Dashboard = () => {
   return (
     <div className="container">
       <div className="row">
         <div className="col-md-6">
-          <CollectionListContainer />
+          <LessonListContainer />
         </div>
         <div className="col-md-6">
-          <CreateCollectionButton />
+          <CreateLessonButton />
         </div>
       </div>
     </div>

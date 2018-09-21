@@ -11,7 +11,7 @@ import PlayCollection from "../PlayCollection";
 
 class PlayCollectionContainer extends React.Component {
   static propTypes = {
-    collectionId: PropTypes.string.isRequired
+    lessonId: PropTypes.string.isRequired
   };
   render() {
     return <PlayCollection {...this.props} />;
@@ -20,7 +20,7 @@ class PlayCollectionContainer extends React.Component {
 
 const mapStateToProps = () => (state, ownProps) => {
   return {
-    collectionId: ownProps.match.params.collectionId
+    lessonId: ownProps.match.params.lessonId
   };
 };
 

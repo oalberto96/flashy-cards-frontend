@@ -1,6 +1,6 @@
 /**
  *
- * CollectionList
+ * LessonList
  *
  */
 
@@ -10,7 +10,7 @@ import PropTypes from "prop-types";
 import "./styles.css";
 import FontAwesome from "react-fontawesome";
 
-const CollectionList = ({ lists }) => {
+const LessonList = ({ lists }) => {
   return (
     <div className="collection-list">
       <h1 className="title">My lists</h1>
@@ -26,15 +26,12 @@ const CollectionList = ({ lists }) => {
                 <p>{list.description}</p>
               </div>
               <span>
-                <Link
-                  className="icon-actions"
-                  to={`/collections/${list.listId}`}
-                >
+                <Link className="icon-actions" to={`/lessons/${list.listId}`}>
                   <FontAwesome className="fa-play" name="fa-play" />
                 </Link>
                 <Link
                   className="icon-actions"
-                  to={`/collections/${list.listId}/edit`}
+                  to={`/lessons/${list.listId}/edit`}
                 >
                   <FontAwesome className="fa-pencil" name="fa-pencil" />
                 </Link>
@@ -50,8 +47,8 @@ const CollectionList = ({ lists }) => {
   );
 };
 
-CollectionList.propTypes = {
+LessonList.propTypes = {
   lists: PropTypes.array.isRequired
 };
 
-export default CollectionList;
+export default LessonList;

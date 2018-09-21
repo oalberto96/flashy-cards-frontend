@@ -1,20 +1,20 @@
 /**
  *
- * CollectionListContainer
+ * LessonListContainer
  *
  */
 
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import CollectionList from "../CollectionList";
+import LessonList from "../LessonList";
 
-class CollectionListContainer extends React.Component {
+class LessonListContainer extends React.Component {
   static propTypes = {
     lists: PropTypes.array.isRequired
   };
   render() {
-    return <CollectionList {...this.props} />;
+    return <LessonList {...this.props} />;
   }
 }
 
@@ -24,4 +24,4 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-export default connect(mapStateToProps)(CollectionListContainer);
+export default connect(mapStateToProps)(LessonListContainer);
