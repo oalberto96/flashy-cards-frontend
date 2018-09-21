@@ -1,0 +1,12 @@
+.card-container {
+  height: 50%;
+  background-color: #c4ebfb;
+  text-align: center;
+  vertical-align: middle;
+}
+
+@media only screen and (max-height: 400px) {
+  .card-container {
+    height: 80%;
+  }
+}
