@@ -26,10 +26,16 @@ const CollectionList = ({ lists }) => {
                 <p>{list.description}</p>
               </div>
               <span>
-                <Link className="icon-actions" to={`/list/${list.listId}`}>
+                <Link
+                  className="icon-actions"
+                  to={`/collections/${list.listId}`}
+                >
                   <FontAwesome className="fa-play" name="fa-play" />
                 </Link>
-                <Link className="icon-actions" to={`/list/${list.listId}/edit`}>
+                <Link
+                  className="icon-actions"
+                  to={`/collections/${list.listId}/edit`}
+                >
                   <FontAwesome className="fa-pencil" name="fa-pencil" />
                 </Link>
                 <Link className="icon-actions" to="">
