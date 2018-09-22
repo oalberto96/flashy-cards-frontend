@@ -11,7 +11,7 @@ import LessonList from "../LessonList";
 
 class LessonListContainer extends React.Component {
   static propTypes = {
-    lists: PropTypes.array.isRequired
+    lessons: PropTypes.array.isRequired
   };
   render() {
     return <LessonList {...this.props} />;
@@ -20,7 +20,7 @@ class LessonListContainer extends React.Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    lists: state.lists
+    lessons: state.lessons
   };
 };
 

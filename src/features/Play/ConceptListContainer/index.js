@@ -10,8 +10,22 @@ import { connect } from "react-redux";
 import PlayConcept from "../PlayConcept";
 
 class ConceptListContainer extends React.Component {
+  state = { index: 0 };
+
+  nextCard = () => {
+    if (this.state.index + 1 < this.props.concepts.length) {
+      this.setState({ index: this.state.index + 1 }, () => {});
+    }
+  };
+
   render() {
-    return <PlayConcept {...this.props.concepts[0]} />;
+    return (
+      <PlayConcept
+        nextCard={this.nextCard}
+        cardA={this.props.concepts[this.state.index].cardA}
+        cardB={this.props.concepts[this.state.index].cardB}
+      />
+    );
   }
 }
 const mapStateToProps = () => (state, ownProps) => {

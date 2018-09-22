@@ -15,6 +15,17 @@ export default {
             cardId: 2,
             text: "office"
           }
+        },
+        {
+          conceptId: 2,
+          cardA: {
+            cardId: 3,
+            text: "kino"
+          },
+          cardB: {
+            cardId: 4,
+            text: "cinema"
+          }
         }
       ]
     },
