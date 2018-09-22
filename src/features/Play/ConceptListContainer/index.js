@@ -14,7 +14,13 @@ class ConceptListContainer extends React.Component {
 
   nextCard = () => {
     if (this.state.index + 1 < this.props.concepts.length) {
-      this.setState({ index: this.state.index + 1 }, () => {});
+      this.setState({ index: this.state.index + 1 });
+    }
+  };
+
+  prevCard = () => {
+    if (this.state.index - 1 >= 0) {
+      this.setState({ index: this.state.index - 1 });
     }
   };
 
@@ -22,6 +28,7 @@ class ConceptListContainer extends React.Component {
     return (
       <PlayConcept
         nextCard={this.nextCard}
+        prevCard={this.prevCard}
         cardA={this.props.concepts[this.state.index].cardA}
         cardB={this.props.concepts[this.state.index].cardB}
       />
