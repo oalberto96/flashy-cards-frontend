@@ -1,7 +1,7 @@
 export default {
-  lists: [
+  lessons: [
     {
-      listId: 1,
+      lessonId: 1,
       name: "name",
       description: "little description",
       concepts: [
@@ -19,7 +19,7 @@ export default {
       ]
     },
     {
-      listId: 2,
+      lessonId: 2,
       name: "other name",
       description: "little description",
       concepts: [

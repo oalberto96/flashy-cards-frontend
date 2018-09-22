@@ -1,6 +1,6 @@
 /**
  *
- * PlayCollection
+ * PlayConcept
  *
  */
 
@@ -9,9 +9,9 @@ import PropTypes from "prop-types";
 import Card from "../Card";
 import "./styles.css";
 
-const PlayCollection = ({ lessonId }) => {
+const PlayConcept = ({}) => {
   return (
-    <div className="play-collection-container">
+    <div className="play-lesson-container">
       <div className="container height-100-relative">
         <div className="slider row height-100-relative">
           <div className="col-1 col-md-2">{"<"}</div>
@@ -25,8 +25,6 @@ const PlayCollection = ({ lessonId }) => {
   );
 };
 
-PlayCollection.propTypes = {
-  lessonId: PropTypes.string.isRequired
-};
+PlayConcept.propTypes = {};
 
-export default PlayCollection;
+export default PlayConcept;

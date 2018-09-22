@@ -1,4 +1,4 @@
-.play-collection-container {
+.play-lesson-container {
   padding-top: 15%;
   position: absolute;
   height: 80%;
@@ -10,7 +10,7 @@
 }
 
 @media only screen and (max-height: 400px) {
-  .play-collection-container {
+  .play-lesson-container {
     padding-top: 5%;
     height: 100%;
   }
