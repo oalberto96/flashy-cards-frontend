@@ -9,16 +9,16 @@ export default {
           conceptId: 1,
           cardA: {
             cardId: 1,
-            text: "büro",
+            text: "büro"
+          },
+          cardB: {
+            cardId: 2,
+            text: "office",
             media: {
               type: "IMAGE",
               source:
                 "https://images.pexels.com/photos/380769/pexels-photo-380769.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
             }
-          },
-          cardB: {
-            cardId: 2,
-            text: "office"
           }
         },
         {
