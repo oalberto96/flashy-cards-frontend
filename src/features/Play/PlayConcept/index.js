@@ -41,6 +41,16 @@ class PlayConcept extends React.Component {
                     ? this.props.cardB.text
                     : this.props.cardA.text
                 }
+                cardMedia={
+                  this.state.cardFlipped
+                    ? this.props.cardB.media
+                    : this.props.cardA.media
+                }
+                cardAudio={
+                  this.state.cardFlipped
+                    ? this.props.cardB.audio
+                    : this.props.cardA.audio
+                }
               />
             </div>
             <div className="col-1 col-md-2" onClick={this.props.nextCard}>

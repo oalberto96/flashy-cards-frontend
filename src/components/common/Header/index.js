@@ -4,17 +4,18 @@
  *
  */
 import React from "react";
+import { Link } from "react-router-dom";
 import "./styles.css";
 
 const Header = () => {
   return (
     <nav className="navbar nav">
-      <a
+      <Link
+        to="/dashboard"
         className="navbar-brand logo                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   "
-        href=""
       >
         Flashy Cards
-      </a>
+      </Link>
     </nav>
   );
 };
