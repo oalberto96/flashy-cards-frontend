@@ -10,8 +10,8 @@ import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 const store = configureStore(initialState);
 
 ReactDOM.render(
-  <Provider store={store}>
-    <Router />
-  </Provider>,
-  document.getElementById("root")
+	<Provider store={store}>
+		<Router />
+	</Provider>,
+	document.getElementById("root")
 );

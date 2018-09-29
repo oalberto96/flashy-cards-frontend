@@ -5,10 +5,15 @@
  */
 
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import CardForm from "../CardForm";
 
 class LessonForm extends Component {
-	state = { concepts: [] };
+	static propTypes = {
+		addNewConcept: PropTypes.func.isRequired,
+		concepts: PropTypes.array.isRequired
+	};
+
 	render() {
 		return (
 			<form>
@@ -24,21 +29,24 @@ class LessonForm extends Component {
 						id="lessonDescription"
 					/>
 				</div>
-				<div className="form-group">
-					<div className="row">
-						<div className="col-md-6">
-							<CardForm />
-						</div>
-						<div className="col-md-6">
-							<CardForm />
+				{this.props.concepts.map((concept, index) => (
+					<div key={index} className="form-group">
+						<div className="row">
+							<div className="col-md-6">
+								<CardForm />
+							</div>
+							<div className="col-md-6">
+								<CardForm />
+							</div>
 						</div>
 					</div>
-				</div>
+				))}
 				<div className="form-group text-center">
 					<button
 						className="btn create-lesson-button center-block"
 						onClick={event => {
 							event.preventDefault();
+							this.props.addNewConcept();
 						}}>
 						Add new concept
 					</button>
