@@ -30,7 +30,7 @@ class LessonForm extends Component {
 					/>
 				</div>
 				{this.props.concepts.map((concept, index) => (
-					<div key={index} className="form-group">
+					<div key={concept.conceptId} className="form-group">
 						<div className="row">
 							<div className="col-md-6">
 								<CardForm />
