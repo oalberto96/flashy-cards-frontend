@@ -50,6 +50,8 @@ class LessonForm extends Component {
 					label="Lesson description"
 					inputClassName="form-control"
 					inputId="lessonDescription"
+					defaultValue={this.props.lessonDescription}
+					onBlur={text => this.props.changeNewLessonDescription(text)}
 				/>
 				<ConceptList
 					concepts={this.props.concepts}

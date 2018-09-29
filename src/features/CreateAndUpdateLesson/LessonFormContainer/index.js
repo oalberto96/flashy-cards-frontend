@@ -10,7 +10,8 @@ import LessonForm from "../LessonForm";
 import {
 	addConceptToNewLesson,
 	setCardText,
-	changeNewLessonName
+	changeNewLessonName,
+	changeNewLessonDescription
 } from "./actions";
 
 class LessonFormContainer extends Component {
@@ -22,7 +23,8 @@ class LessonFormContainer extends Component {
 const mapStateToProps = (state, ownProps) => {
 	return {
 		concepts: state.newLesson.concepts,
-		lessonName: state.newLesson.lessonName
+		lessonName: state.newLesson.lessonName,
+		lessonDescription: state.newLesson.lessonDescription
 	};
 };
 
@@ -31,7 +33,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 		addNewConcept: () => dispatch(addConceptToNewLesson()),
 		setCardText: (conceptId, cardText, card) =>
 			dispatch(setCardText(conceptId, cardText, card)),
-		changeNewLessonName: newName => dispatch(changeNewLessonName(newName))
+		changeNewLessonName: newName => dispatch(changeNewLessonName(newName)),
+		changeNewLessonDescription: newDescription =>
+			dispatch(changeNewLessonDescription(newDescription))
 	};
 };
 
