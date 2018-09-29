@@ -4,7 +4,7 @@
  *
  */
 
-import { ADD_CONCEPT_TO_NEW_LESSON } from "./constants";
+import { ADD_CONCEPT_TO_NEW_LESSON, SET_CARD_TEXT } from "./constants";
 
 const initialState = {
 	concepts: []
@@ -23,6 +23,18 @@ function LessonFormContainerReducer(state = initialState, action) {
 			});
 			let newLesson = { concepts: conceptsCopy };
 			return { ...state, ...newLesson };
+		case SET_CARD_TEXT:
+			let cardText = action.payload.cardText;
+			conceptsCopy = state.concepts.map(concept => {
+				if (concept.conceptId === action.payload.conceptId) {
+					action.payload.card === "A"
+						? (concept.cardA = { ...concept.cardA, text: cardText })
+						: (concept.cardB = { ...concept.cardB, text: cardText });
+					return { ...concept };
+				}
+				return concept;
+			});
+			return { ...state };
 		default:
 			return state;
 	}

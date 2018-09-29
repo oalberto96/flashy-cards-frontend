@@ -7,7 +7,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import LessonForm from "../LessonForm";
-import { addConceptToNewLesson } from "./actions";
+import { addConceptToNewLesson, setCardText } from "./actions";
 
 class LessonFormContainer extends Component {
 	render() {
@@ -23,7 +23,9 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
 	return {
-		addNewConcept: () => dispatch(addConceptToNewLesson())
+		addNewConcept: () => dispatch(addConceptToNewLesson()),
+		setCardText: (conceptId, cardText, card) =>
+			dispatch(setCardText(conceptId, cardText, card))
 	};
 };
 

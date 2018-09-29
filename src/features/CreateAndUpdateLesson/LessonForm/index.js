@@ -11,7 +11,8 @@ import CardForm from "../CardForm";
 class LessonForm extends Component {
 	static propTypes = {
 		addNewConcept: PropTypes.func.isRequired,
-		concepts: PropTypes.array.isRequired
+		concepts: PropTypes.array.isRequired,
+		setCardText: PropTypes.func.isRequired
 	};
 
 	render() {
@@ -29,14 +30,24 @@ class LessonForm extends Component {
 						id="lessonDescription"
 					/>
 				</div>
-				{this.props.concepts.map((concept, index) => (
+				{this.props.concepts.map(concept => (
 					<div key={concept.conceptId} className="form-group">
 						<div className="row">
 							<div className="col-md-6">
-								<CardForm />
+								<CardForm
+									cardText={concept.cardA.text}
+									setCardText={cardText =>
+										this.props.setCardText(concept.conceptId, cardText, "A")
+									}
+								/>
 							</div>
 							<div className="col-md-6">
-								<CardForm />
+								<CardForm
+									cardText={concept.cardB.text}
+									setCardText={cardText =>
+										this.props.setCardText(concept.conceptId, cardText, "B")
+									}
+								/>
 							</div>
 						</div>
 					</div>
