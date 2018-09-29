@@ -19,6 +19,9 @@ const CardForm = () => {
 				ref={node => {
 					inputText = node;
 				}}
+				onBlur={() => {
+					console.log(inputText.value);
+				}}
 			/>
 			<div className="pull-right">
 				<img src={MicIcon} alt="Mic icon" />
