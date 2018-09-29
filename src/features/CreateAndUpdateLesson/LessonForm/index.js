@@ -5,8 +5,11 @@
  */
 
 import React, { Component } from "react";
+
 import PropTypes from "prop-types";
-import CardForm from "../CardForm";
+import TextInput from "../../../components/common/TextInput";
+import TextAreaInput from "../../../components/common/TextAreaInput";
+import ConceptList from "../ConceptList";
 
 class LessonForm extends Component {
 	static propTypes = {
@@ -18,40 +21,30 @@ class LessonForm extends Component {
 	render() {
 		return (
 			<form>
-				<div className="form-group">
-					<label htmlFor="lessonName">Lesson name</label>
-					<input type="text" className="form-control" id="lessonName" />
-				</div>
-				<div className="form-group">
-					<label htmlFor="lessonDescription">Lesson description</label>
-					<textarea
-						type="text"
-						className="form-control"
-						id="lessonDescription"
-					/>
-				</div>
-				{this.props.concepts.map(concept => (
-					<div key={concept.conceptId} className="form-group">
-						<div className="row">
-							<div className="col-md-6">
-								<CardForm
-									cardText={concept.cardA.text}
-									setCardText={cardText =>
-										this.props.setCardText(concept.conceptId, cardText, "A")
-									}
-								/>
-							</div>
-							<div className="col-md-6">
-								<CardForm
-									cardText={concept.cardB.text}
-									setCardText={cardText =>
-										this.props.setCardText(concept.conceptId, cardText, "B")
-									}
-								/>
-							</div>
-						</div>
+				<div className="form-group row">
+					<div className="col-md-6">
+						<h1>Lesson</h1>
 					</div>
-				))}
+					<div className="col-md-6">
+						<button className="btn pull-right">Save lesson</button>
+					</div>
+				</div>
+				<TextInput
+					divClassName="form-group"
+					label="Lesson name"
+					inputClassName="form-control"
+					inputId="lessonName"
+				/>
+				<TextAreaInput
+					divClassName="form-group"
+					label="Lesson description"
+					inputClassName="form-control"
+					inputId="lessonDescription"
+				/>
+				<ConceptList
+					concepts={this.props.concepts}
+					setCardText={this.props.setCardText}
+				/>
 				<div className="form-group text-center">
 					<button
 						className="btn create-lesson-button center-block"

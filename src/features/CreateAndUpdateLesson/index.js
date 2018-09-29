@@ -17,7 +17,6 @@ class CreateAndUpdateLesson extends React.Component {
 	render() {
 		return (
 			<div className="container">
-				<h1>{this.state.isANewLesson ? "Create" : "Update"}</h1>
 				<LessonFormContainer />
 			</div>
 		);
