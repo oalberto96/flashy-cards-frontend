@@ -4,9 +4,14 @@
  *
  */
 
-import { ADD_CONCEPT_TO_NEW_LESSON, SET_CARD_TEXT } from "./constants";
+import {
+	ADD_CONCEPT_TO_NEW_LESSON,
+	SET_CARD_TEXT,
+	CHANGE_NEW_LESSON_NAME
+} from "./constants";
 
 const initialState = {
+	lessonName: "",
 	concepts: []
 };
 
@@ -35,6 +40,8 @@ function LessonFormContainerReducer(state = initialState, action) {
 				return concept;
 			});
 			return { ...state };
+		case CHANGE_NEW_LESSON_NAME:
+			return { ...state, lessonName: action.payload.newLessonName };
 		default:
 			return state;
 	}

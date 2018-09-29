@@ -4,7 +4,11 @@
  *
  */
 
-import { ADD_CONCEPT_TO_NEW_LESSON, SET_CARD_TEXT } from "./constants";
+import {
+	ADD_CONCEPT_TO_NEW_LESSON,
+	SET_CARD_TEXT,
+	CHANGE_NEW_LESSON_NAME
+} from "./constants";
 
 export const addConceptToNewLesson = () => {
 	return {
@@ -19,6 +23,15 @@ export const setCardText = (conceptId, cardText, card) => {
 			conceptId,
 			cardText,
 			card
+		}
+	};
+};
+
+export const changeNewLessonName = newLessonName => {
+	return {
+		type: CHANGE_NEW_LESSON_NAME,
+		payload: {
+			newLessonName
 		}
 	};
 };

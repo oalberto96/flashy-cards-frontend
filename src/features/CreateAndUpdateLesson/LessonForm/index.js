@@ -15,7 +15,8 @@ class LessonForm extends Component {
 	static propTypes = {
 		addNewConcept: PropTypes.func.isRequired,
 		concepts: PropTypes.array.isRequired,
-		setCardText: PropTypes.func.isRequired
+		setCardText: PropTypes.func.isRequired,
+		lessonName: PropTypes.string.isRequired
 	};
 
 	render() {
@@ -26,7 +27,14 @@ class LessonForm extends Component {
 						<h1>Lesson</h1>
 					</div>
 					<div className="col-md-6">
-						<button className="btn pull-right">Save lesson</button>
+						<button
+							className="btn pull-right"
+							onClick={event => {
+								event.preventDefault();
+								console.log("Save");
+							}}>
+							Save lesson
+						</button>
 					</div>
 				</div>
 				<TextInput
@@ -34,6 +42,8 @@ class LessonForm extends Component {
 					label="Lesson name"
 					inputClassName="form-control"
 					inputId="lessonName"
+					defaultValue={this.props.lessonName}
+					onBlur={text => this.props.changeNewLessonName(text)}
 				/>
 				<TextAreaInput
 					divClassName="form-group"
