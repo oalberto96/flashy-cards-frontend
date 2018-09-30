@@ -11,7 +11,8 @@ import {
 	addConceptToNewLesson,
 	setCardText,
 	changeNewLessonName,
-	changeNewLessonDescription
+	changeNewLessonDescription,
+	saveNewLesson
 } from "./actions";
 
 class LessonFormContainer extends Component {
@@ -24,7 +25,8 @@ const mapStateToProps = (state, ownProps) => {
 	return {
 		concepts: state.newLesson.concepts,
 		lessonName: state.newLesson.lessonName,
-		lessonDescription: state.newLesson.lessonDescription
+		lessonDescription: state.newLesson.lessonDescription,
+		lesson: state.newLesson
 	};
 };
 
@@ -35,7 +37,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 			dispatch(setCardText(conceptId, cardText, card)),
 		changeNewLessonName: newName => dispatch(changeNewLessonName(newName)),
 		changeNewLessonDescription: newDescription =>
-			dispatch(changeNewLessonDescription(newDescription))
+			dispatch(changeNewLessonDescription(newDescription)),
+		saveNewLesson: lesson => dispatch(saveNewLesson(lesson))
 	};
 };
 

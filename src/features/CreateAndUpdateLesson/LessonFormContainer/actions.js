@@ -8,7 +8,8 @@ import {
 	ADD_CONCEPT_TO_NEW_LESSON,
 	SET_CARD_TEXT,
 	CHANGE_NEW_LESSON_NAME,
-	CHANGE_NEW_LESSON_DESCRIPTION
+	CHANGE_NEW_LESSON_DESCRIPTION,
+	SAVE_NEW_LESSON
 } from "./constants";
 
 export const addConceptToNewLesson = () => {
@@ -42,6 +43,15 @@ export const changeNewLessonDescription = newLessonDescription => {
 		type: CHANGE_NEW_LESSON_DESCRIPTION,
 		payload: {
 			newLessonDescription
+		}
+	};
+};
+
+export const saveNewLesson = lesson => {
+	return {
+		type: SAVE_NEW_LESSON,
+		payload: {
+			lesson
 		}
 	};
 };

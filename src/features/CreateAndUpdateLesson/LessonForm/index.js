@@ -28,10 +28,11 @@ class LessonForm extends Component {
 					</div>
 					<div className="col-md-6">
 						<button
-							className="btn pull-right"
+							className="btn create-lesson-button pull-right"
 							onClick={event => {
 								event.preventDefault();
-								console.log("Save");
+								this.props.saveNewLesson(this.props.lesson);
+								this.props.history.push("/dashboard");
 							}}>
 							Save lesson
 						</button>

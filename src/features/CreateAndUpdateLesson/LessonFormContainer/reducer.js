@@ -8,7 +8,8 @@ import {
 	ADD_CONCEPT_TO_NEW_LESSON,
 	SET_CARD_TEXT,
 	CHANGE_NEW_LESSON_NAME,
-	CHANGE_NEW_LESSON_DESCRIPTION
+	CHANGE_NEW_LESSON_DESCRIPTION,
+	SAVE_NEW_LESSON
 } from "./constants";
 
 const initialState = {
@@ -49,6 +50,8 @@ function LessonFormContainerReducer(state = initialState, action) {
 				...state,
 				lessonDescription: action.payload.newLessonDescription
 			};
+		case SAVE_NEW_LESSON:
+			return initialState;
 		default:
 			return state;
 	}

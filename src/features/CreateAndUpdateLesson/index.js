@@ -17,7 +17,7 @@ class CreateAndUpdateLesson extends React.Component {
 	render() {
 		return (
 			<div className="container">
-				<LessonFormContainer />
+				<LessonFormContainer {...this.props} />
 			</div>
 		);
 	}
