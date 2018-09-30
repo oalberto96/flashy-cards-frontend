@@ -12,10 +12,6 @@ import PlayConcept from "../PlayConcept";
 class ConceptListContainer extends React.Component {
 	state = { index: 0 };
 
-	componentWillMount() {
-		console.log();
-	}
-
 	nextCard = () => {
 		if (this.state.index + 1 < this.props.concepts.length) {
 			this.setState({ index: this.state.index + 1 });
@@ -31,6 +27,8 @@ class ConceptListContainer extends React.Component {
 	render() {
 		return this.props.concepts.length > 0 ? (
 			<PlayConcept
+				listLength={this.props.concepts.length}
+				index={this.state.index}
 				nextCard={this.nextCard}
 				prevCard={this.prevCard}
 				cardA={this.props.concepts[this.state.index].cardA}
