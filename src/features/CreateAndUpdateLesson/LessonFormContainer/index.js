@@ -12,7 +12,8 @@ import {
 	setCardText,
 	changeNewLessonName,
 	changeNewLessonDescription,
-	saveNewLesson
+	saveNewLesson,
+	setCardImage
 } from "./actions";
 
 class LessonFormContainer extends Component {
@@ -35,6 +36,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 		addNewConcept: () => dispatch(addConceptToNewLesson()),
 		setCardText: (conceptId, cardText, card) =>
 			dispatch(setCardText(conceptId, cardText, card)),
+		setCardImage: (conceptId, cardImage, card) =>
+			dispatch(setCardImage(conceptId, cardImage, card)),
 		changeNewLessonName: newName => dispatch(changeNewLessonName(newName)),
 		changeNewLessonDescription: newDescription =>
 			dispatch(changeNewLessonDescription(newDescription)),

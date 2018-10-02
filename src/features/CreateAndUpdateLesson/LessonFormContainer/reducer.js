@@ -9,7 +9,8 @@ import {
 	SET_CARD_TEXT,
 	CHANGE_NEW_LESSON_NAME,
 	CHANGE_NEW_LESSON_DESCRIPTION,
-	SAVE_NEW_LESSON
+	SAVE_NEW_LESSON,
+	SET_CARD_IMAGE
 } from "./constants";
 
 const initialState = {
@@ -43,6 +44,29 @@ function LessonFormContainerReducer(state = initialState, action) {
 				return concept;
 			});
 			return { ...state };
+		case SET_CARD_IMAGE:
+			const cardImage = action.payload.cardImage;
+			conceptsCopy = state.concepts.map(concept => {
+				if (concept.conceptId === action.payload.conceptId) {
+					action.payload.card === "A"
+						? (concept.cardA = {
+								...concept.cardA,
+								media: {
+									type: "IMAGE",
+									source: cardImage
+								}
+						  })
+						: (concept.cardB = {
+								...concept.cardA,
+								media: {
+									type: "IMAGE",
+									source: cardImage
+								}
+						  });
+				}
+				return concept;
+			});
+			return { ...state, concepts: conceptsCopy };
 		case CHANGE_NEW_LESSON_NAME:
 			return { ...state, lessonName: action.payload.newLessonName };
 		case CHANGE_NEW_LESSON_DESCRIPTION:
