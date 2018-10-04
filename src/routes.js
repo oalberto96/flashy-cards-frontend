@@ -6,18 +6,22 @@ import ConceptListContainer from "./features/Play/ConceptListContainer";
 import CreateAndUpdateLesson from "./features/CreateAndUpdateLesson";
 
 const Router = () => {
-  return (
-    <BrowserRouter>
-      <div>
-        <Route path="/" component={App} />
-        <Switch>
-          <Route path="/dashboard" component={Dashboard} />
-          <Route path="/lessons/new" component={CreateAndUpdateLesson} />
-          <Route path="/lessons/:lessonId" component={ConceptListContainer} />
-        </Switch>
-      </div>
-    </BrowserRouter>
-  );
+	return (
+		<BrowserRouter>
+			<div>
+				<Route path="/" component={App} />
+				<Switch>
+					<Route path="/dashboard" component={Dashboard} />
+					<Route path="/lessons/new" component={CreateAndUpdateLesson} />
+					<Route
+						path="/lessons/:lessonId/edit"
+						component={CreateAndUpdateLesson}
+					/>
+					<Route path="/lessons/:lessonId" component={ConceptListContainer} />
+				</Switch>
+			</div>
+		</BrowserRouter>
+	);
 };
 
 export default Router;

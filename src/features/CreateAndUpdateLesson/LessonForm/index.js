@@ -20,6 +20,12 @@ class LessonForm extends Component {
 		lessonName: PropTypes.string.isRequired
 	};
 
+	componentWillMount() {
+		if (this.props.match.path.includes("edit")) {
+			this.props.requestLessonToEdit(Number(this.props.match.params.lessonId));
+		}
+	}
+
 	render() {
 		return (
 			<form>

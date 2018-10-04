@@ -11,11 +11,15 @@ import MicIcon from "../../../resources/icons/baseline-mic-24px.svg";
 import ImageIcon from "../../../resources/icons/baseline-add_photo_alternate-24px.svg";
 
 class CardForm extends React.Component {
-	state = {
-		cardImage: this.props.cardImage
-	};
-	inputText = "";
-	image = React.createRef;
+	constructor(props) {
+		super(props);
+		this.state = {};
+		if (this.props.cardMedia) {
+			if (this.props.cardMedia.type === "IMAGE") {
+				this.state.cardImage = this.props.cardMedia.source;
+			}
+		}
+	}
 
 	render() {
 		return (

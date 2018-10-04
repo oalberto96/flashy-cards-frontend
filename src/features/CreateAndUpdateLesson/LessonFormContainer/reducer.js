@@ -10,7 +10,8 @@ import {
 	CHANGE_NEW_LESSON_NAME,
 	CHANGE_NEW_LESSON_DESCRIPTION,
 	SAVE_NEW_LESSON,
-	SET_CARD_IMAGE
+	SET_CARD_IMAGE,
+	REQUEST_LESSON_TO_EDIT_SUCCESS
 } from "./constants";
 
 const initialState = {
@@ -76,6 +77,9 @@ function LessonFormContainerReducer(state = initialState, action) {
 			};
 		case SAVE_NEW_LESSON:
 			return initialState;
+		case REQUEST_LESSON_TO_EDIT_SUCCESS:
+			const lesson = { ...action.payload.lesson };
+			return lesson;
 		default:
 			return state;
 	}

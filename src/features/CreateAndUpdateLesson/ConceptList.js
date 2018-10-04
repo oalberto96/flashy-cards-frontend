@@ -16,6 +16,7 @@ const ConceptList = ({ concepts, setCardText, setCardImage }) => {
 					<CardForm
 						cardId={`${concept.conceptId}A`}
 						cardText={concept.cardA.text}
+						cardMedia={concept.cardA.media}
 						setCardText={cardText =>
 							setCardText(concept.conceptId, cardText, "A")
 						}
@@ -28,6 +29,7 @@ const ConceptList = ({ concepts, setCardText, setCardImage }) => {
 					<CardForm
 						cardId={`${concept.conceptId}B`}
 						cardText={concept.cardB.text}
+						cardMedia={concept.cardB.media}
 						setCardText={cardText =>
 							setCardText(concept.conceptId, cardText, "B")
 						}

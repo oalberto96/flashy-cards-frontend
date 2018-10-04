@@ -10,7 +10,9 @@ import {
 	CHANGE_NEW_LESSON_NAME,
 	CHANGE_NEW_LESSON_DESCRIPTION,
 	SAVE_NEW_LESSON,
-	SET_CARD_IMAGE
+	SET_CARD_IMAGE,
+	REQUEST_LESSON_TO_EDIT,
+	REQUEST_LESSON_TO_EDIT_SUCCESS
 } from "./constants";
 
 export const addConceptToNewLesson = () => {
@@ -64,6 +66,24 @@ export const setCardImage = (conceptId, cardImage, card) => {
 			conceptId,
 			cardImage,
 			card
+		}
+	};
+};
+
+export const requestLessonToEdit = lessonId => {
+	return {
+		type: REQUEST_LESSON_TO_EDIT,
+		payload: {
+			lessonId
+		}
+	};
+};
+
+export const requestLessonToEditSuccess = lesson => {
+	return {
+		type: REQUEST_LESSON_TO_EDIT_SUCCESS,
+		payload: {
+			lesson
 		}
 	};
 };
