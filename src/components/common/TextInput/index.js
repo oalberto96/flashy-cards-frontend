@@ -8,36 +8,40 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const TextInput = ({
-	divClassName,
-	label,
-	inputClassName,
-	inputId,
-	onBlur,
-	defaultValue
+  divClassName,
+  label,
+  inputClassName,
+  inputId,
+  onBlur,
+  onChange,
+  defaultValue,
+  value
 }) => {
-	let text;
-	return (
-		<div className={divClassName}>
-			<label htmlFor="lessonName">{label}</label>
-			<input
-				defaultValue={defaultValue}
-				type="text"
-				ref={node => (text = node)}
-				className={inputClassName}
-				id={inputId}
-				onBlur={() => onBlur(text.value)}
-			/>
-		</div>
-	);
+  return (
+    <div className={divClassName}>
+      <label htmlFor="lessonName">{label}</label>
+      <input
+        id={inputId}
+        onChange={onChange}
+        value={value}
+        defaultValue={defaultValue}
+        type="text"
+        className={inputClassName}
+        onBlur={onBlur}
+      />
+    </div>
+  );
 };
 
 TextInput.propTypes = {
-	divClassName: PropTypes.string,
-	label: PropTypes.string,
-	inputClassName: PropTypes.string,
-	inputId: PropTypes.string,
-	onBlur: PropTypes.func,
-	defaultValue: PropTypes.string
+  divClassName: PropTypes.string,
+  label: PropTypes.string,
+  inputClassName: PropTypes.string,
+  inputId: PropTypes.string,
+  onBlur: PropTypes.func,
+  defaultValue: PropTypes.string,
+  onChange: PropTypes.func,
+  value: PropTypes.string
 };
 
 export default TextInput;
