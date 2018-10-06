@@ -78,14 +78,12 @@ function LessonFormContainerReducer(state = initialState, action) {
     case SAVE_NEW_LESSON:
       return initialState;
     case REQUEST_LESSON_TO_EDIT_SUCCESS:
-      console.log(action.payload.lesson);
-      const lesson = {
+      return {
         ...action.payload.lesson,
         concepts: action.payload.lesson.concepts.map(concept => ({
           ...concept
         }))
       };
-      return lesson;
     default:
       return state;
   }
