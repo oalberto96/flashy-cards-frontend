@@ -13,7 +13,9 @@ import {
   SET_CARD_IMAGE,
   REQUEST_LESSON_TO_EDIT,
   REQUEST_LESSON_TO_EDIT_SUCCESS,
-  NEW_LESSON
+  NEW_LESSON,
+  REQUEST_UPDATE_LESSON,
+  REQUEST_UPDATE_LESSON_SUCCESS
 } from "./constants";
 
 export const addConceptToNewLesson = () => {
@@ -92,5 +94,20 @@ export const requestLessonToEditSuccess = lesson => {
 export const newLesson = () => {
   return {
     type: NEW_LESSON
+  };
+};
+
+export const requestUpdateLesson = () => {
+  return {
+    type: REQUEST_UPDATE_LESSON
+  };
+};
+
+export const requestUpdateLessonSuccess = lesson => {
+  return {
+    type: REQUEST_UPDATE_LESSON_SUCCESS,
+    payload: {
+      lesson
+    }
   };
 };

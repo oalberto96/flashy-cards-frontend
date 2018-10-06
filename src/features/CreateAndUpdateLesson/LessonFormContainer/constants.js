@@ -18,3 +18,7 @@ export const REQUEST_LESSON_TO_EDIT =
 export const REQUEST_LESSON_TO_EDIT_SUCCESS =
   "LessonFormContainer/REQUEST_LESSON_TO_EDIT_SUCCESS";
 export const NEW_LESSON = "LessonFormContainer/NEW_LESSON";
+export const REQUEST_UPDATE_LESSON =
+  "LessonFormContainer/REQUEST_UPDATE_LESSON";
+export const REQUEST_UPDATE_LESSON_SUCCESS =
+  "LessonFormContainer/REQUEST_UPDATE_LESSON_SUCCESS";

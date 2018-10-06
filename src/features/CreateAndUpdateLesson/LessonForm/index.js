@@ -62,9 +62,10 @@ class LessonForm extends Component {
                 event.preventDefault();
                 if (this.state.editMode !== true) {
                   this.props.saveNewLesson(this.props.lesson);
-                  this.props.history.push("/dashboard");
+                } else {
+                  this.props.requestUpdateLesson();
                 }
-                alert("Save Lesson");
+                this.props.history.push("/dashboard");
               }}
             >
               Save lesson
