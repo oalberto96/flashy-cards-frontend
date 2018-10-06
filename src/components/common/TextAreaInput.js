@@ -13,7 +13,9 @@ const TextAreaInput = ({
   inputClassName,
   inputId,
   onBlur,
-  defaultValue
+  defaultValue,
+  value,
+  onChange
 }) => {
   let text;
   return (
@@ -21,11 +23,12 @@ const TextAreaInput = ({
       <label htmlFor="lessonName">{label}</label>
       <textarea
         defaultValue={defaultValue}
-        ref={node => (text = node)}
         type="text"
         className={inputClassName}
         id={inputId}
-        onBlur={() => onBlur(text.value)}
+        onBlur={onBlur}
+        onChange={onChange}
+        value={value}
       />
     </div>
   );
@@ -37,7 +40,9 @@ TextAreaInput.propTypes = {
   inputClassName: PropTypes.string,
   inputId: PropTypes.string,
   onBlur: PropTypes.func,
-  defaultValue: PropTypes.string
+  defaultValue: PropTypes.string,
+  value: PropTypes.string,
+  onChange: PropTypes.func
 };
 
 export default TextAreaInput;

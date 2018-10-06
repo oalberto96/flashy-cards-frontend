@@ -35,6 +35,9 @@ class LessonForm extends Component {
     if (prevProps.lessonName !== this.props.lessonName) {
       this.setState({ lessonName: this.props.lessonName });
     }
+    if (prevProps.lessonDescription !== this.props.lessonDescription) {
+      this.setState({ lessonDescription: this.props.lessonDescription });
+    }
   }
 
   handleInputChange = event => {
@@ -73,10 +76,13 @@ class LessonForm extends Component {
         <TextAreaInput
           inputId="lessonDescription"
           onChange={this.handleInputChange}
+          value={this.state.lessonDescription}
           divClassName="form-group"
           label="Lesson description"
           inputClassName="form-control"
-          onBlur={text => this.props.changeNewLessonDescription(text)}
+          onBlur={() => {
+            this.props.changeNewLessonDescription(this.state.lessonDescription);
+          }}
         />
         <ConceptList
           concepts={this.props.concepts}
