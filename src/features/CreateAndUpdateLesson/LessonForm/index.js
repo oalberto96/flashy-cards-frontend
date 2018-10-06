@@ -21,12 +21,14 @@ class LessonForm extends Component {
   };
 
   state = {
+    editMode: false,
     lessonName: this.props.lessonName,
     lessonDescription: this.props.lessonDescription
   };
 
   componentWillMount() {
     if (this.props.match.path.includes("edit")) {
+      this.setState({ editMode: true });
       this.props.requestLessonToEdit(Number(this.props.match.params.lessonId));
     }
   }
@@ -56,8 +58,11 @@ class LessonForm extends Component {
               className="btn create-lesson-button pull-right"
               onClick={event => {
                 event.preventDefault();
-                this.props.saveNewLesson(this.props.lesson);
-                this.props.history.push("/dashboard");
+                if (this.state.editMode !== true) {
+                  this.props.saveNewLesson(this.props.lesson);
+                  this.props.history.push("/dashboard");
+                }
+                alert("Save Lesson");
               }}
             >
               Save lesson
