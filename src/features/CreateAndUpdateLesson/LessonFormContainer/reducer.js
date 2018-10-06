@@ -59,7 +59,7 @@ function LessonFormContainerReducer(state = initialState, action) {
                 }
               })
             : (concept.cardB = {
-                ...concept.cardA,
+                ...concept.cardB,
                 media: {
                   type: "IMAGE",
                   source: cardImage

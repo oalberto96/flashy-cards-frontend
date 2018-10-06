@@ -20,7 +20,6 @@ function LessonListContainerReducer(state = [], action) {
       return stateCopy;
     case REQUEST_UPDATE_LESSON_SUCCESS:
       return state.map(lesson => {
-        debugger;
         if (lesson.lessonId === action.payload.lesson.lessonId) {
           return { ...action.payload.lesson };
         } else {
