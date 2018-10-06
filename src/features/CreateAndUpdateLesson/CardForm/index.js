@@ -14,11 +14,11 @@ class CardForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = { cardText: this.props.cardText };
-    if (this.props.cardMedia) {
-      if (this.props.cardMedia.type === "IMAGE") {
-        this.state.cardImage = this.props.cardMedia.source;
-      }
-    }
+    // if (this.props.cardMedia) {
+    //   if (this.props.cardMedia.type === "IMAGE") {
+    //     this.state.cardImage = this.props.cardMedia.source;
+    //   }
+    // }
   }
 
   componentDidUpdate(prevProps) {
@@ -26,6 +26,12 @@ class CardForm extends React.Component {
       if (this.props.cardText !== prevProps.cardText) {
         this.setState({ cardText: this.props.cardText });
       }
+      // if (this.props.cardMedia != prevProps.cardMedia) {
+      // 	if(this.props.cardMedia !== undefined){
+
+      // 	}
+      //   console.log(this.props.cardMedia);
+      // }
     }
   }
 
@@ -34,18 +40,28 @@ class CardForm extends React.Component {
   };
 
   render() {
-    return (
-      <div className="text-center">
-        {this.state.cardImage && (
-          <div className="col-md-2 text-center">
+    let media;
+    if (this.props.cardMedia) {
+      switch (this.props.cardMedia.type) {
+        case "IMAGE":
+          media = (
             <img
-              src={this.state.cardImage}
+              src={this.props.cardMedia.source}
               style={{ maxWidth: "250px" }}
               className=" image-fluid "
               alt="concept"
             />
-          </div>
-        )}
+          );
+          break;
+        default:
+          media = "";
+      }
+    } else {
+      media = "";
+    }
+    return (
+      <div className="text-center">
+        <div className="col-md-2 text-center">{media}</div>
         <input
           id="cardText"
           value={this.state.cardText}
