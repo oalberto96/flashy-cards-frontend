@@ -30,6 +30,8 @@ class LessonForm extends Component {
     if (this.props.match.path.includes("edit")) {
       this.setState({ editMode: true });
       this.props.requestLessonToEdit(Number(this.props.match.params.lessonId));
+    } else {
+      this.props.newLesson();
     }
   }
 

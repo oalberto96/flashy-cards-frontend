@@ -11,7 +11,8 @@ import {
   CHANGE_NEW_LESSON_DESCRIPTION,
   SAVE_NEW_LESSON,
   SET_CARD_IMAGE,
-  REQUEST_LESSON_TO_EDIT_SUCCESS
+  REQUEST_LESSON_TO_EDIT_SUCCESS,
+  NEW_LESSON
 } from "./constants";
 
 const initialState = {
@@ -84,6 +85,8 @@ function LessonFormContainerReducer(state = initialState, action) {
           ...concept
         }))
       };
+    case NEW_LESSON:
+      return initialState;
     default:
       return state;
   }
