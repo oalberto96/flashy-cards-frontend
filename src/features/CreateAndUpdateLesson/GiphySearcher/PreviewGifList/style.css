@@ -1,0 +1,12 @@
+.previewGifWrapper {
+  overflow-x: auto;
+  overflow-y: hidden;
+  width: 100%;
+  height: 90px;
+  white-space: nowrap;
+}
+
+.previewGif {
+  vertical-align: top;
+  display: inline-block;
+}
