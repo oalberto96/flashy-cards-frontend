@@ -44,7 +44,7 @@ export default class GiphySearcher extends Component {
           />
         </div>
         <input
-          className="col-12"
+          className="col-12 form-control"
           type="text"
           onChange={this.handleInputSearch}
           placeholder="Search a GIF"
