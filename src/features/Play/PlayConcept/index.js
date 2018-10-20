@@ -26,43 +26,47 @@ class PlayConcept extends React.Component {
   };
 
   render() {
-    return (
-      <div className="play-lesson-container">
-        <p className="text-center">
-          {this.props.index + 1}/{this.props.listLength}
-        </p>
-        <div className="container height-100-relative">
-          <div className="slider row height-100-relative">
-            <div className="col-1 col-md-2" onClick={this.props.prevCard}>
-              {"<"}
-            </div>
-            <div className="col-10 col-md-8">
-              <Card
-                flipCard={this.flipCard}
-                cardText={
-                  this.state.cardFlipped
-                    ? this.props.cardB.text
-                    : this.props.cardA.text
-                }
-                cardMedia={
-                  this.state.cardFlipped
-                    ? this.props.cardB.media
-                    : this.props.cardA.media
-                }
-                cardAudio={
-                  this.state.cardFlipped
-                    ? this.props.cardB.audio
-                    : this.props.cardA.audio
-                }
-              />
-            </div>
-            <div className="col-1 col-md-2" onClick={this.props.nextCard}>
-              {">"}
+    let playConcept = <div>This concept is empty</div>;
+    if (this.props.listLength > 0) {
+      playConcept = (
+        <div className="play-lesson-container">
+          <p className="text-center">
+            {this.props.index + 1}/{this.props.listLength}
+          </p>
+          <div className="container height-100-relative">
+            <div className="slider row height-100-relative">
+              <div className="col-1 col-md-2" onClick={this.props.prevCard}>
+                {"<"}
+              </div>
+              <div className="col-10 col-md-8">
+                <Card
+                  flipCard={this.flipCard}
+                  cardText={
+                    this.state.cardFlipped
+                      ? this.props.cardB.text
+                      : this.props.cardA.text
+                  }
+                  cardMedia={
+                    this.state.cardFlipped
+                      ? this.props.cardB.media
+                      : this.props.cardA.media
+                  }
+                  cardAudio={
+                    this.state.cardFlipped
+                      ? this.props.cardB.audio
+                      : this.props.cardA.audio
+                  }
+                />
+              </div>
+              <div className="col-1 col-md-2" onClick={this.props.nextCard}>
+                {">"}
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    );
+      );
+    }
+    return playConcept;
   }
 }
 
