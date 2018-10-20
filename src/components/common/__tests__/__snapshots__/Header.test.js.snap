@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header Component should render header correctly 1`] = `
+<nav
+  className="navbar nav"
+>
+  <a
+    className="navbar-brand logo                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   "
+    href="/dashboard"
+    onClick={[Function]}
+  >
+    Flashy Cards
+  </a>
+</nav>
+`;
