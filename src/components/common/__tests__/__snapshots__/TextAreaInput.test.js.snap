@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TextAreaInput Component should render correctly 1`] = `
+<div
+  className={undefined}
+>
+  <label
+    htmlFor="lessonName"
+  />
+  <textarea
+    className={undefined}
+    defaultValue={undefined}
+    id={undefined}
+    onBlur={undefined}
+    onChange={undefined}
+    type="text"
+    value={undefined}
+  />
+</div>
+`;
