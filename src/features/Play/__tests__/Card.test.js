@@ -30,4 +30,30 @@ describe("Card Component", () => {
     const CardWrapper = mount(<Card {...props} />);
     expect(CardWrapper.contains("text")).toEqual(true);
   });
+
+  it("should render an image", () => {
+    const props = {
+      cardText: "text",
+      flipCard: jest.fn(),
+      cardMedia: {
+        type: "IMAGE",
+        source: "image.png"
+      }
+    };
+    const CardWrapper = mount(<Card {...props} />);
+    expect(CardWrapper.find("img").prop("src")).toEqual("image.png");
+  });
+
+  it("should render the alternate text of an image", () => {
+    const props = {
+      cardText: "text",
+      flipCard: jest.fn(),
+      cardMedia: {
+        type: "IMAGE",
+        source: "image.png"
+      }
+    };
+    const CardWrapper = mount(<Card {...props} />);
+    expect(CardWrapper.find("img").prop("alt")).toEqual("text");
+  });
 });
