@@ -21,4 +21,13 @@ describe("Card Component", () => {
     CardComponent.simulate("click");
     expect(flipCard).toHaveBeenCalled();
   });
+
+  it("should show the cardText", () => {
+    const props = {
+      cardText: "text",
+      flipCard: jest.fn()
+    };
+    const CardWrapper = mount(<Card {...props} />);
+    expect(CardWrapper.contains("text")).toEqual(true);
+  });
 });
