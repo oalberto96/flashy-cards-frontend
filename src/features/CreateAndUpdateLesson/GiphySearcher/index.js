@@ -5,7 +5,7 @@
  */
 
 import React, { Component } from "react";
-import PreviewGifList from "./PreviewGifList";
+import PreviewGifList from "../PreviewGifList";
 
 export default class GiphySearcher extends Component {
   state = {
