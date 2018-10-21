@@ -8,12 +8,17 @@ import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import PlayConcept from "../PlayConcept";
+import { loadLessonToPlay } from "./actions";
 
 class ConceptListContainer extends React.Component {
   state = { index: 0 };
 
+  componentWillMount() {
+    this.props.loadLessonToPlay();
+  }
+
   nextCard = () => {
-    if (this.state.index + 1 < this.props.concepts.length) {
+    if (this.state.index + 1 < this.props.lesson.concepts.length) {
       this.setState({ index: this.state.index + 1 });
     }
   };
@@ -25,14 +30,15 @@ class ConceptListContainer extends React.Component {
   };
 
   render() {
-    return this.props.concepts.length > 0 ? (
+    return this.props.lesson.concepts &&
+      this.props.lesson.concepts.length > 0 ? (
       <PlayConcept
-        listLength={this.props.concepts.length}
+        listLength={this.props.lesson.concepts.length}
         index={this.state.index}
         nextCard={this.nextCard}
         prevCard={this.prevCard}
-        cardA={this.props.concepts[this.state.index].cardA}
-        cardB={this.props.concepts[this.state.index].cardB}
+        cardA={this.props.lesson.concepts[this.state.index].cardA}
+        cardB={this.props.lesson.concepts[this.state.index].cardB}
       />
     ) : (
       <p>This lesson is empty</p>
@@ -40,14 +46,19 @@ class ConceptListContainer extends React.Component {
   }
 }
 const mapStateToProps = () => (state, ownProps) => {
-  const lessonId = ownProps.match.params.lessonId;
-  const lesson = state.lessons.find(
-    lesson => lesson.lessonId.toString() === lessonId
-  );
   return {
-    concepts: lesson.concepts,
-    lessonId
+    lesson: state.playingLesson
   };
 };
 
-export default connect(mapStateToProps)(ConceptListContainer);
+const mapDispatchToProps = () => (dispatch, ownProps) => {
+  return {
+    loadLessonToPlay: () =>
+      dispatch(loadLessonToPlay(parseInt(ownProps.match.params.lessonId, 0)))
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ConceptListContainer);
