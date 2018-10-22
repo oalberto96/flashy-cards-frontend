@@ -14,7 +14,7 @@ import {
   moveToPreviousCard
 } from "./actions";
 
-class ConceptListContainer extends React.Component {
+export class ConceptListContainer extends React.Component {
   componentWillMount() {
     this.props.loadLessonToPlay();
   }
@@ -35,13 +35,13 @@ class ConceptListContainer extends React.Component {
     );
   }
 }
-const mapStateToProps = () => state => {
+export const mapStateToProps = state => {
   return {
     lesson: state.playingLesson
   };
 };
 
-const mapDispatchToProps = () => (dispatch, ownProps) => {
+export const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     loadLessonToPlay: () =>
       dispatch(loadLessonToPlay(parseInt(ownProps.match.params.lessonId, 0))),
