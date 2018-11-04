@@ -15,7 +15,8 @@ const TextInput = ({
   onBlur,
   onChange,
   defaultValue,
-  value
+  value,
+  inputType
 }) => {
   return (
     <div className={divClassName}>
@@ -25,7 +26,7 @@ const TextInput = ({
         onChange={onChange}
         value={value}
         defaultValue={defaultValue}
-        type="text"
+        type={inputType ? inputType : "text"}
         className={inputClassName}
         onBlur={onBlur}
       />
@@ -41,7 +42,8 @@ TextInput.propTypes = {
   onBlur: PropTypes.func,
   defaultValue: PropTypes.string,
   onChange: PropTypes.func,
-  value: PropTypes.string
+  value: PropTypes.string,
+  inputType: PropTypes.string
 };
 
 export default TextInput;
