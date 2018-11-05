@@ -39,11 +39,6 @@ describe("Login component", () => {
     const passwordInput = loginWrapper.find("input").at(1);
     passwordInput.simulate("change", passwordEvent);
     loginWrapper.find("button").simulate("click");
-    expect(loginClick).toBeCalledWith(
-      expect.objectContaining({
-        username: "myemail@gmail.com",
-        password: "password123"
-      })
-    );
+    expect(loginClick).toBeCalledWith("myemail@gmail.com", "password123");
   });
 });

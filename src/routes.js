@@ -4,7 +4,7 @@ import App from "./App";
 import Dashboard from "./features/Dashboard";
 import ConceptListContainer from "./features/Play/ConceptListContainer";
 import CreateAndUpdateLesson from "./features/CreateAndUpdateLesson";
-import GiphySearcher from "./features/CreateAndUpdateLesson/GiphySearcher";
+import LoginContainer from "./features/Authentication/LoginContainer";
 
 const Router = () => {
   return (
@@ -12,7 +12,7 @@ const Router = () => {
       <div>
         <Route path="/" component={App} />
         <Switch>
-          <Route exact path="/" component={GiphySearcher} />
+          <Route exact path="/" component={LoginContainer} />
           <Route path="/dashboard" component={Dashboard} />
           <Route path="/lessons/new" component={CreateAndUpdateLesson} />
           <Route
