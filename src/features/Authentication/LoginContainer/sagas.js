@@ -9,9 +9,7 @@ import { REQUEST_LOGIN } from "./constants";
 
 function* requestLogin(action) {
   yield Auth.login(action.payload)
-    .then(r => {
-      console.log(r);
-    })
+    .then(r => Auth.configCookies(r.data))
     .catch(error => {
       console.log(error);
     });

@@ -1,6 +1,8 @@
 import axios from "axios";
+import Cookies from "universal-cookie";
 
 const API_ROOT = "http://localhost:8000/api/";
+const cookies = new Cookies();
 
 const requests = {
   get: url => axios.get(`${API_ROOT}${url}`),
@@ -10,5 +12,9 @@ const requests = {
 };
 
 export const Auth = {
-  login: credentials => requests.post("authentication/login/", credentials)
+  login: credentials => requests.post("authentication/login/", credentials),
+  configCookies: data => {
+    cookies.set("csrftoken", data["csrf"], { path: "/" });
+    cookies.set("token", data["token"], { path: "/" });
+  }
 };
