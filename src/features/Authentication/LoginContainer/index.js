@@ -1,13 +1,23 @@
 import React from "react";
+import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import Login from "../Login";
 import { requestLogin } from "./actions";
 
 export class LoginContainer extends React.Component {
   render() {
-    return <Login {...this.props} />;
+    return this.props.isAuthenticated ? (
+      <Redirect to="/dashboard" />
+    ) : (
+      <Login {...this.props} />
+    );
   }
 }
+export const mapStateToProps = (state, ownProps) => {
+  return {
+    isAuthenticated: state.authentication.isAuthenticated
+  };
+};
 
 export const mapDispatchToProps = (dispatch, ownProps) => {
   return {
@@ -16,6 +26,6 @@ export const mapDispatchToProps = (dispatch, ownProps) => {
 };
 
 export default connect(
-  undefined,
+  mapStateToProps,
   mapDispatchToProps
 )(LoginContainer);
