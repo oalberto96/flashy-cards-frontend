@@ -4,15 +4,23 @@
  *
  */
 import { Auth } from "../../../agent";
-import { takeEvery } from "redux-saga/effects";
+import { takeEvery, put, call } from "redux-saga/effects";
 import { REQUEST_LOGIN } from "./constants";
+import { requestLoginSucceeded } from "./actions";
 
-function* requestLogin(action) {
-  yield Auth.login(action.payload)
-    .then(r => Auth.configCookies(r.data))
+const postCredentials = credentials => {
+  Auth.login(credentials)
+    .then(response => {
+      Auth.configCookies(response.data);
+    })
     .catch(error => {
       console.log(error);
     });
+};
+
+function* requestLogin(action) {
+  yield call(postCredentials, action.payload);
+  yield put(requestLoginSucceeded());
 }
 
 export function* defaultSagas() {

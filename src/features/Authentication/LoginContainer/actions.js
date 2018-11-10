@@ -3,7 +3,7 @@
  * Actions LoginContainer
  *
  */
-import { REQUEST_LOGIN } from "./constants";
+import { REQUEST_LOGIN, REQUEST_LOGIN_SUCCEEDED } from "./constants";
 
 export const requestLogin = (username, password) => {
   return {
@@ -12,5 +12,11 @@ export const requestLogin = (username, password) => {
       username,
       password
     }
+  };
+};
+
+export const requestLoginSucceeded = () => {
+  return {
+    type: REQUEST_LOGIN_SUCCEEDED
   };
 };
