@@ -12,6 +12,7 @@ const postCredentials = credentials => {
   Auth.login(credentials)
     .then(response => {
       Auth.configCookies(response.data);
+      Auth.configHeaders();
     })
     .catch(error => {
       console.log(error);

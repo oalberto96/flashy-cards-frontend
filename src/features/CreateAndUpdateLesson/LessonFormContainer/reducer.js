@@ -16,8 +16,9 @@ import {
 } from "./constants";
 
 const initialState = {
-  lessonName: "",
-  lessonDescription: "",
+  name: "",
+  description: "",
+  audience: { id: 1 },
   concepts: []
 };
 
@@ -70,11 +71,11 @@ function LessonFormContainerReducer(state = initialState, action) {
       });
       return { ...state, concepts: conceptsCopy };
     case CHANGE_NEW_LESSON_NAME:
-      return { ...state, lessonName: action.payload.newLessonName };
+      return { ...state, name: action.payload.newLessonName };
     case CHANGE_NEW_LESSON_DESCRIPTION:
       return {
         ...state,
-        lessonDescription: action.payload.newLessonDescription
+        description: action.payload.newLessonDescription
       };
     case SAVE_NEW_LESSON:
       return initialState;

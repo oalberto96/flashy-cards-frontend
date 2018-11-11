@@ -3,8 +3,13 @@
  * LessonFormContainer Sagas
  *
  */
-import { takeEvery, select, put } from "redux-saga/effects";
-import { REQUEST_LESSON_TO_EDIT, REQUEST_UPDATE_LESSON } from "./constants";
+import { takeEvery, select, put, call } from "redux-saga/effects";
+import { Lessons } from "../../../agent";
+import {
+  REQUEST_LESSON_TO_EDIT,
+  REQUEST_UPDATE_LESSON,
+  SAVE_NEW_LESSON
+} from "./constants";
 import {
   requestLessonToEditSuccess,
   requestUpdateLessonSuccess
@@ -38,9 +43,18 @@ function* requestUpdateLesson() {
   }
 }
 
+function postLesson(lesson) {
+  Lessons.create(lesson);
+}
+
+function* saveNewLesson(action) {
+  yield call(postLesson, action.payload.lesson);
+}
+
 export function* defaultSaga() {
   yield takeEvery(REQUEST_LESSON_TO_EDIT, requestLessonToEdit);
   yield takeEvery(REQUEST_UPDATE_LESSON, requestUpdateLesson);
+  yield takeEvery(SAVE_NEW_LESSON, saveNewLesson);
 }
 
 export default defaultSaga;

@@ -13,6 +13,15 @@ const requests = {
 
 export const Auth = {
   login: credentials => requests.post("authentication/login/", credentials),
+  configHeaders: () => {
+    const session_cookie = cookies.get("token");
+    if (session_cookie !== undefined) {
+      const token = `Token ${session_cookie}`;
+      axios.defaults.headers.common["Authorization"] = token;
+    }
+    axios.defaults.xsrfCookieName = "csrftoken";
+    axios.defaults.xsrfHeaderName = "X-CSRFToken";
+  },
   configCookies: data => {
     cookies.set("csrftoken", data["csrf"], { path: "/" });
     cookies.set("token", data["token"], { path: "/" });
@@ -20,10 +29,14 @@ export const Auth = {
   hasCookies: () => {
     const token = cookies.get("token");
     const csrfToken = cookies.get("csrftoken");
-    return token != null && csrfToken != null;
+    if (token != null && csrfToken != null) {
+      return true;
+    }
+    return false;
   }
 };
 
 export const Lessons = {
-  all: () => requests.get("lessons/lessons/")
+  all: () => requests.get("lessons/lessons/"),
+  create: lesson => requests.post("lessons/lessons/", lesson)
 };
