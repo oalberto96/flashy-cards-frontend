@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, BrowserRouter, Switch } from "react-router-dom";
+import PrivateRoute from "./components/common/PrivateRoute";
 import App from "./App";
 import Dashboard from "./features/Dashboard";
 import ConceptListContainer from "./features/Play/ConceptListContainer";
@@ -12,14 +13,18 @@ const Router = () => {
       <div>
         <Route path="/" component={App} />
         <Switch>
-          <Route exact path="/" component={LoginContainer} />
-          <Route path="/dashboard" component={Dashboard} />
-          <Route path="/lessons/new" component={CreateAndUpdateLesson} />
-          <Route
+          <PrivateRoute exact path="/" component={LoginContainer} />
+          <Route path="/login" component={LoginContainer} />
+          <PrivateRoute path="/dashboard" component={Dashboard} />
+          <PrivateRoute path="/lessons/new" component={CreateAndUpdateLesson} />
+          <PrivateRoute
             path="/lessons/:lessonId/edit"
             component={CreateAndUpdateLesson}
           />
-          <Route path="/lessons/:lessonId" component={ConceptListContainer} />
+          <PrivateRoute
+            path="/lessons/:lessonId"
+            component={ConceptListContainer}
+          />
         </Switch>
       </div>
     </BrowserRouter>
