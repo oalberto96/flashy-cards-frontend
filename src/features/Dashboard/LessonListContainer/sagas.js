@@ -16,7 +16,6 @@ const fetchLessons = () => {
 function* requestLessons(action) {
   const lessons = yield call(fetchLessons, action.payload);
   yield put(requestLessonsSucceeded(lessons));
-  // yield put(requestLoginSucceeded());
 }
 
 export function* defaultSagas() {
