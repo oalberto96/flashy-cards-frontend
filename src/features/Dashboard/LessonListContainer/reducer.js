@@ -8,9 +8,13 @@ import {
   SAVE_NEW_LESSON,
   REQUEST_UPDATE_LESSON_SUCCESS
 } from "../../CreateAndUpdateLesson/LessonFormContainer/constants";
+import { REQUEST_LESSONS_SUCCEEDED } from "./constants";
 
 function LessonListContainerReducer(state = [], action) {
   switch (action.type) {
+    case REQUEST_LESSONS_SUCCEEDED:
+      console.log(action.payload);
+      return action.payload.lessons;
     case SAVE_NEW_LESSON:
       let stateCopy = state.slice();
       let lastLessonId = stateCopy[stateCopy.length - 1].lessonId;

@@ -16,5 +16,14 @@ export const Auth = {
   configCookies: data => {
     cookies.set("csrftoken", data["csrf"], { path: "/" });
     cookies.set("token", data["token"], { path: "/" });
+  },
+  hasCookies: () => {
+    const token = cookies.get("token");
+    const csrfToken = cookies.get("csrftoken");
+    return token != null && csrfToken != null;
   }
+};
+
+export const Lessons = {
+  all: () => requests.get("lessons/lessons/")
 };

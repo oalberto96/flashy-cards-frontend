@@ -15,23 +15,23 @@ const LessonList = ({ lessons }) => {
     <div className="collection-list">
       <h1 className="title">My lists</h1>
       <ul className="list-group">
-        {lessons.map(list => {
+        {lessons.map(lesson => {
           return (
             <li
-              key={list.lessonId}
+              key={lesson.id}
               className="list-group-item d-flex justify-content-between align-items-center"
             >
               <div>
-                <h1>{list.lessonName}</h1>
-                <p>{list.lessonDescription}</p>
+                <h1>{lesson.name}</h1>
+                <p>{lesson.description}</p>
               </div>
               <span>
-                <Link className="icon-actions" to={`/lessons/${list.lessonId}`}>
+                <Link className="icon-actions" to={`/lessons/${lesson.id}`}>
                   <FontAwesome className="fa-play" name="fa-play" />
                 </Link>
                 <Link
                   className="icon-actions"
-                  to={`/lessons/${list.lessonId}/edit`}
+                  to={`/lessons/${lesson.id}/edit`}
                 >
                   <FontAwesome className="fa-pencil" name="fa-pencil" />
                 </Link>
