@@ -17,7 +17,6 @@ const TextAreaInput = ({
   value,
   onChange
 }) => {
-  let text;
   return (
     <div className={divClassName}>
       <label htmlFor="lessonName">{label}</label>

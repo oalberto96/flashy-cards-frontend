@@ -10,10 +10,10 @@ import { connect } from "react-redux";
 import { Auth } from "../../../agent";
 
 export const PrivateRoute = props => {
-  const componentToRender = <Route {...props} />;
+  let componentToRender = <Route {...props} />;
   if (!props.isAuthenticated) {
     if (!Auth.hasCookies) {
-      <Redirect to="/login" />;
+      componentToRender = <Redirect to="/login" />;
     } else {
       Auth.configHeaders();
     }
