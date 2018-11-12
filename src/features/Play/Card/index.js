@@ -10,8 +10,8 @@ import "./styles.css";
 
 const Card = ({ cardText, flipCard, cardMedia, cardAudio }) => {
   let media;
-  if (cardMedia !== undefined) {
-    switch (cardMedia.type) {
+  if (cardMedia !== null) {
+    switch (cardMedia.mediaType.name) {
       case "IMAGE":
         media = (
           <img alt={cardText} src={cardMedia.source} className="img-fluid" />
@@ -25,8 +25,10 @@ const Card = ({ cardText, flipCard, cardMedia, cardAudio }) => {
     <div
       className="card-container"
       onClick={() => {
-        let audio = new Audio(cardAudio);
-        audio.play();
+        if (cardAudio) {
+          let audio = new Audio(cardAudio);
+          audio.play();
+        }
         flipCard();
       }}
     >

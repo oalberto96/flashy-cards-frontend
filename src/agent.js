@@ -38,5 +38,7 @@ export const Auth = {
 
 export const Lessons = {
   all: () => requests.get("lessons/lessons/"),
-  create: lesson => requests.post("lessons/lessons/", lesson)
+  create: lesson => requests.post("lessons/lessons/", lesson),
+  withConcepts: lessonId =>
+    requests.get(`lessons/lessons/${lessonId}/concepts/`)
 };
