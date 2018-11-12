@@ -14,6 +14,8 @@ export const PrivateRoute = props => {
   if (!props.isAuthenticated) {
     if (!Auth.hasCookies) {
       <Redirect to="/login" />;
+    } else {
+      Auth.configHeaders();
     }
   }
   return componentToRender;

@@ -14,6 +14,7 @@ import {
   requestLessonToEditSuccess,
   requestUpdateLessonSuccess
 } from "./actions";
+import { requestLessons } from "../../Dashboard/LessonListContainer/actions";
 
 const lessonsSelector = state => {
   return [...state.lessons];
@@ -44,11 +45,14 @@ function* requestUpdateLesson() {
 }
 
 function postLesson(lesson) {
-  Lessons.create(lesson);
+  return Lessons.create(lesson).then(response => response.status);
 }
 
 function* saveNewLesson(action) {
-  yield call(postLesson, action.payload.lesson);
+  const responseStatus = yield call(postLesson, action.payload.lesson);
+  if (responseStatus === 200) {
+    yield put(requestLessons());
+  }
 }
 
 export function* defaultSaga() {

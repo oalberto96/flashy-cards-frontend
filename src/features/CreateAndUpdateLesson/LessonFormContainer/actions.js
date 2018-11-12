@@ -15,7 +15,8 @@ import {
   REQUEST_LESSON_TO_EDIT_SUCCESS,
   NEW_LESSON,
   REQUEST_UPDATE_LESSON,
-  REQUEST_UPDATE_LESSON_SUCCESS
+  REQUEST_UPDATE_LESSON_SUCCESS,
+  CREATE_NEW_LESSON_SUCCEEDED
 } from "./constants";
 
 export const addConceptToNewLesson = () => {
@@ -56,6 +57,15 @@ export const changeNewLessonDescription = newLessonDescription => {
 export const saveNewLesson = lesson => {
   return {
     type: SAVE_NEW_LESSON,
+    payload: {
+      lesson
+    }
+  };
+};
+
+export const createNewLessonSucceeded = lesson => {
+  return {
+    type: CREATE_NEW_LESSON_SUCCEEDED,
     payload: {
       lesson
     }
