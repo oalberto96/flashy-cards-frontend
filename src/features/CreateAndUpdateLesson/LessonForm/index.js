@@ -17,13 +17,13 @@ class LessonForm extends Component {
     concepts: PropTypes.array.isRequired,
     setCardText: PropTypes.func.isRequired,
     setCardImage: PropTypes.func.isRequired,
-    lessonName: PropTypes.string.isRequired
+    name: PropTypes.string.isRequired
   };
 
   state = {
     editMode: false,
-    lessonName: this.props.lessonName,
-    lessonDescription: this.props.lessonDescription
+    lessonName: this.props.name,
+    lessonDescription: this.props.description
   };
 
   componentWillMount() {

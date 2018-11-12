@@ -44,8 +44,28 @@ function* requestUpdateLesson() {
   }
 }
 
+function lessonToApi(lesson) {
+  return {
+    ...lesson,
+    concepts: lesson.concepts.map(concept => ({
+      card_a: {
+        ...concept.cardA,
+        media: concept.cardA.media
+          ? { media_type: { id: 1 }, source: concept.cardA.media.source }
+          : null
+      },
+      card_b: {
+        ...concept.cardB,
+        media: concept.cardB.media
+          ? { media_type: { id: 1 }, source: concept.cardB.media.source }
+          : null
+      }
+    }))
+  };
+}
+
 function postLesson(lesson) {
-  return Lessons.create(lesson).then(response => response.status);
+  return Lessons.create(lessonToApi(lesson)).then(response => response.status);
 }
 
 function* saveNewLesson(action) {

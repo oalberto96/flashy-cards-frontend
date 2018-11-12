@@ -28,8 +28,8 @@ class LessonFormContainer extends Component {
 const mapStateToProps = (state, ownProps) => {
   return {
     concepts: state.newLesson.concepts,
-    lessonName: state.newLesson.lessonName,
-    lessonDescription: state.newLesson.lessonDescription,
+    name: state.newLesson.name,
+    description: state.newLesson.description,
     lesson: state.newLesson
   };
 };
