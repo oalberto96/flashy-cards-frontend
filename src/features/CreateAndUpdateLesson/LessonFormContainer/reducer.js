@@ -37,25 +37,30 @@ function LessonFormContainerReducer(state = initialState, action) {
       return { ...state, ...newLesson };
     case SET_CARD_TEXT:
       let cardText = action.payload.cardText;
+      let key = null;
       conceptsCopy = state.concepts.map(concept => {
-        if (concept.conceptId === action.payload.conceptId) {
-          action.payload.card === "A"
-            ? (concept.cardA = { ...concept.cardA, text: cardText })
-            : (concept.cardB = { ...concept.cardB, text: cardText });
-          return { ...concept };
+        if (concept.id === action.payload.conceptId) {
+          key = action.payload.card === "A" ? "cardA" : "cardB";
+          return {
+            ...concept,
+            [key]: { ...concept[key], text: cardText }
+          };
         }
         return concept;
       });
-      return { ...state };
+      return { ...state, concepts: conceptsCopy };
     case SET_CARD_IMAGE:
       const cardImage = action.payload.cardImage;
       conceptsCopy = state.concepts.map(concept => {
-        if (concept.conceptId === action.payload.conceptId) {
+        if (concept.id === action.payload.conceptId) {
           action.payload.card === "A"
             ? (concept.cardA = {
                 ...concept.cardA,
                 media: {
-                  type: "IMAGE",
+                  mediaType: {
+                    id: 1,
+                    name: "IMAGE"
+                  },
                   source: cardImage
                 }
               })

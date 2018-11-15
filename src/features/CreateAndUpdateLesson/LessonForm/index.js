@@ -36,11 +36,11 @@ class LessonForm extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.lessonName !== this.props.lessonName) {
-      this.setState({ lessonName: this.props.lessonName });
+    if (prevProps.name !== this.props.name) {
+      this.setState({ lessonName: this.props.name });
     }
-    if (prevProps.lessonDescription !== this.props.lessonDescription) {
-      this.setState({ lessonDescription: this.props.lessonDescription });
+    if (prevProps.description !== this.props.description) {
+      this.setState({ lessonDescription: this.props.description });
     }
   }
 

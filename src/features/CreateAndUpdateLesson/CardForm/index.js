@@ -32,7 +32,7 @@ class CardForm extends React.Component {
   render() {
     let media;
     if (this.props.cardMedia) {
-      switch (this.props.cardMedia.type) {
+      switch (this.props.cardMedia.mediaType.name) {
         case "IMAGE":
           media = (
             <img

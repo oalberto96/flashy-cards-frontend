@@ -5,20 +5,17 @@
  */
 import { takeEvery, select, put, call } from "redux-saga/effects";
 import { Lessons } from "../../../agent";
+import { lessonToApi, ApiToLesson } from "../../../common/utils/lessons";
 import {
   REQUEST_LESSON_TO_EDIT,
   REQUEST_UPDATE_LESSON,
   SAVE_NEW_LESSON
 } from "./constants";
 import {
-  requestLessonToEditSuccess,
-  requestUpdateLessonSuccess
+  requestUpdateLessonSuccess,
+  requestLessonToEditSuccess
 } from "./actions";
 import { requestLessons } from "../../Dashboard/LessonListContainer/actions";
-
-const lessonsSelector = state => {
-  return [...state.lessons];
-};
 
 const newLessonSelector = state => {
   return {
@@ -27,41 +24,27 @@ const newLessonSelector = state => {
   };
 };
 
-function findLesson(lessons, lessonId) {
-  return lessons.find(x => x.lessonId === lessonId);
+function fetchLessonToEdit(lessonId) {
+  return Lessons.withConcepts(lessonId).then(response =>
+    ApiToLesson(response.data)
+  );
+}
+
+function updateLesson(lesson) {
+  return Lessons.update(lesson.id, lessonToApi(lesson));
 }
 
 function* requestLessonToEdit(action) {
-  const lessons = yield select(lessonsSelector);
-  const lesson = yield findLesson(lessons, action.payload.lessonId);
+  const lesson = yield call(fetchLessonToEdit, action.payload.lessonId);
   yield put(requestLessonToEditSuccess(lesson));
 }
 
 function* requestUpdateLesson() {
   const lesson = yield select(newLessonSelector);
-  if (lesson) {
-    yield put(requestUpdateLessonSuccess(lesson));
+  const response = yield call(updateLesson, lesson);
+  if (response) {
+    yield put(requestLessons());
   }
-}
-
-function lessonToApi(lesson) {
-  return {
-    ...lesson,
-    concepts: lesson.concepts.map(concept => ({
-      card_a: {
-        ...concept.cardA,
-        media: concept.cardA.media
-          ? { media_type: { id: 1 }, source: concept.cardA.media.source }
-          : null
-      },
-      card_b: {
-        ...concept.cardB,
-        media: concept.cardB.media
-          ? { media_type: { id: 1 }, source: concept.cardB.media.source }
-          : null
-      }
-    }))
-  };
 }
 
 function postLesson(lesson) {
