@@ -3,7 +3,7 @@
  * LessonFormContainer reducer
  *
  */
-
+import { generateConceptId } from "../../../common/utils/lessons";
 import {
   ADD_CONCEPT_TO_NEW_LESSON,
   SET_CARD_TEXT,
@@ -28,8 +28,7 @@ function LessonFormContainerReducer(state = initialState, action) {
       let conceptsCopy = state.concepts.slice();
       let lastConceptAdded = conceptsCopy[conceptsCopy.length - 1];
       conceptsCopy.push({
-        conceptId:
-          lastConceptAdded !== undefined ? lastConceptAdded.conceptId + 1 : 0,
+        id: generateConceptId(lastConceptAdded),
         cardA: { text: "" },
         cardB: { text: "" }
       });

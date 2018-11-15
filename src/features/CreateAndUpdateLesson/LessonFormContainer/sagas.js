@@ -43,6 +43,10 @@ function* requestUpdateLesson() {
   const lesson = yield select(newLessonSelector);
   const response = yield call(updateLesson, lesson);
   if (response) {
+    // I called this funtion to notificate in the store
+    // basically does nothing
+    yield put(requestUpdateLessonSuccess(lesson));
+    // update lesson list
     yield put(requestLessons());
   }
 }

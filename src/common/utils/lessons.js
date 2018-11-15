@@ -8,6 +8,13 @@ export const findLesson = (lessons, lessonId) => {
   return lessons.find(x => x.lessonId === lessonId);
 };
 
+export const generateConceptId = lastConcept => {
+  if (lastConcept && lastConcept.id < 0) {
+    return lastConcept.id - 1;
+  }
+  return -1;
+};
+
 export const lessonToApi = lesson => {
   return {
     ...lesson,
