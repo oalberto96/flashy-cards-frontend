@@ -36,7 +36,7 @@ describe("Card Component", () => {
       cardText: "text",
       flipCard: jest.fn(),
       cardMedia: {
-        type: "IMAGE",
+        mediaType: { name: "IMAGE" },
         source: "image.png"
       }
     };
@@ -49,7 +49,7 @@ describe("Card Component", () => {
       cardText: "text",
       flipCard: jest.fn(),
       cardMedia: {
-        type: "IMAGE",
+        mediaType: { name: "IMAGE" },
         source: "image.png"
       }
     };

@@ -10,7 +10,7 @@ import "./styles.css";
 
 const Card = ({ cardText, flipCard, cardMedia, cardAudio }) => {
   let media;
-  if (cardMedia !== null) {
+  if (cardMedia != null) {
     switch (cardMedia.mediaType.name) {
       case "IMAGE":
         media = (

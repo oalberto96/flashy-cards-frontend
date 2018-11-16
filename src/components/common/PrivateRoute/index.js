@@ -12,7 +12,7 @@ import { Auth } from "../../../agent";
 export const PrivateRoute = props => {
   let componentToRender = <Route {...props} />;
   if (!props.isAuthenticated) {
-    if (!Auth.hasCookies) {
+    if (!Auth.hasCookies()) {
       componentToRender = <Redirect to="/login" />;
     } else {
       Auth.configHeaders();

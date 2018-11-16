@@ -4,7 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import { PrivateRoute } from "../PrivateRoute";
 
 describe("PrivateRoute component", () => {
-  it("should redirect to login if state is no authenticated", () => {
+  it("should redirect to login if state is not authenticated and cookies donesn't exist ", () => {
     const props = {
       isAuthenticated: false
     };
