@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 import TextInput from "../../components/common/TextInput";
 
 class Login extends React.Component {
@@ -42,6 +43,9 @@ class Login extends React.Component {
         >
           Login
         </button>
+        <Link className="btn btn-outline-info" to="/signup">
+          Sign Up
+        </Link>
       </div>
     );
   }
