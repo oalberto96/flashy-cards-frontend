@@ -15,6 +15,17 @@ describe("PrivateRoute component", () => {
     );
     expect(componentWrapper.find("Redirect").prop("to")).toEqual("/login");
   });
+  it("should redirect to login if state is not authenticated and cookies donesn't exist ", () => {
+    const props = {
+      isAuthenticated: false
+    };
+    const componentWrapper = mount(
+      <BrowserRouter>
+        <PrivateRoute {...props} />
+      </BrowserRouter>
+    );
+    expect(componentWrapper.find("Redirect").prop("to")).toEqual("/login");
+  });
   it("should render a Route if state is authenticated", () => {
     const props = {
       path: "/lessons",

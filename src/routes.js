@@ -6,6 +6,7 @@ import Dashboard from "./features/Dashboard";
 import ConceptListContainer from "./features/Play/ConceptListContainer";
 import CreateAndUpdateLesson from "./features/CreateAndUpdateLesson";
 import LoginContainer from "./features/Authentication/LoginContainer";
+import SignUp from "./features/Authentication/SignUp";
 
 const Router = () => {
   return (
@@ -15,6 +16,7 @@ const Router = () => {
         <Switch>
           <PrivateRoute exact path="/" component={LoginContainer} />
           <Route path="/login" component={LoginContainer} />
+          <Route path="/signup" component={SignUp} />
           <PrivateRoute path="/dashboard" component={Dashboard} />
           <PrivateRoute path="/lessons/new" component={CreateAndUpdateLesson} />
           <PrivateRoute
