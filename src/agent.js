@@ -13,6 +13,7 @@ const requests = {
 
 export const Auth = {
   login: credentials => requests.post("authentication/login/", credentials),
+  signUp: userData => requests.post("authentication/signup/", userData),
   configHeaders: () => {
     const session_cookie = cookies.get("token");
     if (session_cookie !== undefined) {

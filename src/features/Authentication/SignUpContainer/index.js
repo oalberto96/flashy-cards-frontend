@@ -20,4 +20,7 @@ export const mapDispatchToProps = (dispatch, ownProps) => {
   };
 };
 
-export default connect()(SignUpContainer);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SignUpContainer);

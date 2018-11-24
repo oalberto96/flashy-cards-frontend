@@ -4,7 +4,7 @@
  *
  */
 
-import { REQUEST_SIGNUP } from "./constants";
+import { REQUEST_SIGNUP, REQUEST_SIGNUP_SUCCEEDED } from "./constants";
 
 export const requestSignUp = (username, password) => {
   return {
@@ -13,5 +13,11 @@ export const requestSignUp = (username, password) => {
       username,
       password
     }
+  };
+};
+
+export const requestSignUpSucceeded = () => {
+  return {
+    type: REQUEST_SIGNUP_SUCCEEDED
   };
 };
