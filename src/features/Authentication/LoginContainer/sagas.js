@@ -6,22 +6,46 @@
 import { Auth } from "../../../agent";
 import { takeEvery, put, call } from "redux-saga/effects";
 import { REQUEST_LOGIN } from "./constants";
-import { requestLoginSucceeded } from "./actions";
+import {
+  requestLoginSucceeded,
+  requestLoginFailed,
+  emptyUsernameError,
+  emptyPasswordError
+} from "./actions";
 
 const postCredentials = credentials => {
-  Auth.login(credentials)
+  return Auth.login(credentials)
     .then(response => {
       Auth.configCookies(response.data);
       Auth.configHeaders();
+      return true;
     })
     .catch(error => {
-      console.log(error);
+      return false;
     });
 };
 
+function* validateInputs({ username, password }) {
+  let valid = true;
+  if (username === "") {
+    yield put(emptyUsernameError());
+    valid = false;
+  }
+  if (password === "") {
+    yield put(emptyPasswordError());
+    valid = false;
+  }
+  return valid;
+}
+
 function* requestLogin(action) {
-  yield call(postCredentials, action.payload);
-  yield put(requestLoginSucceeded());
+  const validInputs = yield call(validateInputs, action.payload);
+  if (validInputs) {
+    const callSuccess = yield call(postCredentials, action.payload);
+    yield callSuccess
+      ? put(requestLoginSucceeded())
+      : put(requestLoginFailed());
+  }
 }
 
 export function* defaultSagas() {

@@ -59,6 +59,19 @@ describe("LoginContainer component", () => {
         const componentState = mapStateToProps(state, {});
         expect(componentState.isAuthenticated).toEqual(false);
       });
+
+      it("should map error login state", () => {
+        const state = {
+          authentication: {
+            loginError: {
+              title: "Login error",
+              message: "This is an error message"
+            }
+          }
+        };
+        const componentState = mapStateToProps(state, {});
+        expect(componentState.error).toEqual(state.authentication.loginError);
+      });
     });
   });
 });

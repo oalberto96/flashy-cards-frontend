@@ -3,7 +3,13 @@
  * Actions LoginContainer
  *
  */
-import { REQUEST_LOGIN, REQUEST_LOGIN_SUCCEEDED } from "./constants";
+import {
+  REQUEST_LOGIN,
+  REQUEST_LOGIN_SUCCEEDED,
+  REQUEST_LOGIN_FAILED,
+  EMPTY_PASSWORD_ERROR,
+  EMPTY_USERNAME_ERROR
+} from "./constants";
 
 export const requestLogin = (username, password) => {
   return {
@@ -18,5 +24,23 @@ export const requestLogin = (username, password) => {
 export const requestLoginSucceeded = () => {
   return {
     type: REQUEST_LOGIN_SUCCEEDED
+  };
+};
+
+export const requestLoginFailed = () => {
+  return {
+    type: REQUEST_LOGIN_FAILED
+  };
+};
+
+export const emptyPasswordError = () => {
+  return {
+    type: EMPTY_PASSWORD_ERROR
+  };
+};
+
+export const emptyUsernameError = () => {
+  return {
+    type: EMPTY_USERNAME_ERROR
   };
 };
