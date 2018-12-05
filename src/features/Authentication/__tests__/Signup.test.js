@@ -1,20 +1,33 @@
 import React from "react";
 import { mount } from "enzyme";
+import { BrowserRouter } from "react-router-dom";
 import SignUp from "../SignUp";
 
 describe("SignUp component", () => {
   it("should contain a textinput for username", () => {
-    const wrapper = mount(<SignUp onClick={jest.fn()} />);
+    const wrapper = mount(
+      <BrowserRouter>
+        <SignUp onClick={jest.fn()} />
+      </BrowserRouter>
+    );
     expect(wrapper.find("TextInput").contains("Email")).toEqual(true);
   });
 
   it("should contain a textinput for password", () => {
-    const wrapper = mount(<SignUp onClick={jest.fn()} />);
+    const wrapper = mount(
+      <BrowserRouter>
+        <SignUp onClick={jest.fn()} />
+      </BrowserRouter>
+    );
     expect(wrapper.find("TextInput").contains("Password")).toEqual(true);
   });
 
   it("should contain a textinput to confirm password", () => {
-    const wrapper = mount(<SignUp onClick={jest.fn()} />);
+    const wrapper = mount(
+      <BrowserRouter>
+        <SignUp onClick={jest.fn()} />
+      </BrowserRouter>
+    );
     expect(wrapper.find("TextInput").find("#confirmPassword").length).toEqual(
       1
     );
@@ -22,7 +35,11 @@ describe("SignUp component", () => {
 
   it("shouldn't call the register function if the passwords aren't the same ", () => {
     const SignUpClick = jest.fn();
-    const wrapper = mount(<SignUp onClick={SignUpClick} />);
+    const wrapper = mount(
+      <BrowserRouter>
+        <SignUp onClick={SignUpClick} />
+      </BrowserRouter>
+    );
     const inputEvents = {
       username: {
         target: { id: "username", value: "myemail@gmail.com" }
@@ -46,7 +63,11 @@ describe("SignUp component", () => {
 
   it("shouldn't call the register function if the username is empty", () => {
     const SignUpClick = jest.fn();
-    const wrapper = mount(<SignUp onClick={SignUpClick} />);
+    const wrapper = mount(
+      <BrowserRouter>
+        <SignUp onClick={SignUpClick} />
+      </BrowserRouter>
+    );
     const inputEvents = {
       username: {
         target: { id: "username", value: "" }
@@ -70,7 +91,11 @@ describe("SignUp component", () => {
 
   it("should call the SignUp function", () => {
     const SignUpClick = jest.fn();
-    const wrapper = mount(<SignUp onClick={SignUpClick} />);
+    const wrapper = mount(
+      <BrowserRouter>
+        <SignUp onClick={SignUpClick} />
+      </BrowserRouter>
+    );
     const inputEvents = {
       username: {
         target: { id: "username", value: "myemail@gmail.com" }
