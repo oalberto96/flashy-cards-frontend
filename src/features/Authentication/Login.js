@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import TextInput from "../../components/common/TextInput";
+import ErrorMessage from "../../components/common/ErrorMessage";
 
 class Login extends React.Component {
   state = {
@@ -16,6 +17,7 @@ class Login extends React.Component {
   render() {
     return (
       <div>
+        {this.props.error && <ErrorMessage {...this.props.error} />}
         <div className="form-group">
           <h1>Login</h1>
           <TextInput
