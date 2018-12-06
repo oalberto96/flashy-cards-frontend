@@ -19,6 +19,7 @@ const initialiState = {
 export default function LoginContainerReducer(state = initialiState, action) {
   switch (action.type) {
     case REQUEST_LOGIN_SUCCEEDED:
+      window.location.reload();
       return { ...state, isAuthenticated: true };
     case REQUEST_SIGNUP_SUCCEEDED:
       return { ...state, isAuthenticated: true };
