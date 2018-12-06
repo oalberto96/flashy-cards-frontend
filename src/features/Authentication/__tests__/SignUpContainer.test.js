@@ -40,13 +40,22 @@ describe("SignUpContainer", () => {
         const dispatch = jest.fn();
         const userData = {
           username: "mail@gmail.com",
-          password: "password123"
+          password: "password123",
+          confirmPassword: "password123"
         };
         const componentDispatch = mapDispatchToProps(dispatch, {});
-        componentDispatch.onClick(userData.username, userData.password);
+        componentDispatch.onClick(
+          userData.username,
+          userData.password,
+          userData.confirmPassword
+        );
         expect(dispatch).toBeCalledWith(
           expect.objectContaining(
-            requestSignUp(userData.username, userData.password)
+            requestSignUp(
+              userData.username,
+              userData.password,
+              userData.confirmPassword
+            )
           )
         );
       });
@@ -62,6 +71,19 @@ describe("SignUpContainer", () => {
       };
       const componentState = mapStateToProps(state, {});
       expect(componentState.isAuthenticated).toEqual(false);
+    });
+
+    it("should map an error state", () => {
+      const state = {
+        authentication: {
+          error: {
+            title: "This is an error",
+            description: "This is the error description"
+          }
+        }
+      };
+      const componentState = mapStateToProps(state, {});
+      expect(componentState.error).toEqual(state.authentication.error);
     });
   });
 });

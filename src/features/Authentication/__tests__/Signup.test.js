@@ -33,62 +33,6 @@ describe("SignUp component", () => {
     );
   });
 
-  it("shouldn't call the register function if the passwords aren't the same ", () => {
-    const SignUpClick = jest.fn();
-    const wrapper = mount(
-      <BrowserRouter>
-        <SignUp onClick={SignUpClick} />
-      </BrowserRouter>
-    );
-    const inputEvents = {
-      username: {
-        target: { id: "username", value: "myemail@gmail.com" }
-      },
-      password: {
-        target: { id: "password", value: "password123" }
-      },
-      confirmPassword: {
-        target: { id: "confirmPassword", value: "passwo1d23" }
-      }
-    };
-    const usernameInput = wrapper.find("input").at(0),
-      passwordInput = wrapper.find("input").at(1),
-      confirmPasswordInput = wrapper.find("input").at(2);
-    usernameInput.simulate("change", inputEvents.username);
-    passwordInput.simulate("change", inputEvents.password);
-    confirmPasswordInput.simulate("change", inputEvents.confirmPassword);
-    wrapper.find("button").simulate("click");
-    expect(SignUpClick).toHaveBeenCalledTimes(0);
-  });
-
-  it("shouldn't call the register function if the username is empty", () => {
-    const SignUpClick = jest.fn();
-    const wrapper = mount(
-      <BrowserRouter>
-        <SignUp onClick={SignUpClick} />
-      </BrowserRouter>
-    );
-    const inputEvents = {
-      username: {
-        target: { id: "username", value: "" }
-      },
-      password: {
-        target: { id: "password", value: "password123" }
-      },
-      confirmPassword: {
-        target: { id: "confirmPassword", value: "password123" }
-      }
-    };
-    const usernameInput = wrapper.find("input").at(0),
-      passwordInput = wrapper.find("input").at(1),
-      confirmPasswordInput = wrapper.find("input").at(2);
-    usernameInput.simulate("change", inputEvents.username);
-    passwordInput.simulate("change", inputEvents.password);
-    confirmPasswordInput.simulate("change", inputEvents.confirmPassword);
-    wrapper.find("button").simulate("click");
-    expect(SignUpClick).toHaveBeenCalledTimes(0);
-  });
-
   it("should call the SignUp function", () => {
     const SignUpClick = jest.fn();
     const wrapper = mount(
@@ -114,6 +58,37 @@ describe("SignUp component", () => {
     passwordInput.simulate("change", inputEvents.password);
     confirmPasswordInput.simulate("change", inputEvents.confirmPassword);
     wrapper.find("button").simulate("click");
-    expect(SignUpClick).toBeCalledWith("myemail@gmail.com", "password123");
+    expect(SignUpClick).toBeCalledWith(
+      "myemail@gmail.com",
+      "password123",
+      "password123"
+    );
+  });
+
+  it("should show up a error message if an error is provided", () => {
+    const props = {
+      onClick: jest.fn(),
+      error: {
+        title: "This is a error",
+        description: "This is the description"
+      }
+    };
+    const wrapper = mount(
+      <BrowserRouter>
+        <SignUp {...props} />
+      </BrowserRouter>
+    );
+    expect(wrapper.find("ErrorMessage").contains(props.error.title)).toEqual(
+      true
+    );
+  });
+
+  it("shouln't show up an error message if the error doesn't exist", () => {
+    const wrapper = mount(
+      <BrowserRouter>
+        <SignUp onClick={jest.fn()} />
+      </BrowserRouter>
+    );
+    expect(wrapper.find("ErrorMessage").exists()).toEqual(false);
   });
 });

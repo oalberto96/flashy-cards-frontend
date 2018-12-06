@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import TextInput from "../../../components/common/TextInput";
+import ErrorMessage from "../../../components/common/ErrorMessage";
 
 class SignUp extends React.Component {
   state = {
@@ -16,6 +17,7 @@ class SignUp extends React.Component {
   render() {
     return (
       <div>
+        {this.props.error && <ErrorMessage {...this.props.error} />}
         <TextInput
           inputClass="form-control"
           label="Email"
@@ -37,9 +39,11 @@ class SignUp extends React.Component {
         <button
           className="btn btn-primary"
           onClick={() =>
-            this.state.password === this.state.confirmPassword &&
-            this.state.username.length > 0 &&
-            this.props.onClick(this.state.username, this.state.password)
+            this.props.onClick(
+              this.state.username,
+              this.state.password,
+              this.state.confirmPassword
+            )
           }
         >
           Sign Up

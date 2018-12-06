@@ -10,13 +10,15 @@ export const SignUpContainer = ({ isAuthenticated, ...props }) => {
 
 export const mapStateToProps = (state, ownProps) => {
   return {
-    isAuthenticated: state.authentication.isAuthenticated
+    isAuthenticated: state.authentication.isAuthenticated,
+    error: state.authentication.error
   };
 };
 
 export const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    onClick: (username, password) => dispatch(requestSignUp(username, password))
+    onClick: (username, password, confirmPassword) =>
+      dispatch(requestSignUp(username, password, confirmPassword))
   };
 };
 

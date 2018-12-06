@@ -6,12 +6,8 @@
 import { Auth } from "../../../agent";
 import { takeEvery, put, call } from "redux-saga/effects";
 import { REQUEST_LOGIN } from "./constants";
-import {
-  requestLoginSucceeded,
-  requestLoginFailed,
-  emptyUsernameError,
-  emptyPasswordError
-} from "./actions";
+import { requestLoginSucceeded, requestLoginFailed } from "./actions";
+import { emptyUsernameError, emptyPasswordError } from "../actions";
 
 const postCredentials = credentials => {
   return Auth.login(credentials)

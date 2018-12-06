@@ -16,7 +16,7 @@ export class LoginContainer extends React.Component {
 export const mapStateToProps = (state, ownProps) => {
   return {
     isAuthenticated: state.authentication.isAuthenticated,
-    error: state.authentication.loginError
+    error: state.authentication.error
   };
 };
 

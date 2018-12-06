@@ -9,7 +9,3 @@ export const REQUEST_LOGIN_SUCCEEDED =
   "Authentication/LoginContainer/REQUEST_LOGIN_SUCCEEDED";
 export const REQUEST_LOGIN_FAILED =
   "Authentication/LoginContainer/REQUEST_LOGIN_FAILED";
-export const EMPTY_PASSWORD_ERROR =
-  "Authentication/LoginContainer/EMPTY_PASSWORD_ERROR";
-export const EMPTY_USERNAME_ERROR =
-  "Authentication/LoginContainer/EMPTY_USERNAME_ERROR";
