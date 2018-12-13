@@ -1,7 +1,7 @@
 import axios from "axios";
 import Cookies from "universal-cookie";
 
-const API_ROOT = "http://localhost:8000/api/";
+const API_ROOT = "http://vemin.me/api/";
 const cookies = new Cookies();
 
 const requests = {

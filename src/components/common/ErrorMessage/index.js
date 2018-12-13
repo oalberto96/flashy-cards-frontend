@@ -1,10 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
+import './style.module.css';
 
 const ErrorMessage = ({ title, description }) => {
   return (
-    <div>
+    <div className='msg'>
       <b>{title}</b> {description}
+    
     </div>
   );
 };
