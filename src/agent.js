@@ -1,7 +1,7 @@
 import axios from "axios";
 import Cookies from "universal-cookie";
 
-const API_ROOT = "http://vemin.me/api/";
+const API_ROOT = "http://localhost:8000/api/";
 const cookies = new Cookies();
 
 const requests = {
@@ -43,5 +43,6 @@ export const Lessons = {
   update: (lessonId, lesson) =>
     requests.put(`lessons/lessons/${lessonId}/`, lesson),
   withConcepts: lessonId =>
-    requests.get(`lessons/lessons/${lessonId}/concepts/`)
+    requests.get(`lessons/lessons/${lessonId}/concepts/`),
+  delete: lessonId => requests.delete(`lessons/lessons/${lessonId}/`)
 };

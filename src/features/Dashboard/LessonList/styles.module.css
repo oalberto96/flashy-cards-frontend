@@ -2,6 +2,10 @@
   padding: 1em 0 1em 0;
 }
 
-.icon-actions {
+.iconActions {
   padding-right: 1.2em;
+}
+
+.optionsIcon {
+  background-color: white;
 }

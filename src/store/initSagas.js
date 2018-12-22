@@ -3,13 +3,15 @@ import ConceptListContainerSagas from "../features/Play/ConceptListContainer/sag
 import LoginContainerSagas from "../features/Authentication/LoginContainer/sagas";
 import LessonListSagas from "../features/Dashboard/LessonListContainer/sagas";
 import SignUpSagas from "../features/Authentication/SignUpContainer/sagas";
+import Dashboard from "../features/Dashboard/sagas";
 
 let sagas = [
   LessonFormContainerSagas,
   ConceptListContainerSagas,
   LoginContainerSagas,
   LessonListSagas,
-  SignUpSagas
+  SignUpSagas,
+  Dashboard
 ];
 
 export const initSagas = sagaMiddleware => {
