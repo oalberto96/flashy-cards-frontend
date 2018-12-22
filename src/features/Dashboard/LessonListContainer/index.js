@@ -8,12 +8,12 @@ import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import LessonList from "../LessonList";
-import { requestLessons } from "../LessonListContainer/actions";
 import {
+  requestLessons,
   setVisibleDeleteLessonModal,
   setInvisibleDeleteLessonModal,
   requestDeleteLesson
-} from "../actions";
+} from "./actions";
 
 class LessonListContainer extends React.Component {
   static propTypes = {
@@ -31,8 +31,8 @@ class LessonListContainer extends React.Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    lessons: state.lessons,
-    confirmDelete: state.dashboard.confirmDeleteLessonModalVisible
+    lessons: state.lessons.lessons,
+    confirmDelete: state.lessons.confirmDeleteLessonModalVisible
   };
 };
 
