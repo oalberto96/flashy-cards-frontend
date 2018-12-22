@@ -22,7 +22,7 @@ class LessonListContainer extends React.Component {
     lessons: PropTypes.array.isRequired
   };
 
-  componentDidMount() {
+  componentWillMount() {
     this.props.requestLessons();
   }
 

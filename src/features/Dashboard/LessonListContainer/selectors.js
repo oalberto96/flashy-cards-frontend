@@ -11,3 +11,7 @@ export const getLessons = state => {
 export const deleteModalIsVisible = state => {
   return state.lessons.confirmDeleteLessonModalVisible;
 };
+
+export const getLessonIdToDelete = state => {
+  return state.lessons.idLessonToDelete;
+};

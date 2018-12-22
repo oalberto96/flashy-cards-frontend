@@ -7,7 +7,9 @@
 import {
   REQUEST_LESSONS_SUCCEEDED,
   SET_VISIBLE_DELETE_LESSON_MODAL,
-  SET_INVISIBLE_DELETE_LESSON_MODAL
+  SET_INVISIBLE_DELETE_LESSON_MODAL,
+  REQUEST_DELETE_LESSON_ERROR,
+  REQUEST_DELETE_LESSON_SUCCESS
 } from "./constants";
 
 const initialState = {
@@ -26,6 +28,8 @@ function LessonListContainerReducer(state = initialState, action) {
         confirmDeleteLessonModalVisible: true
       };
     case SET_INVISIBLE_DELETE_LESSON_MODAL:
+      return { ...state, confirmDeleteLessonModalVisible: false };
+    case REQUEST_DELETE_LESSON_SUCCESS:
       return { ...state, confirmDeleteLessonModalVisible: false };
     default:
       return state;
