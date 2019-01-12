@@ -187,10 +187,12 @@ describe("LessonFormContainer reducer", () => {
               text: "Super card B"
             }
           };
-          return concept;
         }
+        return concept;
       })
     };
-    expect(reducer(exampleState, actions.setCardText(3, "Super card B", "B")));
+    expect(
+      reducer(exampleState, actions.setCardText(3, "Super card B", "B"))
+    ).toEqual(expectedState);
   });
 });
