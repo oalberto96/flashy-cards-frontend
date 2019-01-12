@@ -14,6 +14,7 @@ import {
   NEW_LESSON
 } from "./constants";
 import * as types from "./constants";
+import * as mediaTypes from "../../../common/constants/mediaTypes";
 
 const initialState = {
   name: "",
@@ -24,9 +25,10 @@ const initialState = {
 };
 
 function LessonFormContainerReducer(state = initialState, action) {
+  let conceptsCopy = null;
   switch (action.type) {
     case types.ADD_CONCEPT_TO_NEW_LESSON:
-      let conceptsCopy = state.concepts.map(concept => ({
+      conceptsCopy = state.concepts.map(concept => ({
         ...concept
       }));
       let lastConceptAdded = conceptsCopy[conceptsCopy.length - 1];
@@ -55,24 +57,29 @@ function LessonFormContainerReducer(state = initialState, action) {
       const cardImage = action.payload.cardImage;
       conceptsCopy = state.concepts.map(concept => {
         if (concept.id === action.payload.conceptId) {
-          action.payload.card === "A"
-            ? (concept.cardA = {
+          if (action.payload.card === "A") {
+            return {
+              ...concept,
+              cardA: {
                 ...concept.cardA,
                 media: {
-                  mediaType: {
-                    id: 1,
-                    name: "IMAGE"
-                  },
+                  mediaType: mediaTypes.IMAGE,
                   source: cardImage
                 }
-              })
-            : (concept.cardB = {
+              }
+            };
+          } else {
+            return {
+              ...concept,
+              cardB: {
                 ...concept.cardB,
                 media: {
-                  type: "IMAGE",
+                  mediaType: mediaTypes.IMAGE,
                   source: cardImage
                 }
-              });
+              }
+            };
+          }
         }
         return concept;
       });

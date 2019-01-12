@@ -6,6 +6,7 @@
 
 import reducer from "../reducer";
 import * as actions from "../actions";
+import * as mediaTypes from "../../../../common/constants/mediaTypes";
 
 const exampleState = {
   id: 2,
@@ -100,5 +101,59 @@ describe("LessonFormContainer reducer", () => {
     expect(reducer(exampleState, actions.addConceptToNewLesson())).toEqual(
       expectedState
     );
+  });
+
+  it("should handle SET_CARD_IMAGE in a Card A ", () => {
+    const expectedState = {
+      ...exampleState,
+      concepts: exampleState.concepts.map(concept => {
+        if (concept.id === 3) {
+          return {
+            id: 3,
+            cardA: {
+              text: "awdasd",
+              media: { mediaType: mediaTypes.IMAGE, source: "image.png" },
+              audio: null
+            },
+            cardB: {
+              text: "asdasd",
+              media: null,
+              audio: null
+            }
+          };
+        }
+        return concept;
+      })
+    };
+    expect(
+      reducer(exampleState, actions.setCardImage(3, "image.png", "A"))
+    ).toEqual(expectedState);
+  });
+
+  it("should handle SET_CARD_IMAGE in a Card B ", () => {
+    const expectedState = {
+      ...exampleState,
+      concepts: exampleState.concepts.map(concept => {
+        if (concept.id === 3) {
+          return {
+            id: 3,
+            cardA: {
+              text: "awdasd",
+              media: null,
+              audio: null
+            },
+            cardB: {
+              media: { mediaType: mediaTypes.IMAGE, source: "image.png" },
+              text: "asdasd",
+              audio: null
+            }
+          };
+        }
+        return concept;
+      })
+    };
+    expect(
+      reducer(exampleState, actions.setCardImage(3, "image.png", "B"))
+    ).toEqual(expectedState);
   });
 });
