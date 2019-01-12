@@ -53,7 +53,7 @@ function LessonFormContainerReducer(state = initialState, action) {
         return concept;
       });
       return { ...state, concepts: conceptsCopy };
-    case SET_CARD_IMAGE:
+    case types.SET_CARD_IMAGE:
       const cardImage = action.payload.cardImage;
       conceptsCopy = state.concepts.map(concept => {
         if (concept.id === action.payload.conceptId) {
@@ -84,9 +84,9 @@ function LessonFormContainerReducer(state = initialState, action) {
         return concept;
       });
       return { ...state, concepts: conceptsCopy };
-    case CHANGE_NEW_LESSON_NAME:
+    case types.CHANGE_NEW_LESSON_NAME:
       return { ...state, name: action.payload.newLessonName };
-    case CHANGE_NEW_LESSON_DESCRIPTION:
+    case types.CHANGE_NEW_LESSON_DESCRIPTION:
       return {
         ...state,
         description: action.payload.newLessonDescription

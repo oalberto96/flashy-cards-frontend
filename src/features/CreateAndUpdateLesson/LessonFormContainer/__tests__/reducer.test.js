@@ -195,4 +195,21 @@ describe("LessonFormContainer reducer", () => {
       reducer(exampleState, actions.setCardText(3, "Super card B", "B"))
     ).toEqual(expectedState);
   });
+
+  it("should handle CHANGE_NEW_LESSON_NAME", () => {
+    const expectedState = { ...exampleState, name: "New name" };
+    expect(
+      reducer(exampleState, actions.changeNewLessonName("New name"))
+    ).toEqual(expectedState);
+  });
+
+  it("should handle CHANGE_NEW_LESSON_DESCRIPTION", () => {
+    const expectedState = { ...exampleState, description: "New description" };
+    expect(
+      reducer(
+        exampleState,
+        actions.changeNewLessonDescription("New description")
+      )
+    ).toEqual(expectedState);
+  });
 });
