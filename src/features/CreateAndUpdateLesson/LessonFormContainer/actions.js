@@ -18,6 +18,7 @@ import {
   REQUEST_UPDATE_LESSON_SUCCESS,
   CREATE_NEW_LESSON_SUCCEEDED
 } from "./constants";
+import * as types from "./constants";
 
 export const addConceptToNewLesson = () => {
   return {
@@ -119,5 +120,12 @@ export const requestUpdateLessonSuccess = lesson => {
     payload: {
       lesson
     }
+  };
+};
+
+export const deleteConcept = lessonId => {
+  return {
+    type: types.DELETE_CONCEPT,
+    payload: { lessonId }
   };
 };

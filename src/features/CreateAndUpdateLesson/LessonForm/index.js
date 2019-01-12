@@ -96,6 +96,7 @@ class LessonForm extends Component {
           concepts={this.props.concepts}
           setCardText={this.props.setCardText}
           setCardImage={this.props.setCardImage}
+          deleteConcept={this.props.deleteConcept}
         />
         <div className="form-group text-center">
           <button

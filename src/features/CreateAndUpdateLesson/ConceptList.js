@@ -8,9 +8,12 @@ import React from "react";
 import PropTypes from "prop-types";
 import CardForm from "./CardForm";
 
-const ConceptList = ({ concepts, setCardText, setCardImage }) => {
+const ConceptList = ({ concepts, setCardText, setCardImage, deleteConcept }) => {
   return concepts.map(concept => (
     <div key={concept.id} className="form-group">
+      <div className="close-button" onClick={() => deleteConcept(concept.id)}>
+        X
+      </div>
       <div className="row">
         <div className="col-md-6">
           <CardForm
@@ -42,7 +45,8 @@ const ConceptList = ({ concepts, setCardText, setCardImage }) => {
 ConceptList.propTypes = {
   concepts: PropTypes.array.isRequired,
   setCardText: PropTypes.func.isRequired,
-  setCardImage: PropTypes.func.isRequired
+  setCardImage: PropTypes.func.isRequired,
+  deleteConcept: PropTypes.func.isRequired
 };
 
 export default ConceptList;

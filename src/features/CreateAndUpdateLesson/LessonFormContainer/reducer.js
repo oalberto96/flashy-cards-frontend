@@ -5,7 +5,6 @@
  */
 import { generateConceptId } from "../../../common/utils/lessons";
 import {
-  ADD_CONCEPT_TO_NEW_LESSON,
   SET_CARD_TEXT,
   CHANGE_NEW_LESSON_NAME,
   CHANGE_NEW_LESSON_DESCRIPTION,
@@ -14,18 +13,22 @@ import {
   REQUEST_LESSON_TO_EDIT_SUCCESS,
   NEW_LESSON
 } from "./constants";
+import * as types from "./constants";
 
 const initialState = {
   name: "",
   description: "",
   audience: { id: 1 },
-  concepts: []
+  concepts: [],
+  deletedConcepts: []
 };
 
 function LessonFormContainerReducer(state = initialState, action) {
   switch (action.type) {
-    case ADD_CONCEPT_TO_NEW_LESSON:
-      let conceptsCopy = state.concepts.slice();
+    case types.ADD_CONCEPT_TO_NEW_LESSON:
+      let conceptsCopy = state.concepts.map(concept => ({
+        ...concept
+      }));
       let lastConceptAdded = conceptsCopy[conceptsCopy.length - 1];
       conceptsCopy.push({
         id: generateConceptId(lastConceptAdded),
@@ -92,6 +95,13 @@ function LessonFormContainerReducer(state = initialState, action) {
       };
     case NEW_LESSON:
       return initialState;
+    case types.DELETE_CONCEPT:
+      const concepts = state.concepts.filter(
+        concept => concept.id !== action.payload.lessonId
+      );
+      let deletedConcepts = state.deletedConcepts.slice();
+      deletedConcepts.push(action.payload.lessonId);
+      return { ...state, concepts, deletedConcepts };
     default:
       return state;
   }

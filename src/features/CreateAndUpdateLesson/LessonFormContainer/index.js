@@ -18,14 +18,13 @@ import {
   newLesson,
   requestUpdateLesson
 } from "./actions";
+import * as actions from "./actions";
 
-class LessonFormContainer extends Component {
-  render() {
-    return <LessonForm {...this.props} />;
-  }
-}
+export const LessonFormContainer = props => {
+  return <LessonForm {...props} />;
+};
 
-const mapStateToProps = (state, ownProps) => {
+export const mapStateToProps = (state, ownProps) => {
   return {
     concepts: state.newLesson.concepts,
     name: state.newLesson.name,
@@ -34,7 +33,7 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-const mapDispatchToProps = (dispatch, ownProps) => {
+export const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     addNewConcept: () => dispatch(addConceptToNewLesson()),
     setCardText: (conceptId, cardText, card) =>
@@ -47,7 +46,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     saveNewLesson: lesson => dispatch(saveNewLesson(lesson)),
     requestLessonToEdit: lessonId => dispatch(requestLessonToEdit(lessonId)),
     newLesson: () => dispatch(newLesson()),
-    requestUpdateLesson: () => dispatch(requestUpdateLesson())
+    requestUpdateLesson: () => dispatch(requestUpdateLesson()),
+    deleteConcept: lessonId => dispatch(actions.deleteConcept(lessonId))
   };
 };
 

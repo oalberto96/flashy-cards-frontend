@@ -1,7 +1,6 @@
 FROM node
 LABEL author="oalberto96"
-COPY . /var/www
-WORKDIR /var/www
+COPY . /usr/src/app/
+WORKDIR /usr/src/app
 EXPOSE 3000
-RUN ["npm", "install"]
-ENTRYPOINT [ "npm", "start" ]
+ENTRYPOINT npm install && npm start
