@@ -33,13 +33,13 @@ const exampleState = {
     {
       id: 3,
       cardA: {
-        text: "awdasd",
-        media: null,
+        text: "card A",
+        media: { mediaType: mediaTypes.IMAGE, source: "imageA.png" },
         audio: null
       },
       cardB: {
-        text: "asdasd",
-        media: null,
+        text: "card B",
+        media: { mediaType: mediaTypes.IMAGE, source: "imageB.png" },
         audio: null
       }
     }
@@ -66,13 +66,13 @@ describe("LessonFormContainer reducer", () => {
         {
           id: 3,
           cardA: {
-            text: "awdasd",
-            media: null,
+            text: "card A",
+            media: { mediaType: mediaTypes.IMAGE, source: "imageA.png" },
             audio: null
           },
           cardB: {
-            text: "asdasd",
-            media: null,
+            text: "card B",
+            media: { mediaType: mediaTypes.IMAGE, source: "imageB.png" },
             audio: null
           }
         }
@@ -111,13 +111,13 @@ describe("LessonFormContainer reducer", () => {
           return {
             id: 3,
             cardA: {
-              text: "awdasd",
+              text: "card A",
               media: { mediaType: mediaTypes.IMAGE, source: "image.png" },
               audio: null
             },
             cardB: {
-              text: "asdasd",
-              media: null,
+              text: "card B",
+              media: { mediaType: mediaTypes.IMAGE, source: "imageB.png" },
               audio: null
             }
           };
@@ -138,13 +138,13 @@ describe("LessonFormContainer reducer", () => {
           return {
             id: 3,
             cardA: {
-              text: "awdasd",
-              media: null,
+              text: "card A",
+              media: { mediaType: mediaTypes.IMAGE, source: "imageA.png" },
               audio: null
             },
             cardB: {
+              text: "card B",
               media: { mediaType: mediaTypes.IMAGE, source: "image.png" },
-              text: "asdasd",
               audio: null
             }
           };
@@ -155,5 +155,42 @@ describe("LessonFormContainer reducer", () => {
     expect(
       reducer(exampleState, actions.setCardImage(3, "image.png", "B"))
     ).toEqual(expectedState);
+  });
+
+  it("should handle SET_CARD_TEXT in Card A", () => {
+    const expectedState = {
+      ...exampleState,
+      concepts: exampleState.concepts.map(concept => {
+        if (concept.id === 3) {
+          return {
+            ...concept,
+            cardA: { ...concept.cardA, text: "Super card A" }
+          };
+        }
+        return concept;
+      })
+    };
+    expect(
+      reducer(exampleState, actions.setCardText(3, "Super card A", "A"))
+    ).toEqual(expectedState);
+  });
+
+  it("should handle SET_CARD_TEXT in Card B", () => {
+    const expectedState = {
+      ...exampleState,
+      concepts: exampleState.concepts.map(concept => {
+        if (concept.id === 3) {
+          return {
+            ...concept,
+            cardB: {
+              ...concept.cardB,
+              text: "Super card B"
+            }
+          };
+          return concept;
+        }
+      })
+    };
+    expect(reducer(exampleState, actions.setCardText(3, "Super card B", "B")));
   });
 });

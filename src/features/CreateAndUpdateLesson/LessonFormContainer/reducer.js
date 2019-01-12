@@ -39,7 +39,7 @@ function LessonFormContainerReducer(state = initialState, action) {
       });
       let newLesson = { concepts: conceptsCopy };
       return { ...state, ...newLesson };
-    case SET_CARD_TEXT:
+    case types.SET_CARD_TEXT:
       let cardText = action.payload.cardText;
       let key = null;
       conceptsCopy = state.concepts.map(concept => {
