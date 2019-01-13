@@ -18,6 +18,7 @@ export const generateConceptId = lastConcept => {
 export const lessonToApi = lesson => {
   return {
     ...lesson,
+    deleted_concepts: lesson.deletedConcepts,
     concepts: lesson.concepts.map(concept => ({
       ...concept,
       card_a: {

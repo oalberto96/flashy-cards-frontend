@@ -8,7 +8,12 @@ import React from "react";
 import PropTypes from "prop-types";
 import CardForm from "./CardForm";
 
-const ConceptList = ({ concepts, setCardText, setCardImage, deleteConcept }) => {
+const ConceptList = ({
+  concepts,
+  setCardText,
+  setCardImage,
+  deleteConcept
+}) => {
   return concepts.map(concept => (
     <div key={concept.id} className="form-group">
       <div className="close-button" onClick={() => deleteConcept(concept.id)}>

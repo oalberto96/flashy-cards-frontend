@@ -5,11 +5,7 @@
  */
 import { generateConceptId } from "../../../common/utils/lessons";
 import {
-  SET_CARD_TEXT,
-  CHANGE_NEW_LESSON_NAME,
-  CHANGE_NEW_LESSON_DESCRIPTION,
   SAVE_NEW_LESSON,
-  SET_CARD_IMAGE,
   REQUEST_LESSON_TO_EDIT_SUCCESS,
   NEW_LESSON
 } from "./constants";
@@ -96,6 +92,7 @@ function LessonFormContainerReducer(state = initialState, action) {
     case REQUEST_LESSON_TO_EDIT_SUCCESS:
       return {
         ...action.payload.lesson,
+        deletedConcepts: [],
         concepts: action.payload.lesson.concepts.map(concept => ({
           ...concept
         }))
