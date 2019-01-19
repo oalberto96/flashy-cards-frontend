@@ -98,7 +98,7 @@ class CardForm extends React.Component {
             }}
             onChange={e => {
               if (e.target.files.length > 0) {
-                const image = URL.createObjectURL(e.target.files[0]);
+                const image = e.target.files[0];
                 this.props.setCardImage(image);
               }
             }}

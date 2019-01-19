@@ -5,7 +5,7 @@
  */
 
 import React from "react";
-import { mount } from "enzyme";
+import { shallow } from "enzyme";
 import { BrowserRouter } from "react-router-dom";
 import { LessonFormContainer, mapDispatchToProps } from "../index";
 import * as actions from "../actions";
@@ -37,11 +37,7 @@ describe("LessonFormContainer", () => {
         name: "",
         match: { path: "edit", params: { lessonId: 1 } }
       };
-      const wrapper = mount(
-        <BrowserRouter>
-          <LessonFormContainer {...props} />
-        </BrowserRouter>
-      );
+      const wrapper = shallow(<LessonFormContainer {...props} />);
       expect(wrapper.find("LessonForm").exists()).toEqual(true);
     });
   });

@@ -5,7 +5,7 @@ import CardForm from "../CardForm";
 describe("CardForm component", () => {
   it("should render the cardId in the file input", () => {
     const props = {
-      cardId: "1",
+      cardId: "1A",
       cardText: "",
       setCardImage: jest.fn(),
       setCardText: jest.fn()
@@ -14,12 +14,12 @@ describe("CardForm component", () => {
     const inputWrapper = wrapper
       .find("input")
       .findWhere(n => n.prop("type") === "file");
-    expect(inputWrapper.prop("id")).toEqual("cardImage1");
+    expect(inputWrapper.prop("id")).toEqual("cardImage1A");
   });
 
   it("should render an image given the cardMedia object ", () => {
     const props = {
-      cardId: "1",
+      cardId: "1A",
       setCardImage: jest.fn(),
       setCardText: jest.fn(),
       cardMedia: {
@@ -41,7 +41,7 @@ describe("CardForm component", () => {
     const file = "dummy.file";
     global.URL = { createObjectURL: x => file };
     const props = {
-      cardId: "1",
+      cardId: "1A",
       setCardImage: jest.fn(),
       setCardText: jest.fn()
     };
@@ -58,7 +58,7 @@ describe("CardForm component", () => {
 
   it("should call the function setCardText", () => {
     const props = {
-      cardId: "1",
+      cardId: "1A",
       setCardImage: jest.fn(),
       setCardText: jest.fn()
     };

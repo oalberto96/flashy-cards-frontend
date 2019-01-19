@@ -15,8 +15,6 @@ class LessonForm extends Component {
   static propTypes = {
     addNewConcept: PropTypes.func.isRequired,
     concepts: PropTypes.array.isRequired,
-    setCardText: PropTypes.func.isRequired,
-    setCardImage: PropTypes.func.isRequired,
     name: PropTypes.string.isRequired
   };
 
@@ -94,8 +92,6 @@ class LessonForm extends Component {
         />
         <ConceptList
           concepts={this.props.concepts}
-          setCardText={this.props.setCardText}
-          setCardImage={this.props.setCardImage}
           deleteConcept={this.props.deleteConcept}
         />
         <div className="form-group text-center">

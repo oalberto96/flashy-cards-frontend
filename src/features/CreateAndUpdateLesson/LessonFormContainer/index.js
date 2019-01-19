@@ -4,16 +4,14 @@
  *
  */
 
-import React, { Component } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import LessonForm from "../LessonForm";
 import {
   addConceptToNewLesson,
-  setCardText,
   changeNewLessonName,
   changeNewLessonDescription,
   saveNewLesson,
-  setCardImage,
   requestLessonToEdit,
   newLesson,
   requestUpdateLesson
@@ -36,10 +34,6 @@ export const mapStateToProps = (state, ownProps) => {
 export const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     addNewConcept: () => dispatch(addConceptToNewLesson()),
-    setCardText: (conceptId, cardText, card) =>
-      dispatch(setCardText(conceptId, cardText, card)),
-    setCardImage: (conceptId, cardImage, card) =>
-      dispatch(setCardImage(conceptId, cardImage, card)),
     changeNewLessonName: newName => dispatch(changeNewLessonName(newName)),
     changeNewLessonDescription: newDescription =>
       dispatch(changeNewLessonDescription(newDescription)),
