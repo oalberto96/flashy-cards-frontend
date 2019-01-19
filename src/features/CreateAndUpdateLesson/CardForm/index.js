@@ -79,7 +79,7 @@ class CardForm extends React.Component {
         <div className="pull-right">
           <img src={MicIcon} alt="Mic icon" />
           <label htmlFor={`cardImage${this.props.cardId}`}>
-            <img src={ImageIcon} alt="icon" />
+            <img src={ImageIcon} alt="imageicon" />
           </label>
           <img
             src={GifIcon}
@@ -99,9 +99,6 @@ class CardForm extends React.Component {
             onChange={e => {
               if (e.target.files.length > 0) {
                 const image = URL.createObjectURL(e.target.files[0]);
-                this.setState({
-                  cardImage: URL.createObjectURL(e.target.files[0])
-                });
                 this.props.setCardImage(image);
               }
             }}
@@ -116,8 +113,10 @@ class CardForm extends React.Component {
 
 CardForm.propTypes = {
   setCardText: PropTypes.func.isRequired,
+  setCardImage: PropTypes.func.isRequired,
+  cardId: PropTypes.string.isRequired,
   cardText: PropTypes.string,
-  cardId: PropTypes.string.isRequired
+  cardMedia: PropTypes.object
 };
 
 export default CardForm;
