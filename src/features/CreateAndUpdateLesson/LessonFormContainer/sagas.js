@@ -3,19 +3,13 @@
  * LessonFormContainer Sagas
  *
  */
-import { takeEvery, select, put, call } from "redux-saga/effects";
+import { takeEvery, select, put, call, take } from "redux-saga/effects";
 import { Lessons } from "../../../agent";
 import { lessonToApi, ApiToLesson } from "../../../common/utils/lessons";
-import {
-  REQUEST_LESSON_TO_EDIT,
-  REQUEST_UPDATE_LESSON,
-  SAVE_NEW_LESSON
-} from "./constants";
-import {
-  requestUpdateLessonSuccess,
-  requestLessonToEditSuccess
-} from "./actions";
+import * as constants from "./constants";
+import * as actions from "./actions";
 import { requestLessons } from "../../Dashboard/LessonListContainer/actions";
+import { createObjectUrl } from "../../../common/utils/fileReader";
 
 const newLessonSelector = state => {
   return {
@@ -34,18 +28,18 @@ function updateLesson(lesson) {
   return Lessons.update(lesson.id, lessonToApi(lesson));
 }
 
-function* requestLessonToEdit(action) {
+export function* requestLessonToEdit(action) {
   const lesson = yield call(fetchLessonToEdit, action.payload.lessonId);
-  yield put(requestLessonToEditSuccess(lesson));
+  yield put(actions.requestLessonToEditSuccess(lesson));
 }
 
-function* requestUpdateLesson() {
+export function* requestUpdateLesson() {
   const lesson = yield select(newLessonSelector);
   const response = yield call(updateLesson, lesson);
   if (response) {
     // I called this funtion to notificate in the store
     // basically does nothing
-    yield put(requestUpdateLessonSuccess(lesson));
+    yield put(actions.requestUpdateLessonSuccess(lesson));
     // update lesson list
     yield put(requestLessons());
   }
@@ -55,17 +49,31 @@ function postLesson(lesson) {
   return Lessons.create(lessonToApi(lesson)).then(response => response.status);
 }
 
-function* saveNewLesson(action) {
+export function* saveNewLesson(action) {
   const responseStatus = yield call(postLesson, action.payload.lesson);
   if (responseStatus === 200) {
     yield put(requestLessons());
   }
 }
 
+export function* setCardImage(action) {
+  const chan = yield call(createObjectUrl, action.payload.fileImage);
+  const localImageUrl = yield take(chan);
+  yield put(
+    actions.setCardImageSuccess(
+      action.payload.conceptId,
+      action.payload.card,
+      localImageUrl,
+      action.payload.cardImage
+    )
+  );
+}
+
 export function* defaultSaga() {
-  yield takeEvery(REQUEST_LESSON_TO_EDIT, requestLessonToEdit);
-  yield takeEvery(REQUEST_UPDATE_LESSON, requestUpdateLesson);
-  yield takeEvery(SAVE_NEW_LESSON, saveNewLesson);
+  yield takeEvery(constants.REQUEST_LESSON_TO_EDIT, requestLessonToEdit);
+  yield takeEvery(constants.REQUEST_UPDATE_LESSON, requestUpdateLesson);
+  yield takeEvery(constants.SAVE_NEW_LESSON, saveNewLesson);
+  yield takeEvery(constants.SET_CARD_IMAGE, setCardImage);
 }
 
 export default defaultSaga;

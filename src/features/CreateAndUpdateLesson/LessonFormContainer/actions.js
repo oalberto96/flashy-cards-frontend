@@ -73,13 +73,24 @@ export const createNewLessonSucceeded = lesson => {
   };
 };
 
-export const setCardImage = (conceptId, cardImage, card) => {
+export const setCardImage = (conceptId, fileImage, card) => {
   return {
     type: SET_CARD_IMAGE,
     payload: {
       conceptId,
-      cardImage,
+      fileImage,
       card
+    }
+  };
+};
+
+export const setCardImageSuccess = (conceptId, card, image) => {
+  return {
+    type: types.SET_CARD_IMAGE_SUCCESS,
+    payload: {
+      conceptId,
+      card,
+      image
     }
   };
 };
