@@ -24,13 +24,25 @@ export const lessonToApi = lesson => {
       card_a: {
         ...concept.cardA,
         media: concept.cardA.media
-          ? { media_type: { id: 1 }, source: concept.cardA.media.source }
+          ? {
+              media_type: { id: 1 },
+              source: concept.cardA.media.imageFile
+                ? ""
+                : concept.cardA.media.source,
+              image_file: concept.cardA.media.imageFile
+            }
           : null
       },
       card_b: {
         ...concept.cardB,
         media: concept.cardB.media
-          ? { media_type: { id: 1 }, source: concept.cardB.media.source }
+          ? {
+              media_type: { id: 1 },
+              source: concept.cardB.media.imageFile
+                ? ""
+                : concept.cardB.media.source,
+              image_file: concept.cardB.media.imageFile
+            }
           : null
       }
     }))

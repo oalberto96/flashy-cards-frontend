@@ -51,6 +51,8 @@ function LessonFormContainerReducer(state = initialState, action) {
       return { ...state, concepts: conceptsCopy };
     case types.SET_CARD_IMAGE_SUCCESS:
       const cardImage = action.payload.image;
+      let image = new Image();
+      image.src = cardImage;
       conceptsCopy = state.concepts.map(concept => {
         if (concept.id === action.payload.conceptId) {
           if (action.payload.card === "A") {
@@ -60,7 +62,8 @@ function LessonFormContainerReducer(state = initialState, action) {
                 ...concept.cardA,
                 media: {
                   mediaType: mediaTypes.IMAGE,
-                  source: cardImage
+                  source: cardImage,
+                  imageFile: cardImage
                 }
               }
             };
@@ -71,7 +74,8 @@ function LessonFormContainerReducer(state = initialState, action) {
                 ...concept.cardB,
                 media: {
                   mediaType: mediaTypes.IMAGE,
-                  source: cardImage
+                  source: cardImage,
+                  imageFile: cardImage
                 }
               }
             };
