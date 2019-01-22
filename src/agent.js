@@ -1,8 +1,11 @@
 import axios from "axios";
 import Cookies from "universal-cookie";
 
-const API_ROOT = "http://localhost:8000/api/";
 const cookies = new Cookies();
+
+const API_ROOT = process.env.REACT_APP_API_SERVER;
+
+export const mediaServer = process.env.REACT_APP_MEDIA_SERVER;
 
 const requests = {
   get: url => axios.get(`${API_ROOT}${url}`),
