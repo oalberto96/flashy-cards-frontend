@@ -7,6 +7,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import GiphySearcher from "../GiphySearcher";
+import { CDN } from "../../../agent";
 import GifIcon from "../../../resources/icons/baseline-gif-24px.svg";
 import MicIcon from "../../../resources/icons/baseline-mic-24px.svg";
 import ImageIcon from "../../../resources/icons/baseline-add_photo_alternate-24px.svg";
@@ -36,7 +37,7 @@ class CardForm extends React.Component {
         case "IMAGE":
           media = (
             <img
-              src={this.props.cardMedia.source}
+              src={CDN.getUrl(this.props.cardMedia.source)}
               style={{ maxWidth: "250px" }}
               className=" image-fluid "
               alt="concept"

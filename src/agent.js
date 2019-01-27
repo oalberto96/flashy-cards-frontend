@@ -14,6 +14,13 @@ const requests = {
   delete: url => axios.delete(`${API_ROOT}${url}`)
 };
 
+export const CDN = {
+  getUrl: imageUrl =>
+    imageUrl.includes("http") || imageUrl.includes("base64")
+      ? imageUrl
+      : `${mediaServer}/${imageUrl}`
+};
+
 export const Auth = {
   login: credentials => requests.post("authentication/login/", credentials),
   signUp: userData => requests.post("authentication/signup/", userData),

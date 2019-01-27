@@ -7,6 +7,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "./styles.css";
+import { CDN } from "../../../agent";
 
 const Card = ({ cardText, flipCard, cardMedia, cardAudio }) => {
   let media;
@@ -14,7 +15,11 @@ const Card = ({ cardText, flipCard, cardMedia, cardAudio }) => {
     switch (cardMedia.mediaType.name) {
       case "IMAGE":
         media = (
-          <img alt={cardText} src={cardMedia.source} className="img-fluid" />
+          <img
+            alt={cardText}
+            src={CDN.getUrl(cardMedia.source)}
+            className="img-fluid"
+          />
         );
         break;
       default:
