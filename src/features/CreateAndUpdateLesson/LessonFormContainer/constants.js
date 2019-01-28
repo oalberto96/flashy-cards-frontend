@@ -27,3 +27,4 @@ export const REQUEST_UPDATE_LESSON_SUCCESS =
 export const CREATE_NEW_LESSON_SUCCEEDED =
   "LessonFormContainer/CREATE_NEW_LESSON_SUCCEEDED";
 export const DELETE_CONCEPT = "LessonFormContainer/DELETE_CONCEPT";
+export const SET_CARD_GIF = "LessonFormContainer/SET_CARD_GIF";

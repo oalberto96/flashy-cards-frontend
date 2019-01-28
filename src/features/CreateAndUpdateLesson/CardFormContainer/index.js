@@ -23,6 +23,10 @@ export const mapDispatchToProps = (dispatch, ownProps) => {
     setCardImage: newImage =>
       dispatch(
         actions.setCardImage(ownProps.conceptId, newImage, ownProps.cardType)
+      ),
+    setCardGif: gifUrl =>
+      dispatch(
+        actions.setCardGIF(ownProps.conceptId, ownProps.cardType, gifUrl)
       )
   };
 };
@@ -30,6 +34,7 @@ export const mapDispatchToProps = (dispatch, ownProps) => {
 CardFormContainer.propTypes = {
   setCardText: PropTypes.func.isRequired,
   setCardImage: PropTypes.func.isRequired,
+  setCardGif: PropTypes.func.isRequired,
   conceptId: PropTypes.number.isRequired,
   cardType: PropTypes.string.isRequired
 };

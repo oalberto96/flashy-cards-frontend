@@ -69,5 +69,16 @@ describe("CardFormContainer", () => {
         actions.setCardImage(ownProps.conceptId, "image.png", ownProps.cardType)
       );
     });
+
+    it("should dispatch a setCardGif action", () => {
+      const dispatch = jest.fn();
+      const ownProps = {
+        cardType: "A",
+        conceptId: 1
+      };
+      const componentDispatcher = mapDispatchToProps(dispatch, ownProps);
+      componentDispatcher.setCardGif("cat.gif");
+      expect(dispatch).toBeCalledWith(actions.setCardGIF(1, "A", "cat.gif"));
+    });
   });
 });

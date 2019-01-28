@@ -110,6 +110,37 @@ function LessonFormContainerReducer(state = initialState, action) {
       let deletedConcepts = state.deletedConcepts.slice();
       deletedConcepts.push(action.payload.lessonId);
       return { ...state, concepts, deletedConcepts };
+    case types.SET_CARD_GIF: {
+      let concepts = state.concepts.map(concept => {
+        if (concept.id === action.payload.conceptId) {
+          if (action.payload.card === "A") {
+            return {
+              ...concept,
+              cardA: {
+                ...concept.cardA,
+                media: {
+                  mediaType: mediaTypes.GIF,
+                  source: action.payload.gifUrl
+                }
+              }
+            };
+          } else {
+            return {
+              ...concept,
+              cardB: {
+                ...concept.cardB,
+                media: {
+                  mediaType: mediaTypes.GIF,
+                  source: action.payload.gifUrl
+                }
+              }
+            };
+          }
+        }
+        return concept;
+      });
+      return { ...state, concepts: concepts };
+    }
     default:
       return state;
   }

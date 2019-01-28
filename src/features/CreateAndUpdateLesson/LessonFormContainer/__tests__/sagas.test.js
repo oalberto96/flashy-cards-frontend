@@ -8,6 +8,7 @@ jest.mock("../../../../common/utils/fileReader");
 
 // TODO: "Finish the test case"
 describe("LessonFormContainer Sagas", () => {
+  it("", () => {});
   //   describe("handle setCardImage", () => {
   //     it("should put a SET_CARD_IMAGE_SUCCEESS when load an image", async () => {
   //       const dispatched = [];

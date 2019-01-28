@@ -8,6 +8,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import GiphySearcher from "../GiphySearcher";
 import { CDN } from "../../../agent";
+import * as mediaTypes from "../../../common/constants/mediaTypes";
 import GifIcon from "../../../resources/icons/baseline-gif-24px.svg";
 import MicIcon from "../../../resources/icons/baseline-mic-24px.svg";
 import ImageIcon from "../../../resources/icons/baseline-add_photo_alternate-24px.svg";
@@ -34,13 +35,23 @@ class CardForm extends React.Component {
     let media;
     if (this.props.cardMedia) {
       switch (this.props.cardMedia.mediaType.name) {
-        case "IMAGE":
+        case mediaTypes.IMAGE.name:
           media = (
             <img
               src={CDN.getUrl(this.props.cardMedia.source)}
               style={{ maxWidth: "250px" }}
               className=" image-fluid "
               alt="concept"
+            />
+          );
+          break;
+        case mediaTypes.GIF.name:
+          media = (
+            <img
+              src={this.props.cardMedia.source}
+              style={{ maxWidth: "250px" }}
+              className="image-fluid"
+              alt="concept GIF"
             />
           );
           break;
@@ -70,7 +81,7 @@ class CardForm extends React.Component {
           <div className="gifSearcherContainer">
             <GiphySearcher
               onSelectGIF={gif => {
-                this.props.setCardImage(gif.images.fixed_height.url);
+                this.props.setCardGif(gif.images.fixed_height.url);
                 this.setState({ gifSearcherActive: false });
               }}
             />

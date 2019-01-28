@@ -217,4 +217,27 @@ describe("LessonFormContainer reducer", () => {
       )
     ).toEqual(expectedState);
   });
+
+  it("should handle SET_CARD_GIF", () => {
+    const expectedState = {
+      ...exampleState,
+      concepts: exampleState.concepts.map(concept => {
+        if (concept.id === 3) {
+          return {
+            id: 3,
+            cardA: { ...concept.cardA },
+            cardB: {
+              text: "card B",
+              media: { mediaType: mediaTypes.GIF, source: "cat.gif" },
+              audio: null
+            }
+          };
+        }
+        return concept;
+      })
+    };
+    expect(
+      reducer(exampleState, actions.setCardGIF(3, "B", "cat.gif"))
+    ).toEqual(expectedState);
+  });
 });

@@ -140,3 +140,10 @@ export const deleteConcept = lessonId => {
     payload: { lessonId }
   };
 };
+
+export const setCardGIF = (conceptId, card, gifUrl) => {
+  return {
+    type: types.SET_CARD_GIF,
+    payload: { conceptId, card, gifUrl }
+  };
+};
