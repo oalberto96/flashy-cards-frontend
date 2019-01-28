@@ -8,12 +8,23 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./styles.css";
 import { CDN } from "../../../agent";
+import * as mediaTypes from "../../../common/constants/mediaTypes";
 
 const Card = ({ cardText, flipCard, cardMedia, cardAudio }) => {
   let media;
+  console.log(cardMedia);
   if (cardMedia != null) {
     switch (cardMedia.mediaType.name) {
-      case "IMAGE":
+      case mediaTypes.IMAGE.name:
+        media = (
+          <img
+            alt={cardText}
+            src={CDN.getUrl(cardMedia.source)}
+            className="img-fluid"
+          />
+        );
+        break;
+      case mediaTypes.GIF.name:
         media = (
           <img
             alt={cardText}

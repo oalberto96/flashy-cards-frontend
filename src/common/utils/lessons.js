@@ -25,7 +25,7 @@ export const lessonToApi = lesson => {
         ...concept.cardA,
         media: concept.cardA.media
           ? {
-              media_type: { id: 1 },
+              media_type: { ...concept.cardA.media.mediaType },
               source: concept.cardA.media.imageFile
                 ? ""
                 : concept.cardA.media.source,
@@ -37,7 +37,7 @@ export const lessonToApi = lesson => {
         ...concept.cardB,
         media: concept.cardB.media
           ? {
-              media_type: { id: 1 },
+              media_type: { ...concept.cardB.media.mediaType },
               source: concept.cardB.media.imageFile
                 ? ""
                 : concept.cardB.media.source,
