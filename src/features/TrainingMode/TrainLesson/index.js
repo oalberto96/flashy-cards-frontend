@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Card from "../../Play/Card";
+import Game from "../Game";
+import TrainLessonStatisticsContainer from "../TrainLessonStatisticsContainer";
 
 class TrainLesson extends React.Component {
   componentWillMount() {
@@ -8,57 +9,13 @@ class TrainLesson extends React.Component {
   }
 
   render() {
-    let answer = null;
-    if (this.props.isAnswerVisible && this.props.cardB) {
-      answer = (
-        <Card
-          cardText={this.props.cardB.text}
-          cardMedia={this.props.cardB.media}
-        />
-      );
-    } else {
-      answer = (
-        <button
-          onClick={() => this.props.showAnswer() && this.props.rateConcept()}
-        >
-          ...
-        </button>
-      );
+    let screen = null;
+    if (this.props.cardA && this.props.queue.length > 0) {
+      screen = <Game {...this.props} />;
+    } else if (this.props.conceptsDone.length > 0) {
+      screen = <TrainLessonStatisticsContainer />;
     }
-
-    return (
-      <div>
-        <div className="row">
-          <div className="col-6 col-md-6">
-            {this.props.cardA && (
-              <Card
-                cardText={this.props.cardA.text}
-                cardMedia={this.props.cardA.media}
-              />
-            )}
-          </div>
-          <div className="col-6 col-md-6">{answer}</div>
-        </div>
-        {this.props.isRatingConcept && (
-          <div className="row">
-            <button
-              onClick={() =>
-                this.props.rateConceptGood(this.props.currentConceptId)
-              }
-            >
-              Bien
-            </button>
-            <button
-              onClick={() =>
-                this.props.rateConceptBad(this.props.currentConceptId)
-              }
-            >
-              Mal
-            </button>
-          </div>
-        )}
-      </div>
-    );
+    return screen;
   }
 }
 

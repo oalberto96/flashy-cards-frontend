@@ -16,6 +16,12 @@ const fetchLesson = lessonId => {
   );
 };
 
+const saveScore = (lessonId, concepts) => {
+  return Lessons.saveTrainingScore(lessonId, concepts).then(
+    response => response.data
+  );
+};
+
 export function* requestLessonToTrainingMode(action) {
   const lesson = yield call(fetchLesson, action.payload.lessonId);
   try {
@@ -25,11 +31,17 @@ export function* requestLessonToTrainingMode(action) {
   }
 }
 
+export function* saveTrainingScoreSaga(action) {
+  yield call(saveScore, action.payload.lessonId, action.payload.concepts);
+  yield put(actions.saveTrainingScoreSuccess());
+}
+
 export function* defaultSagas() {
   yield takeEvery(
     actionsTypes.REQUEST_LESSON_TO_TRAIN,
     requestLessonToTrainingMode
   );
+  yield takeEvery(actionsTypes.SAVE_TRAINING_SCORE, saveTrainingScoreSaga);
 }
 
 export default defaultSagas;

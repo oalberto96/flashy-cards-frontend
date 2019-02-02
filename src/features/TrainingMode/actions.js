@@ -42,3 +42,16 @@ export const rateConceptBad = conceptId => {
     payload: { conceptId }
   };
 };
+
+export const saveTrainingScore = (lessonId, concepts) => {
+  return {
+    type: types.SAVE_TRAINING_SCORE,
+    payload: { lessonId, concepts }
+  };
+};
+
+export const saveTrainingScoreSuccess = () => {
+  return {
+    type: types.SAVE_TRAINING_SCORE
+  };
+};
