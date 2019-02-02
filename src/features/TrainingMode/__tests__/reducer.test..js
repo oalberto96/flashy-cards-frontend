@@ -34,13 +34,32 @@ const lesson = {
         media: null,
         audio: null
       }
+    },
+    {
+      id: 41,
+      cardA: {
+        text: "tes",
+        media: null,
+        audio: null
+      },
+      cardB: {
+        text: "xas",
+        media: null,
+        audio: null
+      }
     }
   ]
 };
 
 describe("Training Mode Reducer ", () => {
   it("should return the initial state", () => {
-    const initialState = {};
+    const initialState = {
+      lesson: {},
+      rateConcept: false,
+      showAnswer: false,
+      queue: [],
+      conceptsDone: []
+    };
     expect(reducer(undefined, {})).toEqual(initialState);
   });
 
@@ -50,7 +69,7 @@ describe("Training Mode Reducer ", () => {
         ...lesson,
         concepts: lesson.concepts.map(concept => ({ ...concept }))
       },
-      queue: [{ id: 40, mistakes: 0 }],
+      queue: [{ id: 40, mistakes: 0 }, { id: 41, mistakes: 0 }],
       conceptsDone: [],
       showAnswer: false
     };
@@ -102,6 +121,54 @@ describe("Training Mode Reducer ", () => {
       showAnswer: false,
       rateConcept: true
     };
-    // expect(reducer(state, actions.rateConcept(40))).toEqual()
+    expect(reducer(state, actions.rateConcept(40))).toEqual(expectedState);
+  });
+
+  it("should handle RATE_CONCEPT_GOOD", () => {
+    const state = {
+      lesson: {
+        ...lesson,
+        concepts: lesson.concepts.map(concept => ({ ...concept }))
+      },
+      queue: [{ id: 40, mistakes: 0 }, { id: 41, mistakes: 0 }],
+      conceptsDone: [],
+      showAnswer: true,
+      rateConcept: true
+    };
+    const expectedState = {
+      lesson: {
+        ...lesson,
+        concepts: lesson.concepts.map(concept => ({ ...concept }))
+      },
+      queue: [{ id: 41, mistakes: 0 }],
+      conceptsDone: [{ id: 40, mistakes: 0 }],
+      showAnswer: false,
+      rateConcept: false
+    };
+    expect(reducer(state, actions.rateConceptGood(40))).toEqual(expectedState);
+  });
+
+  it("should handle RATE_CONCEPT_BAD", () => {
+    const state = {
+      lesson: {
+        ...lesson,
+        concepts: lesson.concepts.map(concept => ({ ...concept }))
+      },
+      queue: [{ id: 40, mistakes: 0 }, { id: 41, mistakes: 0 }],
+      conceptsDone: [],
+      showAnswer: true,
+      rateConcept: true
+    };
+    const expectedState = {
+      lesson: {
+        ...lesson,
+        concepts: lesson.concepts.map(concept => ({ ...concept }))
+      },
+      queue: [{ id: 41, mistakes: 0 }, { id: 40, mistakes: 1 }],
+      conceptsDone: [],
+      showAnswer: false,
+      rateConcept: false
+    };
+    expect(reducer(state, actions.rateConceptBad(40))).toEqual(expectedState);
   });
 });

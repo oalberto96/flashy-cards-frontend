@@ -17,7 +17,8 @@ describe("Training mode sagas", () => {
           dispatch: action => dispatched.push(action),
           getState: () => {}
         },
-        requestLessonToTrainingMode
+        requestLessonToTrainingMode,
+        actions.requestLessonToTrain(1)
       ).done;
       expect(dispatched).toEqual([actions.requestLessonToTrainSuccess(lesson)]);
     });

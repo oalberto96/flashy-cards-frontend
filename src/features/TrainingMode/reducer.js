@@ -4,7 +4,14 @@
  *
  */
 import * as actionTypes from "./constants";
-const initialState = {};
+
+const initialState = {
+  lesson: {},
+  showAnswer: false,
+  rateConcept: false,
+  conceptsDone: [],
+  queue: []
+};
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -26,6 +33,41 @@ const reducer = (state = initialState, action) => {
     }
     case actionTypes.SHOW_ANSWER: {
       return { ...state, showAnswer: true };
+    }
+    case actionTypes.RATE_CONCEPT: {
+      return { ...state, rateConcept: true };
+    }
+    case actionTypes.RATE_CONCEPT_GOOD: {
+      const conceptsDone = state.conceptsDone.slice();
+      const queue = [];
+      state.queue.forEach(concept => {
+        if (concept.id === action.payload.conceptId) {
+          conceptsDone.push({ ...concept });
+          return;
+        }
+        queue.push({ ...concept });
+      });
+      return {
+        ...state,
+        queue,
+        conceptsDone,
+        showAnswer: false,
+        rateConcept: false
+      };
+    }
+    case actionTypes.RATE_CONCEPT_BAD: {
+      const queue = [];
+      let conceptPopped = null;
+      state.queue.forEach(concept => {
+        if (concept.id === action.payload.conceptId) {
+          conceptPopped = { id: concept.id, mistakes: concept.mistakes + 1 };
+          return;
+        }
+        queue.push({ ...concept });
+      });
+      const random = Math.floor(Math.random() * queue.length + 1);
+      queue.splice(random, 0, conceptPopped);
+      return { ...state, queue, showAnswer: false, rateConcept: false };
     }
     default: {
       return state;

@@ -21,3 +21,24 @@ export const showAnswer = () => {
     type: types.SHOW_ANSWER
   };
 };
+
+export const rateConcept = conceptId => {
+  return {
+    type: types.RATE_CONCEPT,
+    payload: { conceptId }
+  };
+};
+
+export const rateConceptGood = conceptId => {
+  return {
+    type: types.RATE_CONCEPT_GOOD,
+    payload: { conceptId }
+  };
+};
+
+export const rateConceptBad = conceptId => {
+  return {
+    type: types.RATE_CONCEPT_BAD,
+    payload: { conceptId }
+  };
+};

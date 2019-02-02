@@ -9,12 +9,12 @@ import * as actions from "./actions";
  *
  */
 
-const fetchLesson = () => {
+const fetchLesson = lessonId => {
   return Lessons.withConcepts().then(response => response.data);
 };
 
 export function* requestLessonToTrainingMode(action) {
-  const lesson = yield call(fetchLesson);
+  const lesson = yield call(fetchLesson, action.payload.lessonId);
   try {
     yield put(actions.requestLessonToTrainSuccess(lesson));
   } catch (e) {
