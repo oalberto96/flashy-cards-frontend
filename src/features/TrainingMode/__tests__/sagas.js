@@ -8,7 +8,7 @@ jest.mock("../../../agent");
 describe("Training mode sagas", () => {
   describe("requestLessonToTrain", () => {
     it("should put a REQUEST_LESSON_TO_TRAIN_SUCCESS when the server returns a lesson", async () => {
-      const lesson = { id: 1 };
+      const lesson = { id: 1, concepts: [] };
       const response = { data: lesson };
       Lessons.withConcepts.mockResolvedValue(response);
       const dispatched = [];

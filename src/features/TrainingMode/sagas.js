@@ -2,6 +2,7 @@ import { Lessons } from "../../agent";
 import { call, put, takeEvery } from "redux-saga/effects";
 import * as actionsTypes from "./constants";
 import * as actions from "./actions";
+import { ApiToLesson } from "../../common/utils/lessons";
 
 /**
  *
@@ -10,7 +11,9 @@ import * as actions from "./actions";
  */
 
 const fetchLesson = lessonId => {
-  return Lessons.withConcepts().then(response => response.data);
+  return Lessons.withConcepts(lessonId).then(response =>
+    ApiToLesson(response.data)
+  );
 };
 
 export function* requestLessonToTrainingMode(action) {

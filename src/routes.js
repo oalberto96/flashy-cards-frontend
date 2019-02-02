@@ -7,6 +7,7 @@ import ConceptListContainer from "./features/Play/ConceptListContainer";
 import CreateAndUpdateLesson from "./features/CreateAndUpdateLesson";
 import LoginContainer from "./features/Authentication/LoginContainer";
 import SignUpContainer from "./features/Authentication/SignUpContainer";
+import TrainLessonContainer from "./features/TrainingMode/TrainLessonContainer";
 
 const Router = () => {
   return (
@@ -22,6 +23,10 @@ const Router = () => {
           <PrivateRoute
             path="/lessons/:lessonId/edit"
             component={CreateAndUpdateLesson}
+          />
+          <PrivateRoute
+            path="/lessons/:lessonId/training"
+            component={TrainLessonContainer}
           />
           <PrivateRoute
             path="/lessons/:lessonId"

@@ -71,7 +71,8 @@ describe("Training Mode Reducer ", () => {
       },
       queue: [{ id: 40, mistakes: 0 }, { id: 41, mistakes: 0 }],
       conceptsDone: [],
-      showAnswer: false
+      showAnswer: false,
+      rateConcept: false
     };
     expect(
       reducer(undefined, actions.requestLessonToTrainSuccess(lesson))
@@ -86,7 +87,8 @@ describe("Training Mode Reducer ", () => {
       },
       queue: [{ id: 40, mistakes: 0 }],
       conceptsDone: [],
-      showAnswer: false
+      showAnswer: false,
+      rateConcept: false
     };
     const expectedState = {
       lesson: {
@@ -95,6 +97,7 @@ describe("Training Mode Reducer ", () => {
       },
       queue: [{ id: 40, mistakes: 0 }],
       conceptsDone: [],
+      rateConcept: false,
       showAnswer: true
     };
     expect(reducer(state, actions.showAnswer())).toEqual(expectedState);

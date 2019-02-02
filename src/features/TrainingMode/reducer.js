@@ -29,7 +29,13 @@ const reducer = (state = initialState, action) => {
         id: concept.id,
         mistakes: 0
       }));
-      return { lesson: copyLesson, queue, conceptsDone: [], showAnswer: false };
+      return {
+        lesson: copyLesson,
+        queue,
+        conceptsDone: [],
+        showAnswer: false,
+        rateConcept: false
+      };
     }
     case actionTypes.SHOW_ANSWER: {
       return { ...state, showAnswer: true };

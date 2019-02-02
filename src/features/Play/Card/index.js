@@ -12,7 +12,6 @@ import * as mediaTypes from "../../../common/constants/mediaTypes";
 
 const Card = ({ cardText, flipCard, cardMedia, cardAudio }) => {
   let media;
-  console.log(cardMedia);
   if (cardMedia != null) {
     switch (cardMedia.mediaType.name) {
       case mediaTypes.IMAGE.name:
@@ -45,7 +44,7 @@ const Card = ({ cardText, flipCard, cardMedia, cardAudio }) => {
           let audio = new Audio(cardAudio);
           audio.play();
         }
-        flipCard();
+        flipCard && flipCard();
       }}
     >
       {cardText}
@@ -55,7 +54,7 @@ const Card = ({ cardText, flipCard, cardMedia, cardAudio }) => {
 };
 Card.propTypes = {
   cardText: PropTypes.string.isRequired,
-  flipCard: PropTypes.func.isRequired,
+  flipCard: PropTypes.func,
   cardMedia: PropTypes.object,
   cardAudio: PropTypes.string
 };
