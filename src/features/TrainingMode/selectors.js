@@ -70,3 +70,7 @@ export const getConceptsWithScore = state => {
   });
   return concepts;
 };
+
+export const getTrainingStatus = state => {
+  return state.lessonTraining.trainingFinished;
+};

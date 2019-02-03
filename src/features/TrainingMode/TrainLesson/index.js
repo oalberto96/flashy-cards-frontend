@@ -1,5 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Redirect } from "react-router-dom";
+
 import Game from "../Game";
 import TrainLessonStatisticsContainer from "../TrainLessonStatisticsContainer";
 
@@ -15,6 +17,7 @@ class TrainLesson extends React.Component {
     } else if (this.props.conceptsDone.length > 0) {
       screen = <TrainLessonStatisticsContainer />;
     }
+    this.props.trainingFinished && (screen = <Redirect to="/dashboard" />);
     return screen;
   }
 }
@@ -31,7 +34,8 @@ TrainLesson.propTypes = {
   rateConcept: PropTypes.func.isRequired,
   rateConceptBad: PropTypes.func.isRequired,
   rateConceptGood: PropTypes.func.isRequired,
-  requestLessonToTrain: PropTypes.func.isRequired
+  requestLessonToTrain: PropTypes.func.isRequired,
+  trainingFinished: PropTypes.bool
 };
 
 export default TrainLesson;

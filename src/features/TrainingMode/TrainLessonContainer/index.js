@@ -17,7 +17,8 @@ export const mapStateToProps = state => {
     isRatingConcept: selectors.getRateConcept(state),
     isAnswerVisible: selectors.getShowAnswer(state),
     queue: selectors.getQueue(state),
-    conceptsDone: selectors.getConceptsDone(state)
+    conceptsDone: selectors.getConceptsDone(state),
+    trainingFinished: selectors.getTrainingStatus(state)
   };
 };
 export const mapDispatchToProps = (dispatch, ownProps) => {

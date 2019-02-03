@@ -56,5 +56,7 @@ export const Lessons = {
     requests.get(`lessons/lessons/${lessonId}/concepts/`),
   delete: lessonId => requests.delete(`lessons/lessons/${lessonId}/`),
   saveTrainingScore: (lessonId, conceptsScore) =>
-    requests.post(`/lessons/lessons/${lessonId}/training/`, conceptsScore)
+    requests.post(`lessons/lessons/${lessonId}/training/`, {
+      concepts: conceptsScore
+    })
 };

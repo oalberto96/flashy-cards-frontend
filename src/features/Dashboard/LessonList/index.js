@@ -38,6 +38,12 @@ const LessonList = ({
                   className={styles.iconActions}
                   to={`/lessons/${lesson.id}`}
                 >
+                  <FontAwesome className="fa-eye" name="fa-play" />
+                </Link>
+                <Link
+                  className={styles.iconActions}
+                  to={`/lessons/${lesson.id}/training/`}
+                >
                   <FontAwesome className="fa-play" name="fa-play" />
                 </Link>
                 <Link

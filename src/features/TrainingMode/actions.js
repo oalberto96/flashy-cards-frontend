@@ -52,6 +52,6 @@ export const saveTrainingScore = (lessonId, concepts) => {
 
 export const saveTrainingScoreSuccess = () => {
   return {
-    type: types.SAVE_TRAINING_SCORE
+    type: types.SAVE_TRAINING_SCORE_SUCCESS
   };
 };
