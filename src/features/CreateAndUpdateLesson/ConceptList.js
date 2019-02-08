@@ -21,6 +21,7 @@ const ConceptList = ({ concepts, deleteConcept }) => {
             cardType="A"
             cardText={concept.cardA.text}
             cardMedia={concept.cardA.media}
+            cardAudio={concept.cardB.audio}
           />
         </div>
         <div className="col-md-6">
@@ -29,6 +30,7 @@ const ConceptList = ({ concepts, deleteConcept }) => {
             cardType="B"
             cardText={concept.cardB.text}
             cardMedia={concept.cardB.media}
+            cardAudio={concept.cardB.audio}
           />
         </div>
       </div>

@@ -37,6 +37,15 @@ export const setCardText = (conceptId, cardText, card) => {
   };
 };
 
+export const setCardAudio = (conceptId, cardAudio, card) => ({
+  type: types.SET_CARD_AUDIO,
+  payload: {
+    conceptId,
+    cardAudio,
+    card
+  }
+});
+
 export const changeNewLessonName = newLessonName => {
   return {
     type: CHANGE_NEW_LESSON_NAME,

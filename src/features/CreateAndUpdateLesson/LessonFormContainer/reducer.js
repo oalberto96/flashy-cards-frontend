@@ -49,6 +49,22 @@ function LessonFormContainerReducer(state = initialState, action) {
         return concept;
       });
       return { ...state, concepts: conceptsCopy };
+    case types.SET_CARD_AUDIO: {
+      console.log(action);
+      let cardAudio = action.payload.cardAudio;
+      let key = null;
+      conceptsCopy = state.concepts.map(concept => {
+        if (concept.id === action.payload.conceptId) {
+          key = action.payload.card === "A" ? "cardA" : "cardB";
+          return {
+            ...concept,
+            [key]: { ...concept[key], audio: cardAudio }
+          };
+        }
+        return concept;
+      });
+      return { ...state, concepts: conceptsCopy };
+    }
     case types.SET_CARD_IMAGE_SUCCESS:
       const cardImage = action.payload.image;
       let image = new Image();

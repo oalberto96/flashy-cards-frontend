@@ -27,6 +27,10 @@ export const mapDispatchToProps = (dispatch, ownProps) => {
     setCardGif: gifUrl =>
       dispatch(
         actions.setCardGIF(ownProps.conceptId, ownProps.cardType, gifUrl)
+      ),
+    setCardAudio: audioUrl =>
+      dispatch(
+        actions.setCardAudio(ownProps.conceptId, audioUrl, ownProps.cardType)
       )
   };
 };

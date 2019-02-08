@@ -16,7 +16,11 @@ import ImageIcon from "../../../resources/icons/baseline-add_photo_alternate-24p
 class CardForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { cardText: this.props.cardText, gifSearcherActive: false };
+    this.state = {
+      cardText: this.props.cardText,
+      gifSearcherActive: false,
+      cardAudio: this.props.cardAudio || ""
+    };
   }
 
   componentDidUpdate(prevProps) {
@@ -29,6 +33,29 @@ class CardForm extends React.Component {
 
   handleInputChange = event => {
     this.setState({ [event.target.id]: event.target.value });
+  };
+
+  audioInput = () => {
+    return (
+      <div>
+        <input
+          id="cardAudio"
+          value={this.state.cardAudio}
+          type="text"
+          className="form-control"
+          onChange={this.handleInputChange}
+        />
+        <button
+          onClick={e => {
+            e.preventDefault();
+            this.props.setCardAudio(this.state.cardAudio);
+            this.setState({ showAudioInput: false });
+          }}
+        >
+          Save audio
+        </button>
+      </div>
+    );
   };
 
   render() {
@@ -88,8 +115,16 @@ class CardForm extends React.Component {
           </div>
         )}
 
+        {this.state.showAudioInput && this.audioInput()}
+
         <div className="pull-right">
-          <img src={MicIcon} alt="Mic icon" />
+          <img
+            src={MicIcon}
+            alt="Mic icon"
+            onClick={() => {
+              this.setState({ showAudioInput: true });
+            }}
+          />
           <label htmlFor={`cardImage${this.props.cardId}`}>
             <img src={ImageIcon} alt="imageicon" />
           </label>
