@@ -13,7 +13,8 @@ import {
   requestLessons,
   setVisibleDeleteLessonModal,
   setInvisibleDeleteLessonModal,
-  requestDeleteLesson
+  requestDeleteLesson,
+  reverseList
 } from "./actions";
 import { getLessons, deleteModalIsVisible } from "./selectors";
 
@@ -49,7 +50,8 @@ const mapDispatchToProps = dispatch => {
       setInvisibleDeleteLessonModal,
       dispatch
     ),
-    requestDeleteLesson: bindActionCreators(requestDeleteLesson, dispatch)
+    requestDeleteLesson: bindActionCreators(requestDeleteLesson, dispatch),
+    reverseList: bindActionCreators(reverseList, dispatch)
   };
 };
 

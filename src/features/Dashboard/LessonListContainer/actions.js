@@ -11,7 +11,8 @@ import {
   SET_INVISIBLE_DELETE_LESSON_MODAL,
   REQUEST_DELETE_LESSON,
   REQUEST_DELETE_LESSON_SUCCESS,
-  REQUEST_DELETE_LESSON_ERROR
+  REQUEST_DELETE_LESSON_ERROR, 
+  REVERSE_LIST
 } from "./constants";
 
 export const setVisibleDeleteLessonModal = lesson_id => {
@@ -59,3 +60,9 @@ export const requestLessonsSucceeded = lessons => {
     }
   };
 };
+
+export const reverseList = () => {
+  return {
+    type: REVERSE_LIST
+  }
+}

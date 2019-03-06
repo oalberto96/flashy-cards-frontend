@@ -8,7 +8,8 @@ import {
   REQUEST_LESSONS_SUCCEEDED,
   SET_VISIBLE_DELETE_LESSON_MODAL,
   SET_INVISIBLE_DELETE_LESSON_MODAL,
-  REQUEST_DELETE_LESSON_SUCCESS
+  REQUEST_DELETE_LESSON_SUCCESS,
+  REVERSE_LIST
 } from "./constants";
 
 const initialState = {
@@ -30,6 +31,10 @@ function LessonListContainerReducer(state = initialState, action) {
       return { ...state, confirmDeleteLessonModalVisible: false };
     case REQUEST_DELETE_LESSON_SUCCESS:
       return { ...state, confirmDeleteLessonModalVisible: false };
+    case REVERSE_LIST:
+      let lessonsCopy = state.lessons.slice();
+      lessonsCopy.reverse();
+      return { ...state, lessons: lessonsCopy };
     default:
       return state;
   }

@@ -16,11 +16,13 @@ const LessonList = ({
   confirmDelete,
   setVisibleConfirmDelete,
   setInvisibleConfirmDelete,
-  requestDeleteLesson
+  requestDeleteLesson,
+  reverseList
 }) => {
   return (
     <div className="collection-list">
       <h1 className={styles.title}>My lists</h1>
+      <button onClick={() => reverseList()}>reverse</button>
       <ul className="list-group">
         {lessons.map(lesson => {
           return (
