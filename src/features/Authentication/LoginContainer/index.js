@@ -3,8 +3,13 @@ import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import Login from "../Login";
 import { requestLogin } from "./actions";
+import { authenticateWithLocalCookies } from "../actions";
 
 export class LoginContainer extends React.Component {
+  componentWillMount() {
+    this.props.authenticateWithLocalCookies();
+  }
+
   render() {
     return this.props.isAuthenticated ? (
       <Redirect to="/dashboard" />
@@ -22,7 +27,8 @@ export const mapStateToProps = (state, ownProps) => {
 
 export const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    onClick: (username, password) => dispatch(requestLogin(username, password))
+    onClick: (username, password) => dispatch(requestLogin(username, password)),
+    authenticateWithLocalCookies: () => dispatch(authenticateWithLocalCookies())
   };
 };
 

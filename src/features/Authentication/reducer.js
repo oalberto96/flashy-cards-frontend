@@ -13,7 +13,12 @@ import {
   REQUEST_SIGNUP_FAILED,
   DIFFERENT_PASSWORD_ERROR
 } from "./SignUpContainer/constants";
-import { EMPTY_USERNAME_ERROR, EMPTY_PASSWORD_ERROR } from "./constants";
+import { Auth } from "../../agent";
+import {
+  EMPTY_USERNAME_ERROR,
+  EMPTY_PASSWORD_ERROR,
+  AUTHENTICATE_WITH_LOCAL_COOKIES
+} from "./constants";
 
 const initialiState = {
   isAuthenticated: false
@@ -21,6 +26,13 @@ const initialiState = {
 
 export default function LoginContainerReducer(state = initialiState, action) {
   switch (action.type) {
+    case AUTHENTICATE_WITH_LOCAL_COOKIES:
+      const newState = { ...state };
+      newState.isAuthenticated = Auth.hasCookies();
+      if (newState.isAuthenticated) {
+        Auth.configHeaders();
+      }
+      return { ...state, isAuthenticated: Auth.hasCookies() };
     case REQUEST_LOGIN_SUCCEEDED:
       window.location.reload();
       return { ...state, isAuthenticated: true };

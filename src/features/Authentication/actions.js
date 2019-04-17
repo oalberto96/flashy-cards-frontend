@@ -1,7 +1,8 @@
 import {
   EMPTY_PASSWORD_ERROR,
   EMPTY_USERNAME_ERROR,
-  CLEAR_ERRORS
+  CLEAR_ERRORS,
+  AUTHENTICATE_WITH_LOCAL_COOKIES
 } from "./constants";
 
 export const emptyPasswordError = () => {
@@ -20,4 +21,8 @@ export const clearErrors = () => {
   return {
     type: CLEAR_ERRORS
   };
+};
+
+export const authenticateWithLocalCookies = () => {
+  return { type: AUTHENTICATE_WITH_LOCAL_COOKIES };
 };
