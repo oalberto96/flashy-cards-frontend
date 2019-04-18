@@ -10,6 +10,7 @@ import { requestLoginSucceeded, requestLoginFailed } from "./actions";
 import { emptyUsernameError, emptyPasswordError } from "../actions";
 
 const postCredentials = credentials => {
+  Auth.configHeaders();
   return Auth.login(credentials)
     .then(response => {
       Auth.configCookies(response.data);
