@@ -1,5 +1,7 @@
 import React from "react";
 import Card from "../../Play/Card";
+import FontAwesome from "react-fontawesome";
+import * as styles from "./game.module.css";
 
 const Game = props => {
   let answer = null;
@@ -32,12 +34,19 @@ const Game = props => {
       </div>
       {props.isRatingConcept && (
         <div className="row">
-          <button onClick={() => props.rateConceptGood(props.currentConceptId)}>
-            Bien
-          </button>
-          <button onClick={() => props.rateConceptBad(props.currentConceptId)}>
-            Mal
-          </button>
+          <div className={styles.iconWrapper}>
+            <h4>Did you guess?</h4>
+            <FontAwesome
+              onClick={() => props.rateConceptBad(props.currentConceptId)}
+              className={`fa-thumbs-down ${styles.icon}`}
+              name="fa-thumbs-down"
+            />
+            <FontAwesome
+              onClick={() => props.rateConceptGood(props.currentConceptId)}
+              className={`fa-thumbs-up ${styles.icon}`}
+              name="fa-thumbs-up"
+            />
+          </div>
         </div>
       )}
     </div>
