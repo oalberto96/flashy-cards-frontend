@@ -1,0 +1,26 @@
+.cardContainer {
+  height: 20em;
+  background-color: #c4ebfb;
+  text-align: center;
+  vertical-align: middle;
+  padding: 0.3em;
+}
+
+@media only screen and (max-height: 400px) {
+  .cardContainer {
+    max-height: 80%;
+  }
+}
+
+.cardImage {
+  max-height: 80%;
+}
+
+.cardTextContainer {
+  height: 20%;
+  background-color: bisque;
+  padding-top: 0.5em;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}

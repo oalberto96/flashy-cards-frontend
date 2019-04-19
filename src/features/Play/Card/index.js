@@ -6,7 +6,7 @@
 
 import React from "react";
 import PropTypes from "prop-types";
-import "./styles.css";
+import * as styles from "./styles.module.css";
 import { CDN } from "../../../agent";
 import * as mediaTypes from "../../../common/constants/mediaTypes";
 
@@ -15,20 +15,12 @@ const Card = ({ cardText, flipCard, cardMedia, cardAudio }) => {
   if (cardMedia != null) {
     switch (cardMedia.mediaType.name) {
       case mediaTypes.IMAGE.name:
-        media = (
-          <img
-            alt={cardText}
-            src={CDN.getUrl(cardMedia.source)}
-            className="img-fluid"
-          />
-        );
-        break;
       case mediaTypes.GIF.name:
         media = (
           <img
             alt={cardText}
             src={CDN.getUrl(cardMedia.source)}
-            className="img-fluid"
+            className={`img-fluid ${styles.cardImage}`}
           />
         );
         break;
@@ -38,7 +30,7 @@ const Card = ({ cardText, flipCard, cardMedia, cardAudio }) => {
   }
   return (
     <div
-      className="card-container"
+      className={styles.cardContainer}
       onClick={() => {
         if (cardAudio) {
           let audio = new Audio(cardAudio);
@@ -47,8 +39,8 @@ const Card = ({ cardText, flipCard, cardMedia, cardAudio }) => {
         flipCard && flipCard();
       }}
     >
-      {cardText}
       {media}
+      <div className={styles.cardTextContainer}>{cardText}</div>
     </div>
   );
 };
