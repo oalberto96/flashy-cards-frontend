@@ -1,0 +1,19 @@
+.container {
+  border: solid 1px #13d0f8;
+  margin-bottom: 0.5em;
+  padding: 1em 0em 0em 1em;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+.title {
+  margin: 0px;
+}
+
+.iconWrapper {
+}
+
+.icon {
+  color: #13d0f8;
+  font-size: 1.2em;
+}
