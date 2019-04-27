@@ -12,10 +12,10 @@ const Dashboard = () => {
   return (
     <div className="container">
       <div className="row">
-        <div className="col-md-6">
+        <div className="col-md-8">
           <LessonListContainer />
         </div>
-        <div className="col-md-6">
+        <div className="col-md-4">
           <CreateLessonButton />
         </div>
       </div>
