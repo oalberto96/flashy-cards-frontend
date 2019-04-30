@@ -8,6 +8,7 @@ import CreateAndUpdateLesson from "./features/CreateAndUpdateLesson";
 import LoginContainer from "./features/Authentication/LoginContainer";
 import SignUpContainer from "./features/Authentication/SignUpContainer";
 import TrainLessonContainer from "./features/TrainingMode/TrainLessonContainer";
+import LessonMenu from "./features/LessonMenu/LessonMenu";
 
 const Router = () => {
   return (
@@ -20,6 +21,7 @@ const Router = () => {
           <Route path="/signup" component={SignUpContainer} />
           <PrivateRoute path="/dashboard" component={Dashboard} />
           <PrivateRoute path="/lessons/new" component={CreateAndUpdateLesson} />
+          <PrivateRoute path="/lessons/:lessonId/menu" component={LessonMenu} />
           <PrivateRoute
             path="/lessons/:lessonId/edit"
             component={CreateAndUpdateLesson}
