@@ -5,7 +5,6 @@
  */
 
 import React from "react";
-import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import styles from "./styles.module.css";
 import Modal from "../../../components/common/Modal";
