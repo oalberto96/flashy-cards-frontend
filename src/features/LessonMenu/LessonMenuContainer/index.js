@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import * as actions from "./actions";
+import * as selectors from "./selectors";
 import { connect } from "react-redux";
 import LessonMenu from "../LessonMenu";
 
@@ -13,7 +14,9 @@ export class LessonMenuContainer extends Component {
   };
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  lesson: selectors.getLessonMenu(state)
+});
 
 const mapDispatchToProps = dispatch => {
   return {

@@ -6,11 +6,11 @@ import playIcon from "../../../img/icons/play_circle.svg";
 import editIcon from "../../../img/icons/edit.svg";
 import scoreIcon from "../../../img/icons/bar_chart.svg";
 
-const LessonMenu = () => {
+const LessonMenu = ({ lesson }) => {
   return (
     <div className="container">
-      <div>Title</div>
-      <p>Description</p>
+      <div>{lesson.name}</div>
+      <p>{lesson.description}</p>
 
       <h2>What would you like to do?</h2>
 
