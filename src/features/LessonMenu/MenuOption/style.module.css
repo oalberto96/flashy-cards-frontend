@@ -1,0 +1,14 @@
+.container {
+  border: solid;
+  border-radius: 25px;
+  width: 200px;
+  height: 200px;
+  padding: 2em 10px 10px 10px;
+  text-align: center;
+}
+
+.icon {
+  height: 6em;
+  display: block;
+  margin: 0em auto 1em auto;
+}
