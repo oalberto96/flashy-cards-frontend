@@ -7,6 +7,13 @@
   text-align: center;
 }
 
+.container:hover {
+  background-color: #13d0f8;
+  color: white;
+  cursor: pointer;
+  transition-duration: 300ms;
+}
+
 .icon {
   height: 6em;
   display: block;

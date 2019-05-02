@@ -8,12 +8,10 @@ import scoreIcon from "../../../img/icons/bar_chart.svg";
 
 const LessonMenu = ({ lesson }) => {
   return (
-    <div className="container">
-      <div>{lesson.name}</div>
+    <div className={`container ${styles.container}`}>
+      <h2>{lesson.name}</h2>
       <p>{lesson.description}</p>
-
-      <h2>What would you like to do?</h2>
-
+      <h3 className={styles.callToAction}>What would you like to do?</h3>
       <div className="row">
         <MenuOption title="Study" icon={studyIcon} alt="Study option" />
         <MenuOption title="Play" icon={playIcon} alt="Play option" />
