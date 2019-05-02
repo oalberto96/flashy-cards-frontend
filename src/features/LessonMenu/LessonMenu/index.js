@@ -6,18 +6,33 @@ import playIcon from "../../../img/icons/play_circle.svg";
 import editIcon from "../../../img/icons/edit.svg";
 import scoreIcon from "../../../img/icons/bar_chart.svg";
 
-const LessonMenu = ({ lesson }) => {
+const LessonMenu = ({ lesson, history }) => {
   return (
     <div className={`container ${styles.container}`}>
       <h2>{lesson.name}</h2>
       <p>{lesson.description}</p>
       <h3 className={styles.callToAction}>What would you like to do?</h3>
       <div className="row">
-        <MenuOption title="Study" icon={studyIcon} alt="Study option" />
-        <MenuOption title="Play" icon={playIcon} alt="Play option" />
+        <MenuOption
+          title="Study"
+          icon={studyIcon}
+          alt="Study option"
+          onClick={() => history.push(`/lessons/${lesson.id}`)}
+        />
+        <MenuOption
+          title="Play"
+          icon={playIcon}
+          alt="Play option"
+          onClick={() => history.push(`/lessons/${lesson.id}/training`)}
+        />
       </div>
       <div className="row">
-        <MenuOption title="Edit" icon={editIcon} alt="Edit option" />
+        <MenuOption
+          title="Edit"
+          icon={editIcon}
+          alt="Edit option"
+          onClick={() => history.push(`/lessons/${lesson.id}/edit`)}
+        />
         <MenuOption title="Score" icon={scoreIcon} alt="Score option" />
       </div>
     </div>
