@@ -34,7 +34,7 @@ class PlayConcept extends React.Component {
             {this.props.index + 1}/{this.props.listLength}
           </p>
           <div className="container height-100-relative">
-            <div className="slider row height-100-relative">
+            <div className="slider row ">
               <div className="col-1 col-md-2" onClick={this.props.prevCard}>
                 {"<"}
               </div>
