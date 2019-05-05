@@ -34,23 +34,23 @@ class Card extends React.Component {
           media = undefined;
       }
     }
-    let cardContainerClass = `${styles.cardContainer} ${
-      this.state.flipped ? styles.flipCard : ""
-    }`;
+    let flipCardContainerClass = this.state.flipped
+      ? styles.flipContainerCard
+      : "";
+    let flipCardClass = this.state.flipped ? styles.flipCard : "";
     return (
-      <div className={cardContainerClass}>
+      <div className={`${styles.cardContainer} ${flipCardContainerClass}`}>
         <div
-          className={styles.card}
+          className={`${styles.card} ${flipCardClass}`}
           onClick={() => {
             if (cardAudio) {
               let audio = new Audio(cardAudio);
               audio.play();
             }
             if (flipCard) {
-              this.setState({ flipped: true }, () =>
+              this.setState({ flipped: !this.state.flipped }, () =>
                 setTimeout(() => flipCard(), 200)
               );
-              setTimeout(() => this.setState({ flipped: false }), 500);
             }
           }}
         >

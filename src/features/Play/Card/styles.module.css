@@ -16,9 +16,14 @@
   transform-style: preserve-3d;
 }
 
-.flipCard {
+.flipContainerCard {
   transition: transform 0.8s;
   transform: rotateY(180deg);
+}
+
+.flipCard {
+  transition: transform 0.8s;
+  transform: rotateY(-180deg);
 }
 
 .cardImage {
