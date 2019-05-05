@@ -1,4 +1,9 @@
 .cardContainer {
+  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+  background-color: transparent;
+}
+
+.card {
   height: 20em;
   background-color: #c4ebfb;
   text-align: center;
@@ -7,6 +12,13 @@
   border-radius: 25px 25px 25px 25px;
   cursor: pointer;
   position: relative;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flipCard {
+  transition: transform 0.8s;
+  transform: rotateY(180deg);
 }
 
 .cardImage {
