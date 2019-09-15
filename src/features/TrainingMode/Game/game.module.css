@@ -1,6 +1,12 @@
 .icon {
   font-size: 3em;
   padding: 0 1em;
+  cursor: pointer;
+}
+
+.icon:hover {
+  color: #00a6ff;
+  transition-duration: 300ms;
 }
 
 .iconWrapper {

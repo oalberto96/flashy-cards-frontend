@@ -21,7 +21,7 @@ const Game = props => {
     );
   }
   return (
-    <div className="container">
+    <div className="container featureMargin">
       <div className="row">
         <div className="col-6 col-md-6">
           <Card
