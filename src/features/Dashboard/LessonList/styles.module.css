@@ -9,3 +9,15 @@
 .optionsIcon {
   background-color: white;
 }
+
+.orderButton {
+  padding-bottom: 1em;
+}
+
+.orderButton:hover {
+  cursor: pointer;
+}
+
+.orderButton > span {
+  padding-right: 1em;
+}

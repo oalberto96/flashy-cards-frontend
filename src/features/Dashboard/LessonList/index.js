@@ -7,6 +7,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styles from "./styles.module.css";
+import FontAwesome from "react-fontawesome";
 import Modal from "../../../components/common/Modal";
 import Lesson from "../Lesson";
 
@@ -21,7 +22,14 @@ const LessonList = ({
   return (
     <div className="collection-list">
       <h1 className={styles.title}>My lists</h1>
-      <button onClick={() => reverseList()}>reverse</button>
+      <div
+        className={`text-right ${styles.orderButton}`}
+        onClick={() => reverseList()}
+      >
+        <span></span>
+        <FontAwesome className="fa-sort" name="fa-sort"></FontAwesome>
+        Order
+      </div>
       <ul className="list-group">
         {lessons.map(lesson => {
           return <Lesson key={lesson.id} {...lesson} />;

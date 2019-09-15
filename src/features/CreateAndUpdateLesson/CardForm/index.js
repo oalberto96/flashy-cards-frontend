@@ -8,7 +8,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import GiphySearcher from "../GiphySearcher";
 import { CDN } from "../../../agent";
+import styles from "./styles.module.css";
 import * as mediaTypes from "../../../common/constants/mediaTypes";
+import NoImage from "../../../resources/common/no-image.png";
 import GifIcon from "../../../resources/icons/baseline-gif-24px.svg";
 import MicIcon from "../../../resources/icons/baseline-mic-24px.svg";
 import ImageIcon from "../../../resources/icons/baseline-add_photo_alternate-24px.svg";
@@ -83,21 +85,36 @@ class CardForm extends React.Component {
           );
           break;
         default:
-          media = "";
+          media = media = (
+            <img
+              src={NoImage}
+              style={{ maxWidth: "250px" }}
+              className="image-fluid"
+              alt="no image"
+            />
+          );
       }
     } else {
-      media = "";
+      media = media = (
+        <img
+          src={NoImage}
+          style={{ maxWidth: "250px" }}
+          className="image-fluid"
+          alt="no image"
+        />
+      );
     }
     return (
       <div className="text-center">
         {!this.state.gifSearcherActive ? (
           <div>
-            <div className="col-md-2 text-center">{media}</div>
+            <div className={`text-center ${styles.mediaWrapper}`}>{media}</div>
             <input
               id="cardText"
               value={this.state.cardText}
               type="text"
-              className="form-control"
+              placeholder="Description"
+              className={`form-control ${styles.input}`}
               onChange={this.handleInputChange}
               onBlur={() => {
                 this.props.setCardText(this.state.cardText);
