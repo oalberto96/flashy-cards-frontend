@@ -12,7 +12,7 @@ const LessonMenu = ({ lesson, history }) => {
       <h2>{lesson.name}</h2>
       <p>{lesson.description}</p>
       <h3 className={styles.callToAction}>What would you like to do?</h3>
-      <div className="row">
+      <div className={`row ${styles.optionsWrapper}`}>
         <MenuOption
           title="Study"
           icon={studyIcon}
@@ -26,7 +26,7 @@ const LessonMenu = ({ lesson, history }) => {
           onClick={() => history.push(`/lessons/${lesson.id}/training`)}
         />
       </div>
-      <div className="row">
+      <div className={`row ${styles.optionsWrapper}`}>
         <MenuOption
           title="Edit"
           icon={editIcon}
