@@ -23,11 +23,15 @@ import {
 } from "./constants";
 
 const initialiState = {
-  isAuthenticated: false
+  isAuthenticated: false,
+  user: {}
 };
 
-export default function LoginContainerReducer(state = initialiState, action) {
-  switch (action.type) {
+export default function LoginContainerReducer(
+  state = initialiState,
+  { type, payload }
+) {
+  switch (type) {
     case AUTHENTICATE_WITH_LOCAL_COOKIES:
       const newState = { ...state };
       newState.isAuthenticated = Auth.hasCookies();
@@ -36,9 +40,10 @@ export default function LoginContainerReducer(state = initialiState, action) {
       }
       return { ...state, isAuthenticated: Auth.hasCookies() };
     case AUTHENTICATED_WITH_COOKIES:
-      return { ...state, isAuthenticated: true };
+      return { ...state, isAuthenticated: true, user: payload };
     case REQUEST_LOGIN_SUCCEEDED:
-      return { ...state, isAuthenticated: true };
+      console.log(payload);
+      return { ...state, isAuthenticated: true, user: payload.user_data };
     case LOGOUT:
       return { ...state, isAuthenticated: false };
     case REQUEST_LOGIN_FAILED:

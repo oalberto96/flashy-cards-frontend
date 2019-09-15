@@ -8,12 +8,14 @@ const HeaderContainer = () => {
   const isAuthenticated = useSelector(
     store => store.authentication.isAuthenticated
   );
-  const username = "example";
+  const username = useSelector(store =>
+    store.authentication.user ? store.authentication.user.username : null
+  );
   const dispatch = useDispatch();
   return (
     <Header
       isAuthenticated={isAuthenticated}
-      username
+      username={username}
       onLogoutClick={() => {
         Auth.clearCookies();
         Auth.removeHeaders();

@@ -51,7 +51,11 @@ export const Auth = {
   clearCookies: () => {
     cookies.remove("csrftoken", { path: "/" });
     cookies.remove("token", { path: "/" });
-  }
+  },
+  saveUserData: user => {
+    localStorage.setItem("user", JSON.stringify(user));
+  },
+  loadUserData: () => JSON.parse(localStorage.getItem("user"))
 };
 
 export const Lessons = {

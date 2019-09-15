@@ -18,7 +18,7 @@ export const PrivateRoute = props => {
       componentToRender = <Redirect to="/login" />;
     } else {
       Auth.configHeaders();
-      dispatch(authenticatedWithCookies());
+      dispatch(authenticatedWithCookies(Auth.loadUserData()));
     }
   }
   return componentToRender;

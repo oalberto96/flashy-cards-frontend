@@ -13,9 +13,9 @@ const postCredentials = credentials => {
   Auth.configHeaders();
   return Auth.login(credentials)
     .then(response => {
-      Auth.configCookies(response.data);
+      Auth.configCookies(response.data.credentials);
       Auth.configHeaders();
-      return true;
+      return response.data;
     })
     .catch(error => {
       return false;
@@ -38,10 +38,13 @@ function* validateInputs({ username, password }) {
 function* requestLogin(action) {
   const validInputs = yield call(validateInputs, action.payload);
   if (validInputs) {
-    const callSuccess = yield call(postCredentials, action.payload);
-    yield callSuccess
-      ? put(requestLoginSucceeded())
-      : put(requestLoginFailed());
+    const response = yield call(postCredentials, action.payload);
+    if (response) {
+      yield put(requestLoginSucceeded(response));
+      Auth.saveUserData(response.user_data);
+    } else {
+      yield put(requestLoginFailed());
+    }
   }
 }
 

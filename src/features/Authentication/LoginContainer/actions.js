@@ -19,9 +19,10 @@ export const requestLogin = (username, password) => {
   };
 };
 
-export const requestLoginSucceeded = () => {
+export const requestLoginSucceeded = payload => {
   return {
-    type: REQUEST_LOGIN_SUCCEEDED
+    type: REQUEST_LOGIN_SUCCEEDED,
+    payload
   };
 };
 

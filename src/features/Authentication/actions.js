@@ -29,8 +29,8 @@ export const authenticateWithLocalCookies = () => {
   return { type: AUTHENTICATE_WITH_LOCAL_COOKIES };
 };
 
-export const authenticatedWithCookies = () => {
-  return { type: AUTHENTICATED_WITH_COOKIES };
+export const authenticatedWithCookies = payload => {
+  return { type: AUTHENTICATED_WITH_COOKIES, payload };
 };
 
 export const logout = () => {
