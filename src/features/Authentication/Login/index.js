@@ -19,9 +19,8 @@ class Login extends React.Component {
     return (
       <div className="row align-items-center justify-content-center">
         <form className={`${style.loginWrapper} col-lg-4 col-11 col-sm-11`}>
-          {this.props.error && <ErrorMessage {...this.props.error} />}
           <h1>Login</h1>
-
+          {this.props.error && <ErrorMessage {...this.props.error} />}
           <div className="form-group">
             <TextInput
               inputClassName="form-control"
@@ -50,9 +49,12 @@ class Login extends React.Component {
           >
             Login
           </button>
-          <Link className="btn btn-outline-info" to="/signup">
-            Sign Up
-          </Link>
+          <div className="pull-right">
+            <span className={style.or}>or</span>
+            <Link className="btn btn-outline-info" to="/signup">
+              Sign Up
+            </Link>
+          </div>
         </form>
       </div>
     );
