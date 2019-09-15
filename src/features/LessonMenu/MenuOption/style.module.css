@@ -1,5 +1,5 @@
 .container {
-  border: solid;
+  border: #00a6ff solid;
   border-radius: 25px;
   width: 200px;
   height: 200px;
@@ -19,4 +19,10 @@
   height: 6em;
   display: block;
   margin: 0em auto 1em auto;
+}
+
+@media only screen and (max-width: 768px) {
+  .container {
+    margin: 0 auto 50px auto;
+  }
 }

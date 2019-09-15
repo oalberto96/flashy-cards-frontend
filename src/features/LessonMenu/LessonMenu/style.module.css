@@ -9,3 +9,9 @@
 .optionsWrapper {
   padding: 0 150px;
 }
+
+@media only screen and (max-width: 768px) {
+  .optionsWrapper {
+    padding: 0;
+  }
+}
