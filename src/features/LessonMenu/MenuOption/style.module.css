@@ -8,13 +8,13 @@
 }
 
 .container:hover {
-  background-color: #13d0f8;
+  background-color: #00a6ff;
   color: white;
   cursor: pointer;
   transition-duration: 300ms;
 }
 
-.icon {
+.container > .icon {
   height: 6em;
   display: block;
   margin: 0em auto 1em auto;

@@ -6,6 +6,17 @@
   cursor: pointer;
 }
 
+.container:hover {
+  background-color: #00a6ff;
+  color: white;
+  cursor: pointer;
+  transition-duration: 300ms;
+}
+
+.container:hover .icon {
+  color: white;
+}
+
 .title {
   margin: 0px;
 }
