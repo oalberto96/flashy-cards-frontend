@@ -37,6 +37,9 @@ export const Auth = {
     cookies.set("csrftoken", data["csrf"], { path: "/" });
     cookies.set("token", data["token"], { path: "/" });
   },
+  removeHeaders: () => {
+    delete axios.defaults.headers.common.Authorization;
+  },
   hasCookies: () => {
     const token = cookies.get("token");
     const csrfToken = cookies.get("csrftoken");
@@ -44,6 +47,10 @@ export const Auth = {
       return true;
     }
     return false;
+  },
+  clearCookies: () => {
+    cookies.remove("csrftoken", { path: "/" });
+    cookies.remove("token", { path: "/" });
   }
 };
 

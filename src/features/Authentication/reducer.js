@@ -17,7 +17,9 @@ import { Auth } from "../../agent";
 import {
   EMPTY_USERNAME_ERROR,
   EMPTY_PASSWORD_ERROR,
-  AUTHENTICATE_WITH_LOCAL_COOKIES
+  AUTHENTICATE_WITH_LOCAL_COOKIES,
+  AUTHENTICATED_WITH_COOKIES,
+  LOGOUT
 } from "./constants";
 
 const initialiState = {
@@ -33,9 +35,12 @@ export default function LoginContainerReducer(state = initialiState, action) {
         Auth.configHeaders();
       }
       return { ...state, isAuthenticated: Auth.hasCookies() };
-    case REQUEST_LOGIN_SUCCEEDED:
-      window.location.reload();
+    case AUTHENTICATED_WITH_COOKIES:
       return { ...state, isAuthenticated: true };
+    case REQUEST_LOGIN_SUCCEEDED:
+      return { ...state, isAuthenticated: true };
+    case LOGOUT:
+      return { ...state, isAuthenticated: false };
     case REQUEST_LOGIN_FAILED:
       return {
         ...state,

@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import "./App.css";
-import Header from "./components/common/Header";
+import HeaderContainer from "./features/Authentication/HeaderContainer";
 
 class App extends Component {
   render() {
-    return <Header />;
+    return <HeaderContainer />;
   }
 }
 

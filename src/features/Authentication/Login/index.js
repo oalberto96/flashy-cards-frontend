@@ -43,9 +43,10 @@ class Login extends React.Component {
           <button
             id="login-button"
             className="btn btn-primary"
-            onClick={() =>
-              this.props.onClick(this.state.username, this.state.password)
-            }
+            onClick={e => {
+              e.preventDefault();
+              this.props.onClick(this.state.username, this.state.password);
+            }}
           >
             Login
           </button>

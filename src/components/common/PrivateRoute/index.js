@@ -6,16 +6,19 @@
 
 import React from "react";
 import { Redirect, Route } from "react-router-dom";
-import { connect } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 import { Auth } from "../../../agent";
+import { authenticatedWithCookies } from "../../../features/Authentication/actions";
 
 export const PrivateRoute = props => {
+  const dispatch = useDispatch();
   let componentToRender = <Route {...props} />;
   if (!props.isAuthenticated) {
     if (!Auth.hasCookies()) {
       componentToRender = <Redirect to="/login" />;
     } else {
       Auth.configHeaders();
+      dispatch(authenticatedWithCookies());
     }
   }
   return componentToRender;
