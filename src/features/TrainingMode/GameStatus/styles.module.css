@@ -1,0 +1,15 @@
+.bar {
+  background-color: #c4ebfb;
+  height: 1em;
+  margin: 1em;
+}
+
+.barDone {
+  background-color: #87e692;
+  height: 1em;
+  margin: 1em;
+}
+
+.barStatus {
+  margin-bottom: 1em;
+}

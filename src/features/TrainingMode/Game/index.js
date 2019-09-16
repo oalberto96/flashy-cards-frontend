@@ -2,9 +2,13 @@ import React from "react";
 import Card from "../../Play/Card";
 import FontAwesome from "react-fontawesome";
 import * as styles from "./game.module.css";
+import GameStatus from "../GameStatus";
 
 const Game = props => {
   let answer = null;
+  const currentCardPosition = props.conceptsDone.length;
+  const totalCards = props.queue.length + props.conceptsDone.length;
+
   if (props.isAnswerVisible && props.cardB) {
     answer = (
       <Card
@@ -22,6 +26,10 @@ const Game = props => {
   }
   return (
     <div className="container featureMargin">
+      <GameStatus
+        currentPosition={currentCardPosition}
+        totalCards={totalCards}
+      />
       <div className="row">
         <div className="col-6 col-md-6">
           <Card
