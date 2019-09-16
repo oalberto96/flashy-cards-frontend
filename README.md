@@ -11,7 +11,7 @@
 [Docker compose](https://github.com/oalberto96/flashy-cards)
 
 ## Summary
-Flashycards helps you to memorize words and sentences in other language asociating and image or gif with a word instead of memorize the direct translation.
+Flashycards helps you to memorize words and sentences in other language asociating an image or gif with a concept instead of memorize the direct translation.
 
 ### Motivation
 I created this project to help me to learn German and apply the knoledge acquired from tutorials of Django, React, Redux and Docker
