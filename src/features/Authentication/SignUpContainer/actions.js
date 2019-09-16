@@ -22,9 +22,10 @@ export const requestSignUp = (username, password, confirmPassword) => {
   };
 };
 
-export const requestSignUpSucceeded = () => {
+export const requestSignUpSucceeded = payload => {
   return {
-    type: REQUEST_SIGNUP_SUCCEEDED
+    type: REQUEST_SIGNUP_SUCCEEDED,
+    payload
   };
 };
 

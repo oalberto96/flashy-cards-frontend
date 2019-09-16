@@ -17,9 +17,9 @@ import { emptyPasswordError, emptyUsernameError } from "../actions";
 const postNewUserData = userData => {
   return Auth.signUp(userData)
     .then(response => {
-      Auth.configCookies(response.data);
+      Auth.configCookies(response.data.credentials);
       Auth.configHeaders();
-      return true;
+      return response.data;
     })
     .catch(error => {
       console.log("error at register user");
@@ -47,10 +47,13 @@ function* validateForm({ confirmPassword, password, username }) {
 function* requestSignUp(action) {
   const validForm = yield call(validateForm, action.payload);
   if (validForm) {
-    const postSucceeded = yield call(postNewUserData, action.payload);
-    yield postSucceeded
-      ? put(requestSignUpSucceeded())
-      : put(requestSignUpFailed());
+    const response = yield call(postNewUserData, action.payload);
+    if (response) {
+      yield put(requestSignUpSucceeded(response));
+      Auth.saveUserData(response.user_data);
+    } else {
+      yield put(requestSignUpFailed());
+    }
   }
 }
 

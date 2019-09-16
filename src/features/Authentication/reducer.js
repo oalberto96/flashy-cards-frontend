@@ -42,7 +42,6 @@ export default function LoginContainerReducer(
     case AUTHENTICATED_WITH_COOKIES:
       return { ...state, isAuthenticated: true, user: payload };
     case REQUEST_LOGIN_SUCCEEDED:
-      console.log(payload);
       return { ...state, isAuthenticated: true, user: payload.user_data };
     case LOGOUT:
       return { ...state, isAuthenticated: false };
@@ -55,7 +54,7 @@ export default function LoginContainerReducer(
         }
       };
     case REQUEST_SIGNUP_SUCCEEDED:
-      return { ...state, isAuthenticated: true };
+      return { ...state, isAuthenticated: true, user: payload.user_data };
     case REQUEST_SIGNUP_FAILED:
       return {
         ...state,
