@@ -5,3 +5,11 @@
 .logo {
   color: white;
 }
+
+.user {
+  color: white;
+}
+
+.logout:hover {
+  cursor: pointer;
+}

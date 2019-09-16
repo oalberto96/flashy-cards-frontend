@@ -17,8 +17,13 @@ const Header = ({ isAuthenticated, username, onLogoutClick }) => {
         Flashy Cards
       </Link>
       {isAuthenticated && (
-        <div>
-          {username} | {<span onClick={onLogoutClick}>logout</span>}
+        <div className="user">
+          {username} |{" "}
+          {
+            <span className="logout" onClick={onLogoutClick}>
+              logout
+            </span>
+          }
         </div>
       )}
     </nav>

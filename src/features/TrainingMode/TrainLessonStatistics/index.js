@@ -6,7 +6,7 @@ const TrainLessonStatistics = props => {
   return (
     <div className="container">
       <div className="featureMargin">
-        <h1 className={styles.title}>Statistics </h1>
+        <h1 className={styles.title}>Score </h1>
         <button
           className="btn create-lesson-button"
           onClick={() => props.saveScore(props.lessonId, props.conceptsDone)}
