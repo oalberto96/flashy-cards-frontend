@@ -75,8 +75,10 @@ const reducer = (state = initialState, action) => {
       queue.splice(random, 0, conceptPopped);
       return { ...state, queue, showAnswer: false, rateConcept: false };
     }
-    case actionTypes.SAVE_TRAINING_SCORE_SUCCESS: {
+    case actionTypes.SAVE_TRAINING_SCORE:
       return { ...state, trainingFinished: true };
+    case actionTypes.SAVE_TRAINING_SCORE_SUCCESS: {
+      return initialState;
     }
     default: {
       return state;
