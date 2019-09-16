@@ -15,3 +15,36 @@
     height: 100%;
   }
 }
+
+.control-wrapper {
+  margin: auto;
+}
+
+.control-wrapper > div {
+  margin: auto;
+}
+
+.control-left {
+  width: 0;
+  height: 0;
+  border-top: 60px solid transparent;
+  border-bottom: 60px solid transparent;
+  border-right: 60px solid #87e692;
+}
+.control-left:hover {
+  border-right: 60px solid #65c570;
+  cursor: pointer;
+}
+
+.control-right {
+  width: 0;
+  height: 0;
+  border-top: 60px solid transparent;
+  border-bottom: 60px solid transparent;
+  border-left: 60px solid #87e692;
+}
+
+.control-right:hover {
+  border-left: 60px solid #65c570;
+  cursor: pointer;
+}
