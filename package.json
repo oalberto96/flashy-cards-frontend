@@ -9,6 +9,7 @@
     "enzyme-adapter-react-16": "^1.6.0",
     "jest": "^23.6.0",
     "jquery": "^3.3.1",
+    "moment": "^2.24.0",
     "popper.js": "^1.14.6",
     "prop-types": "^15.6.2",
     "react": "^16.8",
@@ -19,6 +20,7 @@
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.1",
     "react-test-renderer": "^16.5.2",
+    "recharts": "^1.7.1",
     "redux": "^4.0.4",
     "redux-saga": "^0.16.0",
     "universal-cookie": "^3.0.4"

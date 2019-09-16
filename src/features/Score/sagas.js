@@ -1,6 +1,6 @@
-import { takeEvery, call } from "redux-saga/effects";
+import { takeEvery, call, put } from "redux-saga/effects";
 import * as actionTypes from "./constants";
-import {} from "./actions";
+import { requestLessonScoreSuccess } from "./actions";
 import { Lessons } from "../../agent";
 
 const fetchScore = lessonId => {
@@ -8,7 +8,8 @@ const fetchScore = lessonId => {
 };
 
 function* requestLessonScoreSaga(action) {
-  const score = yield call(fetchScore, action.payload);
+  const request = yield call(fetchScore, action.payload);
+  yield put(requestLessonScoreSuccess(request.data));
 }
 
 export function* defaultSagas() {
