@@ -21,7 +21,7 @@ const LessonList = ({
 }) => {
   return (
     <div className="collection-list">
-      <h1 className={styles.title}>My lists</h1>
+      <h1 className={styles.title}>My Lessons</h1>
       <div
         className={`text-right ${styles.orderButton}`}
         onClick={() => reverseList()}

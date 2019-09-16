@@ -28,7 +28,17 @@ class LessonListContainer extends React.Component {
   }
 
   render() {
-    return <LessonList {...this.props} />;
+    if (this.props.lessons.length > 0) {
+      return <LessonList {...this.props} />;
+    } else {
+      return (
+        <div className="container featureMargin">
+          <div className="collection-list">
+            <h1 className>You don't have lessons yet</h1>{" "}
+          </div>
+        </div>
+      );
+    }
   }
 }
 
