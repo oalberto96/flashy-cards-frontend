@@ -41,7 +41,7 @@ class Login extends React.Component {
           </div>
           <button
             id="login-button"
-            className="btn btn-primary"
+            className={`btn btn-primary ${style.loginButton}`}
             onClick={e => {
               e.preventDefault();
               this.props.onClick(this.state.username, this.state.password);
@@ -51,7 +51,10 @@ class Login extends React.Component {
           </button>
           <div className="pull-right">
             <span className={style.or}>or</span>
-            <Link className="btn btn-outline-info" to="/signup">
+            <Link
+              className={`btn btn-outline-info ${style.signUpButton}`}
+              to="/signup"
+            >
               Sign Up
             </Link>
           </div>

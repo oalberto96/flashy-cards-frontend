@@ -1,5 +1,16 @@
-#login-button {
-  margin: 10px;
+.loginButton {
+  background-color: #4baea0 !important;
+  border: none;
+}
+
+.signUpButton {
+  border: solid 1px #4baea0 !important;
+  color: #4baea0 !important;
+}
+
+.signUpButton:hover {
+  background-color: #4baea0;
+  color: white !important;
 }
 
 .loginWrapper {

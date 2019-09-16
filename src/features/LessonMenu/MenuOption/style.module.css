@@ -1,5 +1,5 @@
 .container {
-  border: #00a6ff solid;
+  border: #4baea0 solid;
   border-radius: 25px;
   width: 200px;
   height: 200px;
@@ -9,7 +9,7 @@
 }
 
 .container:hover {
-  background-color: #00a6ff;
+  background-color: #4baea0;
   color: white;
   cursor: pointer;
   transition-duration: 300ms;

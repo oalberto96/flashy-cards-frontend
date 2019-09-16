@@ -1,5 +1,5 @@
 .container {
-  border: solid 1px #13d0f8;
+  border: solid 1px #4baea0;
   margin-bottom: 0.5em;
   padding: 1em 0em 0em 1em;
   border-radius: 25px;
@@ -7,7 +7,7 @@
 }
 
 .container:hover {
-  background-color: #00a6ff;
+  background-color: #4baea0;
   color: white;
   cursor: pointer;
   transition-duration: 300ms;
@@ -25,7 +25,7 @@
 }
 
 .icon {
-  color: #13d0f8;
+  color: #4baea0;
   font-size: 2em;
   float: right;
 }

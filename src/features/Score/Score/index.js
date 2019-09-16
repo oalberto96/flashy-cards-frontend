@@ -20,7 +20,7 @@ const Score = props => {
 
   return (
     <div className="container featureMargin">
-      <h1>Score</h1>
+      <h1 className="primaryColor">Score</h1>
       <div className="row">
         <div className="col-12 col-md-3">
           <History score={props.score}></History>
@@ -37,7 +37,7 @@ const Score = props => {
               <YAxis dataKey="Mistakes" />
               <Tooltip />
               <Legend />
-              <Line type="monotone" dataKey="Mistakes" stroke="red" />
+              <Line type="monotone" dataKey="Mistakes" stroke="#4baea0" />
             </LineChart>
           </ResponsiveContainer>
         </div>

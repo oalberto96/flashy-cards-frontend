@@ -10,3 +10,11 @@
   font-size: 10em;
   padding: 0 auto;
 }
+
+.positiveScore {
+  color: #4baea0;
+}
+
+.negativeScore {
+  color: #e04b4a;
+}

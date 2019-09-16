@@ -31,9 +31,13 @@ const TrainLessonStatistics = props => {
               <h3>Mistakes</h3>
               <div className={styles.score}>
                 {concept.mistakes > 0 ? (
-                  <span style={{ color: "#E6786F" }}>{concept.mistakes}</span>
+                  <span className={styles.negativeScore}>
+                    {concept.mistakes}
+                  </span>
                 ) : (
-                  <span style={{ color: "#87E692" }}>{concept.mistakes}</span>
+                  <span className={styles.positiveScore}>
+                    {concept.mistakes}
+                  </span>
                 )}
               </div>
             </div>

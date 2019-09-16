@@ -48,7 +48,7 @@ class SignUp extends React.Component {
             />
           </div>
           <button
-            className="btn btn-primary"
+            className={`btn btn-primary ${style.signUpButton}`}
             onClick={() =>
               this.props.onClick(
                 this.state.username,
@@ -61,7 +61,10 @@ class SignUp extends React.Component {
           </button>
           <div className="pull-right">
             <span className={style.or}>or</span>
-            <Link className="btn btn-outline-info" to="/login">
+            <Link
+              className={`btn btn-outline-info ${style.loginButton}`}
+              to="/login"
+            >
               Login
             </Link>
           </div>

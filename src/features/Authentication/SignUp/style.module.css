@@ -9,3 +9,18 @@
 .or {
   padding-right: 0.4em;
 }
+
+.signUpButton {
+  background-color: #4baea0 !important;
+  border: none;
+}
+
+.loginButton {
+  border: solid 1px #4baea0 !important;
+  color: #4baea0 !important;
+}
+
+.loginButton:hover {
+  background-color: #4baea0;
+  color: white !important;
+}
