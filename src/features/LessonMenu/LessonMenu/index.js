@@ -33,7 +33,12 @@ const LessonMenu = ({ lesson, history }) => {
           alt="Edit option"
           onClick={() => history.push(`/lessons/${lesson.id}/edit`)}
         />
-        <MenuOption title="Score" icon={scoreIcon} alt="Score option" />
+        <MenuOption
+          title="Score"
+          icon={scoreIcon}
+          alt="Score option"
+          onClick={() => history.push(`/lessons/${lesson.id}/score`)}
+        />
       </div>
     </div>
   );

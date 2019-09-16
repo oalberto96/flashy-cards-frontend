@@ -9,6 +9,7 @@ import LoginContainer from "./features/Authentication/LoginContainer";
 import SignUpContainer from "./features/Authentication/SignUpContainer";
 import TrainLessonContainer from "./features/TrainingMode/TrainLessonContainer";
 import LessonMenuContainer from "./features/LessonMenu/LessonMenuContainer";
+import ScoreContainer from "./features/Score/ScoreContainer";
 
 const Router = () => {
   return (
@@ -32,6 +33,10 @@ const Router = () => {
           <PrivateRoute
             path="/lessons/:lessonId/training"
             component={TrainLessonContainer}
+          />
+          <PrivateRoute
+            path="/lessons/:lessonId/score"
+            component={ScoreContainer}
           />
           <PrivateRoute
             path="/lessons/:lessonId"

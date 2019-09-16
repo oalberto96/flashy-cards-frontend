@@ -5,6 +5,7 @@ import playingLesson from "../features/Play/ConceptListContainer/reducer";
 import authentication from "../features/Authentication/reducer";
 import lessonTraining from "../features/TrainingMode/reducer";
 import selectedLesson from "../features/LessonMenu/LessonMenuContainer/reducer";
+import score from "../features/Score/reducer";
 
 const rootReducer = combineReducers({
   newLesson,
@@ -12,7 +13,8 @@ const rootReducer = combineReducers({
   playingLesson,
   authentication,
   lessonTraining,
-  selectedLesson
+  selectedLesson,
+  score
 });
 
 export default rootReducer;

@@ -70,5 +70,6 @@ export const Lessons = {
   saveTrainingScore: (lessonId, conceptsScore) =>
     requests.post(`lessons/lessons/${lessonId}/training/`, {
       concepts: conceptsScore
-    })
+    }),
+  getScore: lessonId => requests.get(`lessons/lessons/${lessonId}/score/`)
 };

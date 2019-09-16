@@ -5,6 +5,7 @@ import LessonListSagas from "../features/Dashboard/LessonListContainer/sagas";
 import SignUpSagas from "../features/Authentication/SignUpContainer/sagas";
 import TrainingModeSagas from "../features/TrainingMode/sagas";
 import LessonMenuSagas from "../features/LessonMenu/LessonMenuContainer/sagas";
+import ScoreSagas from "../features/Score/sagas";
 
 let sagas = [
   LessonFormContainerSagas,
@@ -13,7 +14,8 @@ let sagas = [
   LessonListSagas,
   SignUpSagas,
   TrainingModeSagas,
-  LessonMenuSagas
+  LessonMenuSagas,
+  ScoreSagas
 ];
 
 export const initSagas = sagaMiddleware => {
