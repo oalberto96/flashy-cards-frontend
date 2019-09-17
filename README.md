@@ -6,7 +6,9 @@
 
 ### Full stack
 
-[Backend](https://github.com/oalberto96/flashy-cards-backend)
+Frontend - React and Redux
+
+[Backend - Django](https://github.com/oalberto96/flashy-cards-backend)
 
 [Docker compose](https://github.com/oalberto96/flashy-cards)
 
